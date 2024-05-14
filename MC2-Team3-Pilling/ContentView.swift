@@ -13,6 +13,7 @@ struct ContentView: View {
     @Query private var items: [Item]
     // gg
     // ㅓㅓ
+    // testtest
     var body: some View {
         NavigationSplitView {
             List {
