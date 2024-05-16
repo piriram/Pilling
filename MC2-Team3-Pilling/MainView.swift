@@ -43,7 +43,7 @@ struct MainView: View {
                         Image("1case")
                             .resizable()
                             .frame(width: 200, height: 200)
-                        VStack(alignment: .leading, spacing: 20) {
+                        VStack(alignment: .leading, spacing: 16) {
                             HStack {
                                 Text("4일차")
                                     .font(.largeTitle)
