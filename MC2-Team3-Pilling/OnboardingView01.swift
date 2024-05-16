@@ -10,20 +10,17 @@ struct OnboardingView01: View {
             .frame(width: 300, height: 300)
         
         // Text
-        VStack {
-            // Text
-            Text("플랜을 설정해주세요!")
+        VStack(alignment: .leading) {
+            Text("복용하고 계신 약을 알려주세요!")
                 .font(.title)
-                .bold()
+                .fontWeight(.semibold)
+                .padding(.bottom, 2)
             
             Text("설정은 추후에 변경 가능합니다.")
                 .font(.title3)
                 .foregroundStyle(.secondary)
-            
         }
-        
-        //        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        //        .background(Color.red)
+
         
         // Selecting box
         VStack {
@@ -31,10 +28,14 @@ struct OnboardingView01: View {
                 self.showingMedicineSheet = true
             }, label: {
                 // sfSymbol 부재 : medicine-bottle-one
-                Image(systemName: "pill.circle.fill")
-                Text("약 종류")
-                    .font(.title3)
-                Image(systemName: "chevron.right")
+                HStack {
+                    Image(systemName: "pill.circle.fill")
+                    Text("약 종류")
+                        .font(.title3)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                }
+                .padding([.leading, .trailing], 25)
             })
             .padding(.vertical, 20)
             .frame(maxWidth: .infinity)
@@ -51,10 +52,13 @@ struct OnboardingView01: View {
             
             Button(action: {}, label: {
                 // sfSymbol 부재 : uis-calender
-                Image(systemName: "note")
-                Text("현재 복용 일수")
-                    .font(.title3)
-                
+                HStack {
+                    Image(systemName: "note")
+                    Text("현재 복용 일수")
+                        .font(.title3)
+                    Spacer()
+                }
+                .padding([.leading, .trailing], 25)
             })
             .padding(.vertical, 20)
             .frame(maxWidth: .infinity)
