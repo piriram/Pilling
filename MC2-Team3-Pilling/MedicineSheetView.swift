@@ -33,20 +33,23 @@ struct MedicineSheetView: View {
                     hideKeyboard()
                 }
             }
-            //            .navigationBarTitle("검색기능")
-            .navigationBarItems(trailing:
-                                    HStack{
-                Button(action: {
-                }) {
-                    //                                            HStack {
-                    //                                                Text("서근")
-                    //                                                    .foregroundColor(.black)
-                    //                                                Image(systemName: "folder.fill")
-                    //                                            }
-                }
-            }
-            )
+            
+            // footer button
+            Button(action: {}, label: {
+                Text("다음으로")
+                    .font(.title3)
+                    .bold()
+            })
+            .padding(.vertical, 30)
+            .frame(maxWidth: .infinity)
+            .background(.customGreen)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .foregroundColor(.black)
+            .padding()
+
         }
+        
+        
     }
 }
 

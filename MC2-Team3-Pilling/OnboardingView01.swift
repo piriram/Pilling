@@ -38,7 +38,7 @@ struct OnboardingView01: View {
             })
             .padding(.vertical, 20)
             .frame(maxWidth: .infinity)
-            .background(.customGray)
+            .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
             .padding()
@@ -46,6 +46,8 @@ struct OnboardingView01: View {
                 MedicineSheetView()
                     .presentationDetents([.medium])
             }
+            
+            
             
             Button(action: {}, label: {
                 // sfSymbol 부재 : uis-calender
@@ -56,7 +58,7 @@ struct OnboardingView01: View {
             })
             .padding(.vertical, 20)
             .frame(maxWidth: .infinity)
-            .background(.customGray)
+            .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
             .padding()
@@ -65,7 +67,9 @@ struct OnboardingView01: View {
         
         
         // footer button
-        Button(action: {}, label: {
+        Button(action: {
+//            OnboardingView02()
+        }, label: {
             Text("다음으로")
                 .font(.title3)
                 .bold()

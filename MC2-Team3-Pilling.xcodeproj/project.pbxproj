@@ -16,6 +16,7 @@
 		939C88302BF5CC9F00572EDC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C882F2BF5CC9F00572EDC /* SettingView.swift */; };
 		939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */; };
 		939C88342BF6B77400572EDC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88332BF6B77400572EDC /* SearchBar.swift */; };
+		939C88362BF6B9BC00572EDC /* OnboardingView02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88352BF6B9BC00572EDC /* OnboardingView02.swift */; };
 		9B0411762BF593A0006F8BB9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0411752BF593A0006F8BB9 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		939C882F2BF5CC9F00572EDC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSheetView.swift; sourceTree = "<group>"; };
 		939C88332BF6B77400572EDC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		939C88352BF6B9BC00572EDC /* OnboardingView02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView02.swift; sourceTree = "<group>"; };
 		9B0411752BF593A0006F8BB9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 			children = (
 				9B0411752BF593A0006F8BB9 /* MainView.swift */,
 				939C882D2BF5CC9100572EDC /* OnboardingView01.swift */,
+				939C88352BF6B9BC00572EDC /* OnboardingView02.swift */,
 				939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */,
 				939C88332BF6B77400572EDC /* SearchBar.swift */,
 				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
@@ -160,6 +163,7 @@
 				939C87E22BF307B600572EDC /* ContentView.swift in Sources */,
 				939C882E2BF5CC9100572EDC /* OnboardingView01.swift in Sources */,
 				9B0411762BF593A0006F8BB9 /* MainView.swift in Sources */,
+				939C88362BF6B9BC00572EDC /* OnboardingView02.swift in Sources */,
 				939C88302BF5CC9F00572EDC /* SettingView.swift in Sources */,
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				939C88342BF6B77400572EDC /* SearchBar.swift in Sources */,
