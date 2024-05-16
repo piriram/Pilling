@@ -31,7 +31,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        Button(action: {}, label: {
+                        NavigationLink(destination: SettingView(), label: {
                             Image(systemName: "gearshape")
                                 .font(.title)
                         })
