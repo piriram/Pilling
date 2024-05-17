@@ -17,6 +17,7 @@
 		939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */; };
 		939C88342BF6B77400572EDC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88332BF6B77400572EDC /* SearchBar.swift */; };
 		939C88362BF6B9BC00572EDC /* OnboardingView02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88352BF6B9BC00572EDC /* OnboardingView02.swift */; };
+		939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88372BF6DF7000572EDC /* SplashScreenView.swift */; };
 		9B0411762BF593A0006F8BB9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0411752BF593A0006F8BB9 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSheetView.swift; sourceTree = "<group>"; };
 		939C88332BF6B77400572EDC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		939C88352BF6B9BC00572EDC /* OnboardingView02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView02.swift; sourceTree = "<group>"; };
+		939C88372BF6DF7000572EDC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		9B0411752BF593A0006F8BB9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				939C88332BF6B77400572EDC /* SearchBar.swift */,
 				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
 				939C87DF2BF307B600572EDC /* MC2_Team3_PillingApp.swift */,
+				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
 				939C87E12BF307B600572EDC /* ContentView.swift */,
 				939C87E32BF307B600572EDC /* Item.swift */,
 				939C87E52BF307B800572EDC /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 				939C88302BF5CC9F00572EDC /* SettingView.swift in Sources */,
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				939C88342BF6B77400572EDC /* SearchBar.swift in Sources */,
+				939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */,
 				939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */,
 				939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */,
 			);

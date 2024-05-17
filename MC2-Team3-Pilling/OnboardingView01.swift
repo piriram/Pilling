@@ -42,7 +42,7 @@ struct OnboardingView01: View {
             .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
-            .padding()
+            .padding([.leading, .trailing], 20)
             .sheet(isPresented: $showingMedicineSheet){
                 MedicineSheetView()
                     .presentationDetents([.medium])
@@ -65,10 +65,11 @@ struct OnboardingView01: View {
             .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
-            .padding()
+            .padding([.leading, .trailing], 20)
             
         }
         
+        Spacer()
         
         // footer button
         Button(action: {

@@ -61,11 +61,10 @@ struct OnboardingView02: View {
             .foregroundStyle(.secondary)
         }
         
+        Spacer()
         
         // footer button
-        Button(action: {
-//            OnboardingView02()
-        }, label: {
+        Button(action: {}, label: {
             Text("설정완료!")
                 .font(.title3)
                 .bold()
