@@ -12,13 +12,11 @@ struct OnboardingFirstView: View {
         // Text
         VStack(alignment: .leading) {
             Text("복용하고 계신 약을 알려주세요!")
-                .font(.title)
-                .fontWeight(.semibold)
+                .largeTitle()
                 .padding(.bottom, 2)
             
             Text("설정은 추후에 변경 가능합니다.")
-                .font(.title3)
-                .foregroundStyle(.secondary)
+                .secondaryRegular()
         }
 
         
@@ -31,7 +29,7 @@ struct OnboardingFirstView: View {
                 HStack {
                     Image(systemName: "pill.circle.fill")
                     Text("약 종류")
-                        .font(.title3)
+                        .secondaryTitle()
                     Spacer()
                     Image(systemName: "chevron.right")
                 }
@@ -55,7 +53,7 @@ struct OnboardingFirstView: View {
                 HStack {
                     Image(systemName: "note")
                     Text("현재 복용 일수")
-                        .font(.title3)
+                        .secondaryTitle()
                     Spacer()
                 }
                 .padding([.leading, .trailing], 25)
@@ -76,8 +74,7 @@ struct OnboardingFirstView: View {
 //            OnboardingView02()
         }, label: {
             Text("다음으로")
-                .font(.title3)
-                .bold()
+                .largeBold()
         })
         .padding(.vertical, 30)
         .frame(maxWidth: .infinity)
