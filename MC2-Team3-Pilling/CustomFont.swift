@@ -11,6 +11,9 @@ extension View {
     func largeTitle() -> some View {
         self.modifier(CustomFontStyle(fontType: .largeTitle, isBold: true, color: .black))
     }
+    func secondaryTitle() -> some View {
+        self.modifier(CustomFontStyle(fontType: .title2, isBold: false, color: .secondary))
+    }
     func secondaryRegular() -> some View {
         self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .secondary))
     }
