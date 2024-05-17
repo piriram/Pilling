@@ -31,7 +31,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        Button(action: {}, label: {
+                        NavigationLink(destination: SettingView(), label: {
                             Image(systemName: "gearshape")
                                 .font(.title)
                         })
@@ -43,13 +43,13 @@ struct MainView: View {
                         Image("1case")
                             .resizable()
                             .frame(width: 200, height: 200)
-                        VStack(alignment: .leading, spacing: 20) {
+                        VStack(alignment: .leading, spacing: 16) {
                             HStack {
                                 Text("4일차")
                                     .font(.largeTitle)
                                     .bold()
-                                Text("/24")
-                                    .font(.title3)
+                                Text("/28")
+                                    .font(.title2)
                                     .foregroundStyle(.secondary)
                             }
                             Label("24/4", systemImage: "calendar")
