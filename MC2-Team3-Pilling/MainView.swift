@@ -48,8 +48,8 @@ struct MainView: View {
                                 Text("4일차")
                                     .font(.largeTitle)
                                     .bold()
-                                Text("/24")
-                                    .font(.title3)
+                                Text("/28")
+                                    .font(.title2)
                                     .foregroundStyle(.secondary)
                             }
                             Label("24/4", systemImage: "calendar")
