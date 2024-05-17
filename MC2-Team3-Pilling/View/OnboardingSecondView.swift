@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingView02: View {
+struct OnboardingSecondView: View {
     @State var alarmTime: Date = Date()
     @State var alarmToggle = false
     
@@ -80,5 +80,5 @@ struct OnboardingView02: View {
 }
 
 #Preview {
-    OnboardingView02()
+    OnboardingSecondView()
 }

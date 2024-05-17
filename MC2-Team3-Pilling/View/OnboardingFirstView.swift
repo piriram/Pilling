@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct OnboardingView01: View {
+struct OnboardingFirstView: View {
     @State private var showingMedicineSheet = false
     
     var body: some View {
@@ -89,5 +89,5 @@ struct OnboardingView01: View {
 }
 
 #Preview {
-    OnboardingView01()
+    OnboardingFirstView()
 }
