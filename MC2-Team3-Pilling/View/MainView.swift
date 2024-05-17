@@ -22,9 +22,8 @@ struct MainView: View {
                             showingPopover = true
                         }, label: {
                             Image(systemName: "info.circle.fill")
-                                .font(.title)
+                                .Icon()
                         })
-                        .foregroundStyle(.secondary)
                         .popover(isPresented: $showingPopover, attachmentAnchor: .point(.bottom),
                                  arrowEdge: .top) {
                             Text("Popover test")
@@ -33,9 +32,8 @@ struct MainView: View {
                         }
                         NavigationLink(destination: SettingView(), label: {
                             Image(systemName: "gearshape")
-                                .font(.title)
+                                .Icon()
                         })
-                        .foregroundStyle(.secondary)
                     }
                     
                     // status header
@@ -46,16 +44,14 @@ struct MainView: View {
                         VStack(alignment: .leading, spacing: 16) {
                             HStack {
                                 Text("4일차")
-                                    .font(.largeTitle)
-                                    .bold()
+                                    .largeTitle()
                                 Text("/28")
-                                    .font(.title2)
-                                    .foregroundStyle(.secondary)
+                                    .secondaryTitle()
                             }
                             Label("24/4", systemImage: "calendar")
-                                .foregroundStyle(.secondary)
+                                .secondaryRegular()
                             Label("17:00", systemImage: "clock.fill")
-                                .foregroundStyle(.secondary)
+                                .secondaryRegular()
                         }
                         Spacer()
                     }
@@ -65,7 +61,7 @@ struct MainView: View {
                         Image(systemName: "drop")
                             .foregroundColor(.customGreen)
                         Text("잔디를 심어주세요")
-                            .bold()
+                            .boldRegular()
                         Spacer()
                     }
                     .padding(20)
@@ -92,6 +88,7 @@ struct MainView: View {
                             Text("월")
                                 .frame(width: 45, height: 45)
                         }
+                        .regular()
                         ForEach(0..<4) { _ in
                             HStack {
                                 ForEach(0..<7) { _ in
@@ -108,8 +105,7 @@ struct MainView: View {
                     // footer button
                     Button(action: {}, label: {
                         Text("잔디 심기")
-                            .font(.title3)
-                            .bold()
+                            .largeBold()
                     })
                     .padding(.vertical, 30)
                     .frame(maxWidth: .infinity)
