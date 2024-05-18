@@ -27,14 +27,16 @@ struct OnboardingSecondView: View {
             
             
             Button(action: {
-                DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
             }, label: {
-                HStack {
-                    Image(systemName: "clock")
-                    Text("복용 시간")
-                        .secondaryTitle()
-                    Spacer()
-                    Text("17:00")
+                ZStack{
+                    HStack {
+                        Image(systemName: "clock")
+                        Text("복용 시간")
+                            .secondaryTitle()
+                        Spacer()
+                        
+                    }
+                    DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
                 }
                 .padding([.leading, .trailing], 25)
             })
