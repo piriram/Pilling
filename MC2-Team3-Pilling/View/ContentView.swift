@@ -20,6 +20,10 @@ struct ContentView: View {
             NavigationLink(destination: OnboardingFirstView()){
                 Text("OnboardingView")
             }
+            NavigationLink(destination: SplashScreenView()){
+                Text("SplashScreenView")
+            }
+
         }
         
     }
