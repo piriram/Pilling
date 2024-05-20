@@ -46,6 +46,8 @@ struct SettingView: View {
                 Text("Pills")
                     .presentationDetents([.height(300), .large])
             })
+            .background(Color.white)
+            .scrollContentBackground(.hidden)
         }
     }
 }
