@@ -20,19 +20,28 @@ struct LiveTimeWidget: Widget {
                 Text(context.state.restOfTime, style: .relative)
                     .foregroundStyle(.customGreen)
             }
+            .padding()
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("잔디 심을 시간")
-                    Text(context.state.restOfTime, style: .relative)
-                    Button("click") {}
+                    VStack {
+                        Text("잔디 심을 시간이에요!")
+                        Text(context.state.restOfTime, style: .relative)
+                            .foregroundStyle(.customGreen)
+                        Button("click") {}
+                            .tint(.customGreen)
+                    }
+                    .padding()
                 }
             } compactLeading: {
                 Image(systemName: "leaf.fill")
+                    .foregroundStyle(.customGreen)
             } compactTrailing: {
                 Text(context.state.restOfTime, style: .relative)
+                    .foregroundStyle(.customGreen)
             } minimal: {
                 Text(context.state.restOfTime, style: .relative)
+                    .foregroundStyle(.customGreen)
             }
         }
     }
