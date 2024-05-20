@@ -12,7 +12,14 @@ import ActivityKit
 struct LiveTimeWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveTimeAttributes.self) { context in
-            Text(context.state.restOfTime, style: .relative)
+            HStack {
+                Image(systemName: "leaf.fill")
+                    .foregroundStyle(.customGreen)
+                Text("잔디를 심을 시간이에요!")
+                Spacer()
+                Text(context.state.restOfTime, style: .relative)
+                    .foregroundStyle(.customGreen)
+            }
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.bottom) {
