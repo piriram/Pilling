@@ -81,10 +81,16 @@ struct MainView: View {
                             
                         }
                         .regular()
-                        ForEach(0..<4) { _ in
+                        ForEach(0..<4) { y in
                             HStack {
-                                ForEach(0..<7) { _ in
-                                    ActivateCell(isModal: $isModal)
+                                ForEach(0..<7) { x in
+                                    
+                                    if x==1 && y==3  {
+                                        TwoCell(isModal: $isModal, backgroundColor: .customGray)
+                                    } else {
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customGray)
+                                        
+                                    }
                                 }
                             }
                         }
@@ -104,7 +110,11 @@ struct MainView: View {
                 }
                 .padding()
             }
+            .sheet(isPresented: $isModal){
+                EmptyView()
+            }
         }
+        
     }
 }
 
@@ -129,12 +139,39 @@ struct DayView: View {
 
 struct ActivateCell: View {
     @Binding var isModal:Bool
+    var backgroundColor: Color
     var body: some View {
-        Button(action: {
-            isModal = true
-        }, label: {})
+        RoundedRectangle(cornerRadius: 10)
             .frame(width: 45, height: 45)
-            .background(.customGreen)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .foregroundColor(backgroundColor)
+            .onTapGesture {
+                isModal = true
+                print(isModal)
+            }
     }
+    
+}
+struct TwoCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        HStack(spacing: 5){
+            
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 20, height: 45)
+              .background(.customGreen)
+              .cornerRadius(10)
+//              .rotationEffect(Angle(degrees: 90))
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 20, height: 45)
+              .background(Color(red: 0.5, green: 0.87, blue: 0.11))
+              .cornerRadius(10)
+//              .rotationEffect(Angle(degrees: 90))
+        }
+        .frame(width: 45, height: 45)
+       
+    }
+    
 }
