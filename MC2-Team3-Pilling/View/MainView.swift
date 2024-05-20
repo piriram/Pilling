@@ -84,13 +84,22 @@ struct MainView: View {
                         ForEach(0..<4) { y in
                             HStack {
                                 ForEach(0..<7) { x in
-                                    
-                                    if x==1 && y==3  {
-                                        TwoCell(isModal: $isModal, backgroundColor: .customGray)
-                                    } else {
-                                        ActivateCell(isModal: $isModal, backgroundColor: .customGray)
-                                        
+                                    if x==3 && y==0{
+                                        TwoCell(isModal: $isModal, backgroundColor: .customGreen)
                                     }
+                                    else if x==1 && y==0 {
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                    }
+                                    else if x==4 && y == 0{
+                                        TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    }
+                                    else{
+                                        ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    }
+                                    
+                                    
+                                    
+                                    
                                 }
                             }
                         }
@@ -151,6 +160,25 @@ struct ActivateCell: View {
     }
     
 }
+struct TodayCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(width: 45, height: 45)
+            .background(backgroundColor)
+            .cornerRadius(10)
+        
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 1)
+                    .stroke(Color.green,lineWidth: 3)
+                
+            )
+    }
+    
+}
 struct TwoCell: View {
     @Binding var isModal:Bool
     var backgroundColor: Color
@@ -158,20 +186,20 @@ struct TwoCell: View {
         HStack(spacing: 5){
             
             Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 20, height: 45)
-              .background(.customGreen)
-              .cornerRadius(10)
-//              .rotationEffect(Angle(degrees: 90))
+                .foregroundColor(.clear)
+                .frame(width: 20, height: 45)
+                .background(.customGreen)
+                .cornerRadius(10)
+            //              .rotationEffect(Angle(degrees: 90))
             Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 20, height: 45)
-              .background(Color(red: 0.5, green: 0.87, blue: 0.11))
-              .cornerRadius(10)
-//              .rotationEffect(Angle(degrees: 90))
+                .foregroundColor(.clear)
+                .frame(width: 20, height: 45)
+                .background(Color(red: 0.5, green: 0.87, blue: 0.11))
+                .cornerRadius(10)
+            //              .rotationEffect(Angle(degrees: 90))
         }
         .frame(width: 45, height: 45)
-       
+        
     }
     
 }

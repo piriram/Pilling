@@ -26,6 +26,7 @@ class Config{
             }
         }
     }
+    
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
         case plantGrass = 0
         case limitTwoHours = 1
@@ -50,9 +51,11 @@ class Config{
     }
     
     let days = ["일", "월", "화", "수", "목", "금", "토"]
-    let myArray: [Int] = [1, 4 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
+    
     
     
     
     
 }
+let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
+var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
