@@ -25,8 +25,8 @@ final class UserInfo:Identifiable{
         self.isAlarm = false
         self.isSiri = false
     }
-
-      
+    
+    
 }
 
 @Model
@@ -47,7 +47,7 @@ final class PeriodPill:Identifiable{
         self.intakeCalTime = []
         self.missDay = 0
     }
-
+    
 }
 
 @Model
@@ -67,6 +67,6 @@ final class PillInfo:Identifiable{
         self.placeboDay = placeboDay
         self.wholeDay = intakeDay+placeboDay
     }
-
+    
 }
 

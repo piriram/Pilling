@@ -18,7 +18,7 @@ struct OnboardingFirstView: View {
             Text("설정은 추후에 변경 가능합니다.")
                 .secondaryRegular()
         }
-
+        
         
         // Selecting box
         VStack {
@@ -71,7 +71,7 @@ struct OnboardingFirstView: View {
         
         // footer button
         Button(action: {
-//            OnboardingView02()
+            //            OnboardingView02()
         }, label: {
             Text("다음으로")
                 .largeBold()

@@ -23,22 +23,22 @@ class Config{
         
         var description: String {
             switch self {
-            case .plantGrass:
-                return "잔디를 심어주세요"
-            case .limitTwoHours:
-                return "잔디는 2시간을 초과하지 않게 심어주세요!"
-            case .plantTwoGrass:
-                return "2개의 잔디를 심어주세요"
-            case .grassGrowingWell:
-                return "잔디가 잘 자라고 있어요!"
-            case .notRecording:
-                return "기록을 안하고 계신가요?"
+                case .plantGrass:
+                    return "잔디를 심어주세요"
+                case .limitTwoHours:
+                    return "잔디는 2시간을 초과하지 않게 심어주세요!"
+                case .plantTwoGrass:
+                    return "2개의 잔디를 심어주세요"
+                case .grassGrowingWell:
+                    return "잔디가 잘 자라고 있어요!"
+                case .notRecording:
+                    return "기록을 안하고 계신가요?"
             }
         }
     }
     
     let days = ["일", "월", "화", "수", "목", "금", "토"]
-
-
-
+    
+    
+    
 }

@@ -41,7 +41,7 @@ struct OnboardingSecondView: View {
                 Text("17:00")
             }
             .padding([.leading, .trailing], 25)
-                    })
+        })
         .padding(.vertical, 20)
         .frame(maxWidth: .infinity)
         .background(.customGray02)
@@ -75,7 +75,7 @@ struct OnboardingSecondView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(.black)
         .padding()
-
+        
     }
 }
 
