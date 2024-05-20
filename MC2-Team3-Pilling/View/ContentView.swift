@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import ActivityKit
 
 struct ContentView: View {
     static let dateFormatter: DateFormatter = {
@@ -18,6 +19,7 @@ struct ContentView: View {
     @Query private var items: [Item]
     @State private var isTracking = false
     @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_22:00:00")!
+    @State private var activity: Activity<LiveTimeAttributes>? = nil
 
     var body: some View {
         NavigationStack{
@@ -27,14 +29,21 @@ struct ContentView: View {
             NavigationLink(destination: OnboardingFirstView()){
                 Text("OnboardingView")
             }
-            Button(isTracking ? "end live activity" : "start live activity") {
-                isTracking.toggle()
-                if isTracking {
-                    
-                } else {
-                    
-                }
-            }
+            Button(action: {
+                    isTracking.toggle()
+                    if isTracking {
+                        let attributes = LiveTimeAttributes()
+                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
+                        activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
+                    } else {
+                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
+                        Task {
+                            await activity?.end(using: state, dismissalPolicy:.immediate)
+                        }
+                    }
+            }, label: {
+                Text(isTracking ? "end live activity" : "start live activity")
+            })
             .buttonStyle(.bordered)
             if isTracking {
                 Text(alarmTime, style: .relative)
