@@ -38,7 +38,9 @@ struct SettingView: View {
                 }
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
+                        
                     Toggle("알람", isOn: $isSoundOn)
+                    
                 }
             }
             .navigationTitle("Settings")

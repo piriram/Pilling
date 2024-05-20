@@ -15,14 +15,20 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            NavigationLink(destination: MainView()){
-                Text("MainView")
-            }
-            NavigationLink(destination: OnboardingFirstView()){
-                Text("OnboardingView")
-            }
-            NavigationLink(destination: SwiftDataTestView()){
-                Text("SwiftDataTestView")
+            VStack(spacing:20){
+                NavigationLink(destination: MainView()){
+                    Text("MainView")
+                }
+                
+                NavigationLink(destination: OnboardingFirstView()){
+                    Text("OnboardingFirstView")
+                }
+                NavigationLink(destination: OnboardingSecondView()){
+                    Text("OnboardingSecondView")
+                }
+                NavigationLink(destination: SwiftDataTestView()){
+                    Text("SwiftDataTestView")
+                }
             }
         }
         

@@ -31,7 +31,8 @@ struct OnboardingSecondView: View {
         
         
         Button(action: {
-            DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
+            DatePicker("시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
+            print(alarmTime)
         }, label: {
             HStack {
                 Image(systemName: "clock")

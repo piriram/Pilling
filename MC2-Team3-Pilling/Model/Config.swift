@@ -51,11 +51,38 @@ class Config{
     }
     
     let days = ["일", "월", "화", "수", "목", "금", "토"]
-    
-    
+    func DayDateToString(date: Date) -> String {
+        let format = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
+    func DayStringToDate(dateString: String) -> Date? {
+        let format = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: dateString)
+    }
+    func AlarmDateToString(date: Date) -> String {
+        let format = "HH:mm"
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
+    func AlarmStringToDate(dateString: String) -> Date? {
+        let format = "HH:mm"
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current 
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: dateString)
+    }
     
     
     
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
 var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
+
