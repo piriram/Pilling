@@ -19,6 +19,7 @@ struct LiveTimeWidget: Widget {
                 Spacer()
                 Text(context.state.restOfTime, style: .relative)
                     .foregroundStyle(.customGreen)
+                    .frame(width: 77, height: 30)
             }
             .padding()
         } dynamicIsland: { context in
@@ -39,6 +40,7 @@ struct LiveTimeWidget: Widget {
             } compactTrailing: {
                 Text(context.state.restOfTime, style: .relative)
                     .foregroundStyle(.customGreen)
+                    .frame(width: 66)
             } minimal: {
                 Text(context.state.restOfTime, style: .relative)
                     .foregroundStyle(.customGreen)
