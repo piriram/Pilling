@@ -6,13 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Config{
     enum IntakeStatus: Int {
-        case notYet = 0
-        case onePill = 1
-        case twoPills = 2
-        case placebo = 3
+        case notYet = 0 // .customgray
+        case onePill = 1 // .customgreen
+        case twoPills = 2 // .customgreen
+        case placebo = 3 // .white
+        
+        var color: Color {
+            switch self {
+                case .notYet:
+                    return .customGray
+                case .onePill, .twoPills:
+                    return .customGreen
+                case .placebo:
+                    return .white
+            }
+        }
     }
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
         case plantGrass = 0
@@ -38,6 +50,8 @@ class Config{
     }
     
     let days = ["일", "월", "화", "수", "목", "금", "토"]
+    let myArray: [Int] = [1, 4 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
+    
     
     
     
