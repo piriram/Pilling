@@ -10,7 +10,8 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var user: [UserInfo] // 하나만 쓰고싶다면?
+    
 
     var body: some View {
         NavigationStack{
@@ -19,6 +20,9 @@ struct ContentView: View {
             }
             NavigationLink(destination: OnboardingFirstView()){
                 Text("OnboardingView")
+            }
+            NavigationLink(destination: SwiftDataTestView()){
+                Text("SwiftDataTestView")
             }
         }
         
@@ -31,13 +35,13 @@ struct ContentView: View {
         }
     }
     
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
+//    private func deleteItems(offsets: IndexSet) {
+//        withAnimation {
+//            for index in offsets {
+//                modelContext.delete(items[index])
+//            }
+//        }
+//    }
 }
 
 #Preview {
