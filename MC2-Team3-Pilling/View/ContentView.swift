@@ -18,7 +18,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     @State private var isTracking = false
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_22:00:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_23:00:00")!
     @State private var activity: Activity<LiveTimeAttributes>? = nil
 
     var body: some View {
@@ -46,7 +46,10 @@ struct ContentView: View {
             })
             .buttonStyle(.bordered)
             if isTracking {
-                Text(alarmTime, style: .relative)
+                HStack {
+                    Text("알람까지 남은 시간")
+                    Text(alarmTime, style: .relative)
+                }
             }
         }
         
