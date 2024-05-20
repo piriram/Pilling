@@ -6,10 +6,19 @@ struct OnboardingSecondView: View {
     @State var alarmToggle = false
     
     var body: some View {
-        VStack{
-            Image("clock")
-                .resizable()
-                .frame(width: 240, height: 240)
+
+        Image("clock")
+            .resizable()
+            .frame(width: 240, height: 240)
+        
+        // Text
+        VStack(alignment: .leading) {
+            // Text
+            Text("알람 받을 시간을 설정해주세요!")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding(.bottom, 2)
+
             
             // Text
             HStack {

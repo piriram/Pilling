@@ -3,7 +3,8 @@ import SwiftUI
 
 struct MedicineSheetView: View {
     @State private var searchText = ""
-//    @State private var showingMedicineSheet = true
+    @Binding var showingMedicineSheet: Bool
+//    @State var showingMedicineSheet = false
     
     let BirthControlNames = [
         "쎄스콘정", "미뉴렛정", "에이리스정", "머시론정",
@@ -36,7 +37,7 @@ struct MedicineSheetView: View {
         
         // footer button
         Button(action: {
-//            self.showingMedicineSheet = false
+            self.showingMedicineSheet = false
         }, label: {
             Text("설정완료!")
                 .largeBold()
@@ -54,11 +55,13 @@ struct MedicineSheetView: View {
 
 
 //캔버스 컨텐츠뷰
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MedicineSheetView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        
+//        MedicineSheetView(showingMedicineSheet: false)
+////        MedicineSheetView()
+//    }
+//}
 
 
 //화면 터치시 키보드 숨김
@@ -75,5 +78,7 @@ extension View {
 
 
 #Preview {
-    MedicineSheetView()
+
+//    MedicineSheetView()
+    OnboardingFirstView()
 }
