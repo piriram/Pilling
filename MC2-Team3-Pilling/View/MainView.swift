@@ -26,7 +26,7 @@ struct MainView: View {
                         })
                         .popover(isPresented: $showingPopover, attachmentAnchor: .point(.bottom),
                                  arrowEdge: .top) {
-                            Text("Popover test")
+                            PopoverView()
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
