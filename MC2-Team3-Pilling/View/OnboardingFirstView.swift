@@ -8,7 +8,7 @@ struct OnboardingFirstView: View {
     var body: some View {
         Image("making-plan")
             .resizable()
-            .frame(width: 300, height: 300)
+            .frame(width: 240, height: 240)
         
         // Text
         VStack(alignment: .leading) {
