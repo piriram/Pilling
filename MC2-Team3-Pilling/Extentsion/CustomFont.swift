@@ -9,25 +9,25 @@ import SwiftUI
 
 extension View {
     func largeTitle() -> some View {
-        self.modifier(CustomFontStyle(fontType: .largeTitle, isBold: true, color: .black))
+        self.modifier(CustomFontStyle(fontType: .largeTitle, isBold: true, color: .black, kerning: -1))
     }
     func secondaryTitle() -> some View {
-        self.modifier(CustomFontStyle(fontType: .title2, isBold: false, color: .secondary))
+        self.modifier(CustomFontStyle(fontType: .title2, isBold: false, color: .secondary, kerning: -1))
     }
     func secondaryRegular() -> some View {
-        self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .secondary))
+        self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .secondary, kerning: -1))
     }
     func boldRegular() -> some View {
-        self.modifier(CustomFontStyle(fontType: .body, isBold: true, color: .black))
+        self.modifier(CustomFontStyle(fontType: .body, isBold: true, color: .black, kerning: -1))
     }
     func largeBold() -> some View {
-        self.modifier(CustomFontStyle(fontType: .title3, isBold: true, color: .black))
+        self.modifier(CustomFontStyle(fontType: .title2, isBold: true, color: .black, kerning: -1))
     }
     func regular() -> some View {
-        self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .black))
+        self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .black, kerning: -1))
     }
     func Icon() -> some View {
-        self.modifier(CustomFontStyle(fontType: .title, isBold: false, color: .secondary))
+        self.modifier(CustomFontStyle(fontType: .title, isBold: false, color: .secondary, kerning: -1))
     }
 }
 
@@ -35,6 +35,7 @@ struct CustomFontStyle: ViewModifier {
     var fontType: Font
     var isBold : Bool
     var color: Color
+    var kerning: CGFloat
     
     func body(content: Content) -> some View {
         content
