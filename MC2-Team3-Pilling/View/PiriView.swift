@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PiriView: View {
     @State private var showingMedicineSheet = false
-    
+    @State var isActive = false
     
     var body: some View {
         Image("making-plan")
@@ -54,7 +54,7 @@ struct PiriView: View {
             .foregroundColor(.secondary)
             .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
-//                MedicineSheetView(showingMedicineSheet: true)
+                //                MedicineSheetView(showingMedicineSheet: true)
                 MedicineSheetView(showingMedicineSheet: $showingMedicineSheet)
                     .presentationDetents([.medium])
             }
@@ -82,34 +82,47 @@ struct PiriView: View {
         
         Spacer()
         
-        // footer button
-        Button(action: {
-            
-            save()
-            
-
-        }, label: {
-            Text("다음으로")
-                .largeBold()
-        })
-        .padding(.vertical, 30)
-        .frame(maxWidth: .infinity)
-        .background(.customGreen)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.black)
-        .padding()
-    }
-    func save(){
-        var pillInfo = Config().dummyPillInfos[0]
-        var curIntakeDay = 5
-        var currentDate = Date()
-        let calendar = Calendar.current
-        var startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
-        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-        var test = PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
+        VStack {
+            // footer button
+            Button(action: {
+                save()
+                isActive = true // 네비게이션 링크를 활성화
+            }, label: {
+                Text("다음으로")
+                    .largeBold()
+            })
+            .padding(.vertical, 30)
+            .frame(maxWidth: .infinity)
+            .background(Color.customGreen)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .foregroundColor(.black)
+            .padding()
+            //            NavigationLink(isPresented:isActive, destination: PiriSecondView()){
+            //                EmptyView()
+            //            }
+            // 버튼과 네비게이션링크를 같이 띄우는 방법?
+            NavigationLink(
+                destination: PiriSecondView(),
+                isActive: $isActive,
+                label: {
+                    EmptyView() // 보이지 않게 설정
+                }
+            )
+        }
+        
         
     }
-
+    func save() -> PeriodPill{
+        let pillInfo = Config().dummyPillInfos[0]
+        let curIntakeDay = 5
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
+        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
+        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
+        
+    }
+    
 }
 
 #Preview {
