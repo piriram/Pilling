@@ -57,7 +57,7 @@ struct ChooseStatusView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .padding()
+            .padding([.leading, .trailing], 17)
             // selection Print 되는 값 확인
 //            .onChange(of: selectedNum) { newValue in
 //                print("Selected number: \(newValue)")
@@ -98,14 +98,14 @@ struct ChooseStatusView: View {
                 
                 HStack {
                     Text("메모")
-                    
-                    TextField("Enter your side effect", text: $sideEffectMemo)
+                        .padding(.trailing, 10)
+                    TextField("", text: $sideEffectMemo)
                         .padding(5)
                         .background(Color(uiColor: .secondarySystemBackground))
-                    
                 }
             }
-            .padding()
+            .padding([.leading, .trailing], 20)
+            .padding([.top, .bottom], 10)
             
             
             // footer button
