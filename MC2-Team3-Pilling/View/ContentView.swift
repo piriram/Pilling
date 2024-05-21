@@ -45,7 +45,7 @@ struct ContentView: View {
                 NavigationLink(destination: ChooseStatusView()){
                     Text("ChooseStatusView")
                 }
-                NavigationLink(destination: PiriView()){
+                NavigationLink(destination: PiriFirstView()){
                     Text("PiriView")
                 }
               

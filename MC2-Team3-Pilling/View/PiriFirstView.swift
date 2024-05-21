@@ -8,10 +8,11 @@
 
 import SwiftUI
 
-struct PiriView: View {
+struct PiriFirstView: View {
     @State private var showingMedicineSheet = false
     @State var isActive = false
-    
+    @State var pillInfo = PillInfo(pillName: "", intakeDay: 0, placeboDay: 0)
+    @State var intakeDay = 0
     var body: some View {
         Image("making-plan")
             .resizable()
@@ -85,7 +86,8 @@ struct PiriView: View {
         VStack {
             // footer button
             Button(action: {
-                save()
+                pillInfo = Config().dummyPillInfos[0]
+                intakeDay = 5
                 isActive = true // 네비게이션 링크를 활성화
             }, label: {
                 Text("다음으로")
@@ -97,34 +99,17 @@ struct PiriView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .foregroundColor(.black)
             .padding()
-            //            NavigationLink(isPresented:isActive, destination: PiriSecondView()){
-            //                EmptyView()
-            //            }
+
             // 버튼과 네비게이션링크를 같이 띄우는 방법?
+            
             NavigationLink(
-                destination: PiriSecondView(),
+                destination: PiriSecondView(pillInfo: $pillInfo,intakeDay:$intakeDay),
                 isActive: $isActive,
                 label: {
                     EmptyView() // 보이지 않게 설정
                 }
             )
         }
-        
-        
-    }
-    func save() -> PeriodPill{
-        let pillInfo = Config().dummyPillInfos[0]
-        let curIntakeDay = 5
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
-        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-        
     }
     
-}
-
-#Preview {
-    PiriView()
 }

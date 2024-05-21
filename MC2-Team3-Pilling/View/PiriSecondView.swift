@@ -10,6 +10,10 @@ import SwiftUI
 struct PiriSecondView: View {
     @State private var alarmTime: Date = Date()
     @State private var alarmToggle = false
+    @Binding var pillInfo:PillInfo
+    @Binding var intakeDay:Int
+    @State var isActive = false
+    
     
     var body: some View {
         VStack{
@@ -22,7 +26,8 @@ struct PiriSecondView: View {
                 VStack(alignment: .leading) {
                     // Text
                     Text("알람 받을 시간을 설정해주세요!")
-                        .largeBold()                    .padding(.bottom, 2)
+                        .largeBold()
+                        .padding(.bottom, 2)
                     
                     Text("설정은 추후에 변경 가능합니다.")
                         .secondaryRegular()
@@ -34,17 +39,17 @@ struct PiriSecondView: View {
             
             Button(action: {
             }, label: {
-
+                
                 ZStack{
                     HStack {
                         Image(systemName: "clock")
                         Text("복용 시간")
                             .secondaryTitle()
                         Spacer()
-
+                        
                     }
                     DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
-
+                    
                 }
                 .padding([.leading, .trailing], 20)
                 
@@ -62,8 +67,6 @@ struct PiriSecondView: View {
                 Toggle("소리 알람여부추가", isOn: $alarmToggle)
                     .regular()
                     .padding(.bottom, 2)
-                    
-                
                 
                 HStack {
                     Image(systemName: "info.circle.fill")
@@ -76,23 +79,35 @@ struct PiriSecondView: View {
             
             Spacer()
             
-            // footer button
-            Button(action: {}, label: {
+            Button(action: {
+                isActive = true
+            }) {
                 Text("설정완료!")
                     .font(.title3)
                     .bold()
-            })
-            .padding(.vertical, 30)
-            .frame(maxWidth: .infinity)
-            .background(.customGreen)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .foregroundColor(.black)
-            .padding()
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.customGreen)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(.black)
+                    .padding()
+            }
+            
+            // NavigationLink with isActive binding
+            NavigationLink(destination: MainView(), isActive: $isActive) {
+                EmptyView()
+            }
             
         }
     }
+    func save(alarmTime:Date,pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
+        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
+        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
+        
+    }
 }
 
-#Preview {
-    PiriSecondView()
-}
