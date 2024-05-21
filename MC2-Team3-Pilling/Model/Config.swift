@@ -50,7 +50,7 @@ class Config{
         }
     }
     
-    let days = ["일", "월", "화", "수", "목", "금", "토"]
+    
     func DayDateToString(date: Date) -> String {
         let format = "yyyy-MM-dd HH:mm:ss"
         let dateFormatter = DateFormatter()
@@ -96,4 +96,4 @@ class Config{
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
 var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
-
+let days = ["일", "월", "화", "수", "목", "금", "토"]
