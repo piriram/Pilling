@@ -32,8 +32,16 @@ struct LiveTimeWidget: Widget {
                         Text("잔디 심을 시간이에요!")
                         Text(context.state.restOfTime, style: .relative)
                             .foregroundStyle(.customGreen)
-                        Button("click") {}
-                            .tint(.customGreen)
+                        Divider()
+                            .frame(minHeight: 1)
+                            .overlay(.customGreen)
+                        Button(action: {}, label: {
+                            Spacer()
+                            Text("Button")
+                            Spacer()
+                        })
+                        .foregroundColor(.customGreen)
+                        .buttonStyle(.plain)
                     }
                     .padding()
                 }
