@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OnboardingSecondView: View {
-    @State var alarmTime: Date = Date()
-    @State var alarmToggle = false
+    @State private var alarmTime: Date = Date()
+    @State private var alarmToggle = false
     
     var body: some View {
         VStack{
@@ -35,12 +35,17 @@ struct OnboardingSecondView: View {
             Button(action: {
                 DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
             }, label: {
-                HStack {
-                    Image(systemName: "clock")
-                    Text("복용 시간")
-                        .secondaryRegular()
-                    Spacer()
-                    Text("17:00")
+
+                ZStack{
+                    HStack {
+                        Image(systemName: "clock")
+                        Text("복용 시간")
+                            .secondaryTitle()
+                        Spacer()
+
+                    }
+                    DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
+
                 }
                 .padding([.leading, .trailing], 20)
                 
