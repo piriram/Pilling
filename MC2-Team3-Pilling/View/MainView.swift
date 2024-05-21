@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
-
+import SwiftData
 struct MainView: View {
     @State private var showingPopover = false
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config().dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
+    @Query var user:[UserInfo]
+    @State var time = Date()
     
     var body: some View {
         NavigationStack {
@@ -50,13 +52,26 @@ struct MainView: View {
                             HStack {
                                 Text("4일차")
                                     .largeTitle()
-                                Text("/28")
-                                    .secondaryTitle()
+                                if let whole = user.first?.curPill.pillInfo.wholeDay{
+                                    Text("\(String(describing: whole))")
+                                        .secondaryTitle()
+                                }
+                                else{
+                                    Text("")
+                                }
+                                
                             }
-                            Label("24/4", systemImage: "calendar")
+                            if let intakeDay=user.first?.curPill.pillInfo.intakeDay,let placeboday=user.first?.curPill.pillInfo.placeboDay{
+                                Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
+                                    .secondaryRegular()
+                            }else{
+                                Label("", systemImage: "calendar")
+                                    .secondaryRegular()
+                            }
+                            
+                            Label(user.first?.scheduleTime ?? "00:00", systemImage: "clock.fill")
                                 .secondaryRegular()
-                            Label("17:00", systemImage: "clock.fill")
-                                .secondaryRegular()
+                            
                         }
                         Spacer()
                     }
@@ -127,15 +142,14 @@ struct MainView: View {
             }
         }
         .onAppear {
-            print(Date())
+            var scheduleTime = user.first?.scheduleTime
+            print(scheduleTime)
+            time = Config().StringToDate(dateString: scheduleTime ?? "2024-05-21 15:14:27", format: Hourformat) ?? Date()
         }
         
     }
 }
 
-#Preview {
-    MainView()
-}
 
 struct GreenGradient: View {
     var body: some View {

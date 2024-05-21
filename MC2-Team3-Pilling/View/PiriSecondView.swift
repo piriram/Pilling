@@ -13,6 +13,7 @@ struct PiriSecondView: View {
     @Binding var pillInfo:PillInfo
     @Binding var intakeDay:Int
     @State var isActive = false
+    @Environment(\.modelContext) private var modelContext
     
     
     var body: some View {
@@ -41,14 +42,14 @@ struct PiriSecondView: View {
             }, label: {
                 
                 ZStack{
-                    HStack {
-                        Image(systemName: "clock")
-                        Text("복용 시간")
-                            .secondaryTitle()
-                        Spacer()
-                        
-                    }
-                    DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
+//                    HStack {
+//                        Image(systemName: "clock")
+//                        Text("복용 시간")
+//                            .secondaryTitle()
+//                        Spacer()
+//                        
+//                    }
+                    DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
                     
                 }
                 .padding([.leading, .trailing], 20)
@@ -80,6 +81,19 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
+                print(alarmTime)
+                var scheduleTime = Config().DateToString(date: alarmTime, format: Hourformat)
+                print(scheduleTime)
+                var periodPill = save(pillInfo: pillInfo, curIntakeDay: intakeDay)
+                print()
+                var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
+                modelContext.insert(userInfo)
+                do {
+                    try modelContext.save()
+                    print("스데 저장 성공")
+                } catch {
+                    print("Failed to save context: \(error.localizedDescription)")
+                }
                 isActive = true
             }) {
                 Text("설정완료!")
@@ -100,7 +114,7 @@ struct PiriSecondView: View {
             
         }
     }
-    func save(alarmTime:Date,pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
+    func save(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
         
         let currentDate = Date()
         let calendar = Calendar.current
