@@ -31,6 +31,10 @@ struct ContentView: View {
                 }
               
             }
+            NavigationLink(destination: SplashScreenView()){
+                Text("SplashScreenView")
+            }
+
         }
         
     }
