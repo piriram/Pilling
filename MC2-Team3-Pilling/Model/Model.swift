@@ -56,7 +56,7 @@ final class DayData:Identifiable{
     var sideEffect:[Bool]
     var memo:String
     
-    init(sideEffect: [Bool], memo: String) {
+    init() {
         self.id = UUID()
         self.status = 0
         self.sideEffect = Array(repeating: false, count: 3)
