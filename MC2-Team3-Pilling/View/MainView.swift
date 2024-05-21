@@ -90,7 +90,7 @@ struct MainView: View {
                                     else if x==1 && y==0 {
                                         ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
                                     }
-                                    else if x==4 && y == 0{
+                                    else if x==0 && y == 0{
                                         TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
                                     }
                                     else{
@@ -169,7 +169,6 @@ struct TodayCell: View {
             .frame(width: 45, height: 45)
             .background(backgroundColor)
             .cornerRadius(10)
-        
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .inset(by: 1)
@@ -190,15 +189,17 @@ struct TwoCell: View {
                 .frame(width: 20, height: 45)
                 .background(.customGreen)
                 .cornerRadius(10)
-            //              .rotationEffect(Angle(degrees: 90))
+            
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(width: 20, height: 45)
                 .background(Color(red: 0.5, green: 0.87, blue: 0.11))
                 .cornerRadius(10)
-            //              .rotationEffect(Angle(degrees: 90))
+            
+            
         }
         .frame(width: 45, height: 45)
+        
         
     }
     

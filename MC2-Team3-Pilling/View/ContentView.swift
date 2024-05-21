@@ -29,6 +29,7 @@ struct ContentView: View {
                 NavigationLink(destination: SwiftDataTestView()){
                     Text("SwiftDataTestView")
                 }
+              
             }
         }
         
