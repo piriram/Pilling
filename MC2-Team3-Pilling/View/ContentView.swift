@@ -51,7 +51,7 @@ struct ContentView: View {
                         // start live activity
                         let attributes = LiveTimeAttributes()
                         let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
-                        let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
+                        let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil /*alarmTime.addingTimeInterval(600)*/)
                         activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, content: content, pushType: nil)
                     } else {
                         // end live activity
