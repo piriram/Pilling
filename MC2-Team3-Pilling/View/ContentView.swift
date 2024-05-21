@@ -73,7 +73,7 @@ struct ContentView: View {
             .buttonStyle(.bordered)
             if isTracking {
                 Button(action: {
-                    progressAmount += 10
+                    progressAmount += 50
                     let attributes = LiveTimeAttributes()
                     let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: progressAmount)
                     let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)

@@ -13,18 +13,20 @@ struct LiveTimeWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveTimeAttributes.self) { context in
             // lock screen & standby(잠금 화면과 notification center, 그리고 전체화면 버전)
-            HStack {
-                Image(systemName: "leaf.fill")
-                    .foregroundStyle(.customGreen)
-                Text("잔디를 심을 시간이에요!")
-                Spacer()
-                Text(context.state.restOfTime, style: .relative)
-                    .foregroundStyle(.customGreen)
-                    .frame(width: 77, height: 30)
+            VStack {
+                HStack {
+                    Image(systemName: "leaf.fill")
+                        .foregroundStyle(.customGreen)
+                    Text("잔디를 심을 시간이에요!")
+                    Spacer()
+                    Text(context.state.restOfTime, style: .relative)
+                        .foregroundStyle(.customGreen)
+                        .frame(width: 77, height: 30)
+                }
                 Divider()
                 ProgressView(value: context.state.progressAmount, total: 600)
+                    .padding()
             }
-            .padding()
         } dynamicIsland: { context in
             // dynamic island
             DynamicIsland {
