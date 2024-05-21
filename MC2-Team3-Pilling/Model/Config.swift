@@ -80,7 +80,18 @@ class Config{
         return dateFormatter.date(from: dateString)
     }
     
-    
+    let dummyPillInfos: [PillInfo] = [
+        PillInfo(pillName: "머시론정", intakeDay: 24, placeboDay: 4),
+        PillInfo(pillName: "야즈", intakeDay: 21, placeboDay: 7),
+        PillInfo(pillName: "마이보라", intakeDay: 28, placeboDay: 0),
+        PillInfo(pillName: "디미아", intakeDay: 24, placeboDay: 4),
+        PillInfo(pillName: "클레라", intakeDay: 21, placeboDay: 7),
+        PillInfo(pillName: "벨라라", intakeDay: 21, placeboDay: 7),
+        PillInfo(pillName: "레보니아", intakeDay: 28, placeboDay: 0),
+        PillInfo(pillName: "디안느35", intakeDay: 21, placeboDay: 7),
+        PillInfo(pillName: "로젠정", intakeDay: 24, placeboDay: 4),
+        PillInfo(pillName: "센시발", intakeDay: 28, placeboDay: 0)
+    ]
     
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]

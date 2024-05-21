@@ -35,8 +35,7 @@ final class PeriodPill:Identifiable{
     @Relationship var pillInfo:PillInfo
     var startIntake:String
     var finishIntake:String? = nil
-    var intakeCal:[Int]
-    var intakeCalTime:[String]
+    var intakeCal:[DayData]
     var missDay:Int
     
     init(pillInfo: PillInfo, startIntake: String) {
@@ -44,9 +43,26 @@ final class PeriodPill:Identifiable{
         self.pillInfo = pillInfo
         self.startIntake = startIntake
         self.intakeCal = []
-        self.intakeCalTime = []
         self.missDay = 0
     }
+    
+}
+
+@Model
+final class DayData:Identifiable{
+    @Attribute(.unique) let id:UUID
+    var status:Int
+    var time:String?
+    var sideEffect:[Bool]
+    var memo:String
+    
+    init(sideEffect: [Bool], memo: String) {
+        self.id = UUID()
+        self.status = 0
+        self.sideEffect = Array(repeating: false, count: 3)
+        self.memo = ""
+    }
+    
     
 }
 
