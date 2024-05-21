@@ -21,6 +21,8 @@ struct LiveTimeWidget: Widget {
                 Text(context.state.restOfTime, style: .relative)
                     .foregroundStyle(.customGreen)
                     .frame(width: 77, height: 30)
+                Divider()
+                ProgressView(value: context.state.progressAmount, total: 600)
             }
             .padding()
         } dynamicIsland: { context in
