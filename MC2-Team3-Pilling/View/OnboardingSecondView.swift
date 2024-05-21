@@ -33,7 +33,6 @@ struct OnboardingSecondView: View {
             
             
             Button(action: {
-                DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
             }, label: {
 
                 ZStack{

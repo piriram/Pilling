@@ -16,7 +16,7 @@ struct ChooseStatusView: View {
     @State private var nauseaToggle = false
     @State private var swellingToggle = false
     @State var sideEffectMemo: String = ""
-
+    
     
     var body: some View {
         VStack {
@@ -35,10 +35,14 @@ struct ChooseStatusView: View {
                 }
             }
             .pickerStyle(.segmented)
+            // selection Print 되는 값 확인
+//            .onChange(of: selectedNum) { newValue in
+//                print("Selected number: \(newValue)")
+//            }
             
             // 복용시간 버튼
             Button(action: {
-                DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
+                
             }, label: {
                 ZStack{
                     HStack {
@@ -46,7 +50,7 @@ struct ChooseStatusView: View {
                         Text("복용 시간")
                             .secondaryRegular()
                         Spacer()
-
+                        
                     }
                     DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
                 }
@@ -74,12 +78,12 @@ struct ChooseStatusView: View {
                     TextField("Enter your side effect", text: $sideEffectMemo)
                         .padding(5)
                         .background(Color(uiColor: .secondarySystemBackground))
-                        
+                    
                 }
                 .padding()
             }
             
-
+            
             // footer button
             Button(action: {}, label: {
                 Text("수정")
