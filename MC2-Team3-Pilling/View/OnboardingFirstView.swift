@@ -74,6 +74,7 @@ struct OnboardingFirstView: View {
         // footer button
         Button(action: {
             //            OnboardingView02()
+
         }, label: {
             Text("다음으로")
                 .largeBold()
@@ -85,6 +86,7 @@ struct OnboardingFirstView: View {
         .foregroundColor(.black)
         .padding()
     }
+
 }
 
 #Preview {
