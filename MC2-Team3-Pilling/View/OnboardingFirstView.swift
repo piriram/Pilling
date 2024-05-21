@@ -11,14 +11,18 @@ struct OnboardingFirstView: View {
             .frame(width: 240, height: 240)
         
         // Text
-        VStack(alignment: .leading) {
-            Text("복용하고 계신 약을 알려주세요!")
-                .largeTitle()
-                .padding(.bottom, 2)
-            
-            Text("설정은 추후에 변경 가능합니다.")
-                .secondaryRegular()
+        HStack {
+            VStack(alignment: .leading) {
+                Text("복용하고 계신 약을 알려주세요!")
+                    .largeBold()
+                    .padding(.bottom, 2)
+                
+                Text("설정은 추후에 변경 가능합니다.")
+                    .secondaryRegular()
+            }
+            Spacer()
         }
+        .padding()
         
         
         // Selecting box
@@ -30,7 +34,7 @@ struct OnboardingFirstView: View {
                 HStack {
                     Image(systemName: "pill.circle.fill")
                     Text("약 종류")
-                        .secondaryTitle()
+                        .secondaryRegular()
                     Spacer()
                     Image(systemName: "chevron.right")
                 }
@@ -41,7 +45,7 @@ struct OnboardingFirstView: View {
             .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
-            .padding([.leading, .trailing], 20)
+            .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
 //                MedicineSheetView(showingMedicineSheet: true)
                 MedicineSheetView(showingMedicineSheet: $showingMedicineSheet)
@@ -55,7 +59,7 @@ struct OnboardingFirstView: View {
                 HStack {
                     Image(systemName: "note")
                     Text("현재 복용 일수")
-                        .secondaryTitle()
+                        .secondaryRegular()
                     Spacer()
                 }
                 .padding([.leading, .trailing], 25)
@@ -65,7 +69,7 @@ struct OnboardingFirstView: View {
             .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
-            .padding([.leading, .trailing], 20)
+            .padding([.leading, .trailing], 16)
             
         }
         

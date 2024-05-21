@@ -39,11 +39,15 @@ struct ContentView: View {
                 NavigationLink(destination: SwiftDataTestView()){
                     Text("SwiftDataTestView")
                 }
+                NavigationLink(destination: SplashScreenView()){
+                    Text("SplashScreenView")
+                }
+                NavigationLink(destination: ChooseStatusView()){
+                    Text("ChooseStatusView")
+                }
               
             }
-            NavigationLink(destination: SplashScreenView()){
-                Text("SplashScreenView")
-            }
+            
 
             Button(action: {
                     isTracking.toggle()
