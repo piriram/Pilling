@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B6530442BFB7C1600452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
+		1B65304C2BFB8A0C00452ACB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B65304B2BFB8A0C00452ACB /* WidgetKit.framework */; };
+		1B65304E2BFB8A0C00452ACB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B65304D2BFB8A0C00452ACB /* SwiftUI.framework */; };
+		1B6530512BFB8A0C00452ACB /* LiveTimeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530502BFB8A0C00452ACB /* LiveTimeWidgetBundle.swift */; };
+		1B6530532BFB8A0C00452ACB /* LiveTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530522BFB8A0C00452ACB /* LiveTimeWidget.swift */; };
+		1B6530552BFB8A0C00452ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6530542BFB8A0C00452ACB /* Assets.xcassets */; };
+		1B6530592BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1B65305E2BFB8ACD00452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
 		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
 		21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730D2BFB85E2002BCC67 /* Config.swift */; };
@@ -25,7 +33,39 @@
 		9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4AA1C2BF6E280008BE893 /* CustomFont.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1B6530572BFB8A0C00452ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 939C87D42BF307B600572EDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B6530482BFB8A0C00452ACB;
+			remoteInfo = LiveTimeWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B65305D2BFB8A0C00452ACB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1B6530592BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTimeAttributes.swift; sourceTree = "<group>"; };
+		1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LiveTimeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B65304B2BFB8A0C00452ACB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1B65304D2BFB8A0C00452ACB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1B6530502BFB8A0C00452ACB /* LiveTimeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTimeWidgetBundle.swift; sourceTree = "<group>"; };
+		1B6530522BFB8A0C00452ACB /* LiveTimeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTimeWidget.swift; sourceTree = "<group>"; };
+		1B6530542BFB8A0C00452ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B6530562BFB8A0C00452ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
 		21B2730D2BFB85E2002BCC67 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -47,6 +87,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1B6530462BFB8A0C00452ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B65304E2BFB8A0C00452ACB /* SwiftUI.framework in Frameworks */,
+				1B65304C2BFB8A0C00452ACB /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		939C87D92BF307B600572EDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +106,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B65304A2BFB8A0C00452ACB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B65304B2BFB8A0C00452ACB /* WidgetKit.framework */,
+				1B65304D2BFB8A0C00452ACB /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B65304F2BFB8A0C00452ACB /* LiveTimeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				1B6530502BFB8A0C00452ACB /* LiveTimeWidgetBundle.swift */,
+				1B6530522BFB8A0C00452ACB /* LiveTimeWidget.swift */,
+				1B6530542BFB8A0C00452ACB /* Assets.xcassets */,
+				1B6530562BFB8A0C00452ACB /* Info.plist */,
+			);
+			path = LiveTimeWidget;
+			sourceTree = "<group>";
+		};
 		219E17582BF6ED79007B7DC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +145,7 @@
 		219E17592BF6ED88007B7DC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */,
 				939C87E32BF307B600572EDC /* Item.swift */,
 				21B273072BFB390C002BCC67 /* Model.swift */,
 				21B2730D2BFB85E2002BCC67 /* Config.swift */,
@@ -95,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				939C87DE2BF307B600572EDC /* MC2-Team3-Pilling */,
+				1B65304F2BFB8A0C00452ACB /* LiveTimeWidget */,
+				1B65304A2BFB8A0C00452ACB /* Frameworks */,
 				939C87DD2BF307B600572EDC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				939C87DC2BF307B600572EDC /* MC2-Team3-Pilling.app */,
+				1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +205,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1B6530482BFB8A0C00452ACB /* LiveTimeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B65305A2BFB8A0C00452ACB /* Build configuration list for PBXNativeTarget "LiveTimeWidgetExtension" */;
+			buildPhases = (
+				1B6530452BFB8A0C00452ACB /* Sources */,
+				1B6530462BFB8A0C00452ACB /* Frameworks */,
+				1B6530472BFB8A0C00452ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveTimeWidgetExtension;
+			productName = LiveTimeWidgetExtension;
+			productReference = 1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		939C87DB2BF307B600572EDC /* MC2-Team3-Pilling */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 939C87ED2BF307B800572EDC /* Build configuration list for PBXNativeTarget "MC2-Team3-Pilling" */;
@@ -139,10 +229,12 @@
 				939C87D82BF307B600572EDC /* Sources */,
 				939C87D92BF307B600572EDC /* Frameworks */,
 				939C87DA2BF307B600572EDC /* Resources */,
+				1B65305D2BFB8A0C00452ACB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1B6530582BFB8A0C00452ACB /* PBXTargetDependency */,
 			);
 			name = "MC2-Team3-Pilling";
 			productName = "MC2-Team3-Pilling";
@@ -156,9 +248,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					1B6530482BFB8A0C00452ACB = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					939C87DB2BF307B600572EDC = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -178,11 +273,20 @@
 			projectRoot = "";
 			targets = (
 				939C87DB2BF307B600572EDC /* MC2-Team3-Pilling */,
+				1B6530482BFB8A0C00452ACB /* LiveTimeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1B6530472BFB8A0C00452ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B6530552BFB8A0C00452ACB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		939C87DA2BF307B600572EDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +299,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1B6530452BFB8A0C00452ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B65305E2BFB8ACD00452ACB /* LiveTimeAttributes.swift in Sources */,
+				1B6530532BFB8A0C00452ACB /* LiveTimeWidget.swift in Sources */,
+				1B6530512BFB8A0C00452ACB /* LiveTimeWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		939C87D82BF307B600572EDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +325,7 @@
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */,
 				939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */,
+				1B6530442BFB7C1600452ACB /* LiveTimeAttributes.swift in Sources */,
 				939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */,
 				939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */,
 			);
@@ -218,7 +333,74 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1B6530582BFB8A0C00452ACB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B6530482BFB8A0C00452ACB /* LiveTimeWidgetExtension */;
+			targetProxy = 1B6530572BFB8A0C00452ACB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		1B65305B2BFB8A0C00452ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F5WP2FDW4U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveTimeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveTimeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Pilltastic.MC2-Team3-Pilling.LiveTimeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B65305C2BFB8A0C00452ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F5WP2FDW4U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveTimeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveTimeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Pilltastic.MC2-Team3-Pilling.LiveTimeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		939C87EB2BF307B800572EDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -336,6 +518,7 @@
 		939C87EE2BF307B800572EDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "MC2-Team3-Pilling/MC2_Team3_Pilling.entitlements";
@@ -346,6 +529,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -374,6 +558,7 @@
 		939C87EF2BF307B800572EDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "MC2-Team3-Pilling/MC2_Team3_Pilling.entitlements";
@@ -384,6 +569,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -412,6 +598,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1B65305A2BFB8A0C00452ACB /* Build configuration list for PBXNativeTarget "LiveTimeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B65305B2BFB8A0C00452ACB /* Debug */,
+				1B65305C2BFB8A0C00452ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		939C87D72BF307B600572EDC /* Build configuration list for PBXProject "MC2-Team3-Pilling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
