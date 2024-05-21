@@ -3,6 +3,7 @@ import SwiftUI
 
 struct OnboardingFirstView: View {
     @State private var showingMedicineSheet = false
+    @State private var selectedPill: PillInfo?
     
     
     var body: some View {
@@ -48,7 +49,7 @@ struct OnboardingFirstView: View {
             .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
 //                MedicineSheetView(showingMedicineSheet: true)
-                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet)
+                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
                     .presentationDetents([.medium])
             }
             
