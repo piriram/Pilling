@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MainView: View {
     @State private var showingPopover = false
+    @State var startNum = 4
+    @State var statusMessage: Config.StatusMessage = .plantGrass
+    @State var isModal = false
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(stops: [.init(color: .customGreen.opacity(0.3), location: 0), .init(color: .white, location: 0.15)], startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea()
+                GreenGradient()
                 VStack(spacing: 20) {
                     // navigation icons
                     HStack {
@@ -60,7 +62,7 @@ struct MainView: View {
                     HStack {
                         Image(systemName: "drop")
                             .foregroundColor(.customGreen)
-                        Text("잔디를 심어주세요")
+                        Text(statusMessage.description)
                             .boldRegular()
                         Spacer()
                     }
@@ -73,29 +75,31 @@ struct MainView: View {
                     // calendar view
                     VStack(spacing: 10) {
                         HStack {
-                            Text("화")
-                                .frame(width: 45, height: 45)
-                            Text("수")
-                                .frame(width: 45, height: 45)
-                            Text("목")
-                                .frame(width: 45, height: 45)
-                            Text("금")
-                                .frame(width: 45, height: 45)
-                            Text("토")
-                                .frame(width: 45, height: 45)
-                            Text("일")
-                                .frame(width: 45, height: 45)
-                            Text("월")
-                                .frame(width: 45, height: 45)
+                            ForEach(startNum...(startNum+6),id:\.self){ num in
+                                DayView(num: (num%7))
+                            }
+                            
                         }
                         .regular()
-                        ForEach(0..<4) { _ in
+                        ForEach(0..<4) { y in
                             HStack {
-                                ForEach(0..<7) { _ in
-                                    Button(action: {}, label: {})
-                                    .frame(width: 45, height: 45)
-                                        .background(.customGray)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                ForEach(0..<7) { x in
+                                    if x==3 && y==0{
+                                        TwoCell(isModal: $isModal, backgroundColor: .customGreen)
+                                    }
+                                    else if x==1 && y==0 {
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                    }
+                                    else if x==0 && y == 0{
+                                        TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    }
+                                    else{
+                                        ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    }
+                                    
+                                    
+                                    
+                                    
                                 }
                             }
                         }
@@ -115,10 +119,88 @@ struct MainView: View {
                 }
                 .padding()
             }
+            .sheet(isPresented: $isModal){
+                EmptyView()
+            }
         }
+        
     }
 }
 
 #Preview {
     MainView()
+}
+
+struct GreenGradient: View {
+    var body: some View {
+        LinearGradient(stops: [.init(color: .customGreen.opacity(0.3), location: 0), .init(color: .white, location: 0.15)], startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea()
+    }
+}
+
+struct DayView: View {
+    var num:Int
+    var body: some View {
+        Text(Config().days[num])
+            .frame(width: 45, height: 45)
+    }
+}
+
+struct ActivateCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .frame(width: 45, height: 45)
+            .foregroundColor(backgroundColor)
+            .onTapGesture {
+                isModal = true
+                print(isModal)
+            }
+    }
+    
+}
+struct TodayCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(width: 45, height: 45)
+            .background(backgroundColor)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 1)
+                    .stroke(Color.green,lineWidth: 3)
+                
+            )
+    }
+    
+}
+struct TwoCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        HStack(spacing: 5){
+            
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 20, height: 45)
+                .background(.customGreen)
+                .cornerRadius(10)
+            
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 20, height: 45)
+                .background(Color(red: 0.5, green: 0.87, blue: 0.11))
+                .cornerRadius(10)
+            
+            
+        }
+        .frame(width: 45, height: 45)
+        
+        
+    }
+    
 }

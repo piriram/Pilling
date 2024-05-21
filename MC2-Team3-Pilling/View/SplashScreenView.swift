@@ -12,7 +12,7 @@ struct SplashScreenView: View {
                 Image("Splash")
                     .resizable()
                     .ignoresSafeArea()
-                 
+                
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
