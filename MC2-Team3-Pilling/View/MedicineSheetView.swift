@@ -4,7 +4,6 @@ import SwiftUI
 struct MedicineSheetView: View {
     @State private var searchText = ""
     @Binding var showingMedicineSheet: Bool
-//    @State var showingMedicineSheet = false
     
     let BirthControlNames = [
         "쎄스콘정", "미뉴렛정", "에이리스정", "머시론정",
