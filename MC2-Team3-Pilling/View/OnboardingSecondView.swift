@@ -19,8 +19,18 @@ struct OnboardingSecondView: View {
                 .fontWeight(.semibold)
                 .padding(.bottom, 2)
 
-            
-            // Text
+
+            Text("설정은 추후에 변경 가능합니다.")
+                .font(.title3)
+                .foregroundStyle(.secondary)
+        }
+        
+        
+        Button(action: {
+            DatePicker("시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
+            print(alarmTime)
+        }, label: {
+
             HStack {
                 VStack(alignment: .leading) {
                     // Text
@@ -33,6 +43,21 @@ struct OnboardingSecondView: View {
                 }
                 Spacer()
             }
+
+            .padding([.leading, .trailing], 25)
+        })
+        .padding(.vertical, 20)
+        .frame(maxWidth: .infinity)
+        .background(.customGray02)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .foregroundColor(.secondary)
+        .padding()
+        
+        
+        VStack{
+            Toggle("소리 알람여부추가", isOn: $alarmToggle)
+                .padding([.leading, .trailing], 20)
+
             
             
             Button(action: {
@@ -82,6 +107,7 @@ struct OnboardingSecondView: View {
 
         }
         .padding()
+
     }
 }
 
