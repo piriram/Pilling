@@ -12,6 +12,7 @@ struct MainView: View {
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -23,6 +24,7 @@ struct MainView: View {
                         Button(action: {
                             showingPopover = true
                         }, label: {
+                            
                             Image(systemName: "info.circle.fill")
                                 .Icon()
                         })
