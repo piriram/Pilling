@@ -48,11 +48,13 @@ struct ContentView: View {
             Button(action: {
                     isTracking.toggle()
                     if isTracking {
+                        // start live activity
                         let attributes = LiveTimeAttributes()
                         let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
                         activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, content: content, pushType: nil)
                     } else {
+                        // end live activity
                         let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
                         Task {
