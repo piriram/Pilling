@@ -50,11 +50,13 @@ struct ContentView: View {
                     if isTracking {
                         let attributes = LiveTimeAttributes()
                         let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
-                        activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
+                        let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
+                        activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, content: content, pushType: nil)
                     } else {
                         let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime)
+                        let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
                         Task {
-                            await activity?.end(using: state, dismissalPolicy:.immediate)
+                            await activity?.end(content, dismissalPolicy:.immediate)
                         }
                     }
             }, label: {
