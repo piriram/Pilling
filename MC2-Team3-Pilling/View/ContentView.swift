@@ -18,7 +18,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
 
     @State private var isTracking = false
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_23:00:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_12:00:00")!
     @State private var activity: Activity<LiveTimeAttributes>? = nil
 
     @Query private var user: [UserInfo] // 하나만 쓰고싶다면?
