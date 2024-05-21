@@ -16,6 +16,8 @@
 		1B6530592BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1B65305E2BFB8ACD00452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
+		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
+		21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730D2BFB85E2002BCC67 /* Config.swift */; };
 		939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C87DF2BF307B600572EDC /* MC2_Team3_PillingApp.swift */; };
 		939C87E22BF307B600572EDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C87E12BF307B600572EDC /* ContentView.swift */; };
 		939C87E42BF307B600572EDC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C87E32BF307B600572EDC /* Item.swift */; };
@@ -26,6 +28,7 @@
 		939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */; };
 		939C88362BF6B9BC00572EDC /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88352BF6B9BC00572EDC /* OnboardingSecondView.swift */; };
 		939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88372BF6DF7000572EDC /* SplashScreenView.swift */; };
+		939C88742BFBA01C00572EDC /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C88732BFBA01C00572EDC /* PopoverView.swift */; };
 		9B0411762BF593A0006F8BB9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0411752BF593A0006F8BB9 /* MainView.swift */; };
 		9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4AA1C2BF6E280008BE893 /* CustomFont.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +67,8 @@
 		1B6530542BFB8A0C00452ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B6530562BFB8A0C00452ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
+		21B2730D2BFB85E2002BCC67 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		939C87DC2BF307B600572EDC /* MC2-Team3-Pilling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team3-Pilling.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		939C87DF2BF307B600572EDC /* MC2_Team3_PillingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team3_PillingApp.swift; sourceTree = "<group>"; };
 		939C87E12BF307B600572EDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +81,7 @@
 		939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSheetView.swift; sourceTree = "<group>"; };
 		939C88352BF6B9BC00572EDC /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
 		939C88372BF6DF7000572EDC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		939C88732BFBA01C00572EDC /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		9B0411752BF593A0006F8BB9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9BE4AA1C2BF6E280008BE893 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +136,8 @@
 				939C88352BF6B9BC00572EDC /* OnboardingSecondView.swift */,
 				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
 				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
+				939C88732BFBA01C00572EDC /* PopoverView.swift */,
+				21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */,
 				939C87E32BF307B600572EDC /* Item.swift */,
 				21B273072BFB390C002BCC67 /* Model.swift */,
+				21B2730D2BFB85E2002BCC67 /* Config.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,9 +316,12 @@
 				939C87E22BF307B600572EDC /* ContentView.swift in Sources */,
 				939C882E2BF5CC9100572EDC /* OnboardingFirstView.swift in Sources */,
 				9B0411762BF593A0006F8BB9 /* MainView.swift in Sources */,
+				21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */,
 				21B273082BFB390C002BCC67 /* Model.swift in Sources */,
 				939C88362BF6B9BC00572EDC /* OnboardingSecondView.swift in Sources */,
 				939C88302BF5CC9F00572EDC /* SettingView.swift in Sources */,
+				939C88742BFBA01C00572EDC /* PopoverView.swift in Sources */,
+				21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */,
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */,
 				939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */,

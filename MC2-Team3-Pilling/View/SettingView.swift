@@ -13,6 +13,7 @@ struct SettingView: View {
     @State private var selectedPill = 0
     @State private var isShowingPills = false
     let pills = [(name: "야즈", type: "24일/4일"), (name: "머쉬론", type: "21일/7일")]
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -38,7 +39,9 @@ struct SettingView: View {
                 }
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
+                        
                     Toggle("알람", isOn: $isSoundOn)
+                    
                 }
             }
             .navigationTitle("Settings")
@@ -46,6 +49,7 @@ struct SettingView: View {
                 Text("Pills")
                     .presentationDetents([.height(300), .large])
             })
+
         }
     }
 }
