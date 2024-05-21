@@ -12,6 +12,7 @@ struct MainView: View {
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
+    @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config().dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     
     var body: some View {
         NavigationStack {
@@ -124,6 +125,9 @@ struct MainView: View {
             .sheet(isPresented: $isModal){
                 EmptyView()
             }
+        }
+        .onAppear {
+            print(Date())
         }
         
     }

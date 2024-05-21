@@ -38,11 +38,19 @@ final class PeriodPill:Identifiable{
     var intakeCal:[DayData]
     var missDay:Int
     
+//    init(pillInfo: PillInfo, startIntake: String) {
+//        self.id = UUID()
+//        self.pillInfo = pillInfo
+//        self.startIntake = startIntake
+//        self.intakeCal = []
+//        self.missDay = 0
+//    }
     init(pillInfo: PillInfo, startIntake: String) {
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
-        self.intakeCal = []
+        self.intakeCal = Array(repeating: DayData(), count: pillInfo.wholeDay)
+        
         self.missDay = 0
     }
     
