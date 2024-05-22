@@ -54,11 +54,11 @@ struct PiriFirstView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
             .padding([.leading, .trailing], 16)
-            .sheet(isPresented: $showingMedicineSheet){
-                //                MedicineSheetView(showingMedicineSheet: true)
-                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet)
-                    .presentationDetents([.medium])
-            }
+//            .sheet(isPresented: $showingMedicineSheet){
+//                //                MedicineSheetView(showingMedicineSheet: true)
+////                MedicineSheetView(selectedPill: $showingMedicineSheet)
+////                    .presentationDetents([.medium])
+//            }
             
             
             
@@ -86,7 +86,7 @@ struct PiriFirstView: View {
         VStack {
             // footer button
             Button(action: {
-                pillInfo = Config().dummyPillInfos[0]
+                pillInfo = Config.dummyPillInfos[0]
                 intakeDay = 5
             
                 isActive = true // 네비게이션 링크를 활성화
