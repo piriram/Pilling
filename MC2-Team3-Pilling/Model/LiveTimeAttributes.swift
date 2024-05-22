@@ -12,7 +12,7 @@ struct LiveTimeAttributes: ActivityAttributes {
     public typealias TimeStatus = ContentState
     
     public struct ContentState: Codable, Hashable {
-        var restOfTime: Date
+        var restOfTime: String
         var progressAmount: Double
         var step: Int
     }
