@@ -16,6 +16,9 @@ struct MainView: View {
     @Query var user:[UserInfo]
     @State var time = Date()
     @State var week = 4
+    @State var today = 1
+    @State var isToday = false
+    @State var isActive = false
     
     var body: some View {
         NavigationStack {
@@ -106,7 +109,9 @@ struct MainView: View {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
                                     let status = user.first?.curPill?.intakeCal[idx].status
-                                    let isToday = false
+                                    let isToday = today == idx
+                                    
+                                    
                                     switch status {
                                         case 3: // 위약
                                             PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
@@ -150,6 +155,8 @@ struct MainView: View {
             if let userFirst = user.first{
                 if let curPill = userFirst.curPill{
                     week = curPill.pillInfo.wholeDay/7
+                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
+                    today = Config.daysFromStart(startDay: startDate!)
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
@@ -160,15 +167,7 @@ struct MainView: View {
         }
         
     }
-    func daysFromStart(startDay: Date) -> Int {
-        let calendar = Calendar.current
-        let today = Date()
-        let components = calendar.dateComponents([.day], from: startDay, to: today)
-        
-        // `components.day`는 시작 날짜부터 오늘까지의 날짜 차이를 반환합니다.
-        // 시작 날짜를 '1일째'로 간주하려면 1을 더해야 합니다.
-        return (components.day ?? 0) + 1
-    }
+    
 }
 
 
@@ -212,7 +211,7 @@ struct PlaceboCell: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .inset(by: 0.5)
-                    .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
+                    .stroke(Color.black, lineWidth: 1) // 테두리를 검은색으로 변경
             )
             .onTapGesture {
                 isModal = true

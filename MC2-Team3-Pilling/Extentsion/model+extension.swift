@@ -33,4 +33,12 @@ extension Config{
             return dateFormatter.date(from: dateString)
         }
     
+    static func daysFromStart(startDay: Date) -> Int {
+        let calendar = Calendar.current
+        let today = Date()
+        let components = calendar.dateComponents([.day], from: startDay, to: today)
+        
+        return (components.day ?? 0) + 1 //시작날짜를 1일로 친다면 +1을 더해줌
+    }
+    
 }

@@ -110,6 +110,9 @@ struct PiriSecondView: View {
             let dayData = DayData()
             modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
             
+            let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
+            let today = Config.daysFromStart(startDay: startDate!)
+            
             let wholeDay = selectePillInfo.wholeDay
             for _ in 0..<wholeDay {
                 let dayData = DayData()
@@ -117,6 +120,18 @@ struct PiriSecondView: View {
                 modelContext.insert(dayData)
                 periodPill.intakeCal.append(dayData)
             }
+            
+            //이미 지난 것은 복용 status=1로 변경
+            if today>1{
+                for idx in 0..<today{
+                    periodPill.intakeCal[idx].status=1
+                }
+            }
+            //위약 status 초기화
+            for idx in pillInfo!.intakeDay-1..<wholeDay{
+                periodPill.intakeCal[idx].status=3
+            }
+            
             modelContext.insert(periodPill)
             
             let scheduleTime = Config.DateToString(date: alarmTime, format: Config.Hourformat)
