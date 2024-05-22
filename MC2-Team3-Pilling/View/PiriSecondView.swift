@@ -84,7 +84,7 @@ struct PiriSecondView: View {
                 print(periodPill)
                 print("periodPillInfo:\(periodPill.startIntake)")
                 var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
-                userInfo.curPill.intakeCal=Array(repeating: DayData(), count: 30)
+//                userInfo.curPill.intakeCal=Array(repeating: DayData(), count: 30)
                 print("userInfo:\(userInfo.curPill.intakeCal[0])")
                 var pillInfo = user.first?.curPill
 
