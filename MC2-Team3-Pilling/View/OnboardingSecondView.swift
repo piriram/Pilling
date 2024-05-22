@@ -34,17 +34,17 @@ struct OnboardingSecondView: View {
             
             Button(action: {
             }, label: {
-
+                
                 ZStack{
                     HStack {
                         Image(systemName: "clock")
                         Text("복용 시간")
                             .secondaryTitle()
                         Spacer()
-
+                        
                     }
                     DatePicker("", selection: $alarmTime, displayedComponents: .hourAndMinute)
-
+                    
                 }
                 .padding([.leading, .trailing], 20)
                 
@@ -61,7 +61,7 @@ struct OnboardingSecondView: View {
                 Toggle("소리 알람여부추가", isOn: $alarmToggle)
                     .regular()
                     .padding(.bottom, 2)
-                    
+                
                 
                 
                 HStack {

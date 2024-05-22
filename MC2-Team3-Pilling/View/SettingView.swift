@@ -39,7 +39,7 @@ struct SettingView: View {
                 }
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
-                        
+                    
                     Toggle("알람", isOn: $isSoundOn)
                     
                 }
@@ -49,7 +49,7 @@ struct SettingView: View {
                 Text("Pills")
                     .presentationDetents([.height(300), .large])
             })
-
+            
         }
     }
 }

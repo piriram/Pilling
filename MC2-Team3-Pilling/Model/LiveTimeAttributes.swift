@@ -13,5 +13,6 @@ struct LiveTimeAttributes: ActivityAttributes {
     
     public struct ContentState: Codable, Hashable {
         var restOfTime: Date
+        var progressAmount: Double
     }
 }

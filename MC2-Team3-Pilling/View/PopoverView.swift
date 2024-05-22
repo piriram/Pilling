@@ -38,7 +38,7 @@ struct PopoverView: View {
                     
                 }
                 .frame(width: 45, height: 45)
-
+                
                 Text("피임약 2알 복용")
             }
             .padding(.bottom)
@@ -64,7 +64,7 @@ struct PopoverView: View {
                             .stroke(Color.green,lineWidth: 3)
                         
                     )
-
+                
                 Text("현재")
             }
         }

@@ -17,12 +17,12 @@ class Config{
         
         var color: Color {
             switch self {
-                case .notYet:
-                    return .customGray
-                case .onePill, .twoPills:
-                    return .customGreen
-                case .placebo:
-                    return .white
+            case .notYet:
+                return .customGray
+            case .onePill, .twoPills:
+                return .customGreen
+            case .placebo:
+                return .white
             }
         }
     }
@@ -36,16 +36,16 @@ class Config{
         
         var description: String {
             switch self {
-                case .plantGrass:
-                    return "잔디를 심어주세요"
-                case .limitTwoHours:
-                    return "잔디는 2시간을 초과하지 않게 심어주세요!"
-                case .plantTwoGrass:
-                    return "2개의 잔디를 심어주세요"
-                case .grassGrowingWell:
-                    return "잔디가 잘 자라고 있어요!"
-                case .notRecording:
-                    return "기록을 안하고 계신가요?"
+            case .plantGrass:
+                return "잔디를 심어주세요"
+            case .limitTwoHours:
+                return "잔디는 2시간을 초과하지 않게 심어주세요!"
+            case .plantTwoGrass:
+                return "2개의 잔디를 심어주세요"
+            case .grassGrowingWell:
+                return "잔디가 잘 자라고 있어요!"
+            case .notRecording:
+                return "기록을 안하고 계신가요?"
             }
         }
     }
@@ -63,6 +63,15 @@ class Config{
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
+
+        return dateFormatter.string(from: date)
+    }
+    func AlarmStringToDate(dateString: String) -> Date? {
+        let format = "HH:mm"
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+
         return dateFormatter.date(from: dateString)
     }
 //    func AlarmDateToString(date: Date) -> String {
@@ -79,8 +88,9 @@ class Config{
 //        dateFormatter.dateFormat = format
 //        return dateFormatter.date(from: dateString)
 //    }
-    
-    let dummyPillInfos: [PillInfo] = [
+     
+    static let dummyPillInfos: [PillInfo] = [
+
         PillInfo(pillName: "머시론정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "야즈", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "마이보라", intakeDay: 28, placeboDay: 0),
@@ -92,7 +102,7 @@ class Config{
         PillInfo(pillName: "로젠정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "센시발", intakeDay: 28, placeboDay: 0)
     ]
-    
+ 
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
 var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
