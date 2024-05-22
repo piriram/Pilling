@@ -25,38 +25,32 @@ struct LiveTimeWidget: Widget {
                 }
                 Divider()
                 ProgressView(value: context.state.progressAmount, total: 600)
+                    .tint(.customGreen)
                     .padding()
             }
         } dynamicIsland: { context in
             // dynamic island
             DynamicIsland {
-                // expanded dynamic island bottom(다이나믹 아일랜드 꾹 눌러서 확장되는 버전)
-//                DynamicIslandExpandedRegion(.leading, priority: 3) {
-//                        VStack(alignment: .leading) {
-//                            Text("Pilling")
-//                                .font(.subheadline)
-//                            Text("잔디를 심을 시간이에요!")
-//                                .bold()
-//                            Text(context.state.restOfTime, style: .relative)
-//                                .foregroundStyle(.customGreen)
-//                        }
-//                }
-//                DynamicIslandExpandedRegion(.trailing, priority: 1) {
-//                    Image("alarm")
-//                        .resizable()
-//                        .scaledToFit()
-//                }
+                // expanded dynamic island(다이나믹 아일랜드 꾹 눌러서 확장되는 버전)
+                DynamicIslandExpandedRegion(.leading) {
+                        Text("Pilling")
+                            .font(.subheadline)
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    Text("Pilling")
+                        .font(.subheadline)
+                }
                 DynamicIslandExpandedRegion(.center) {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Pilling")
-                                .font(.subheadline)
                             Text("잔디를 심을 시간이에요!")
                                 .font(.headline)
                                 .bold()
                             Text(context.state.restOfTime, style: .relative)
                                 .foregroundStyle(.customGreen)
-                                .font(.title3)
+                                .font(.title2)
+                            ProgressView(value: context.state.progressAmount, total: 600)
+                                .tint(.customGreen)
                         }
                         Spacer()
                         Image("alarm")
