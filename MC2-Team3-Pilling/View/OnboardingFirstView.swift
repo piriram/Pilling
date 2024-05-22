@@ -48,7 +48,7 @@ struct OnboardingFirstView: View {
             .foregroundColor(.secondary)
             .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
-                MedicineSheetView(selectedPill: $selectedPill)
+                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
                 //                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
                     .presentationDetents([.medium])
             }
