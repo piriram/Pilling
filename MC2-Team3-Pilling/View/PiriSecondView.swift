@@ -76,37 +76,7 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
-//                print(alarmTime)
-                var scheduleTime = Config().DateToString(date: alarmTime, format: Hourformat)
-                print(scheduleTime)
-                
-                var arr = Array(repeating: DayData(), count: 30)
-                print(arr)
-                print(arr[0].status)
-                
-                
-                let currentDate = Date()
-                let calendar = Calendar.current
-                let startDate = calendar.date(byAdding: .day, value: -5, to: currentDate)
-                let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-                 
-                var periodPill = PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-                
-                print(periodPill)
-                print("periodPillInfo:\(periodPill.startIntake)")
-                
-                periodPill.intakeCal = arr
-                
-                
-                print("----------")
-                print(periodPill.intakeCal.first?.status)
-                var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
-                print("1")
-                print(userInfo.curPill.pillInfo.pillName)
-                userInfo.curPill.intakeCal = arr
-                
-                print("userInfo:\(userInfo.curPill.intakeCal.first)")
-                var pillInfo = user.first?.curPill
+                let userInfo = UserInfo(scheduleTime: "17:00", curPill: PeriodPill(pillInfo: PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4), startIntake: "2024-05-13"))
 
                 modelContext.insert(userInfo)
                 do {

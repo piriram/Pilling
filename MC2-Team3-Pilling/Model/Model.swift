@@ -83,4 +83,3 @@ final class PillInfo:Identifiable{
     }
     
 }
-
