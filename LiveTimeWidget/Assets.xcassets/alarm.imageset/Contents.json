@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "alarm.png",
+      "filename" : "_Lockscreen.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "alarm (1).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
