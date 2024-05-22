@@ -10,7 +10,7 @@ import SwiftData
 struct PiriSecondView: View {
     @State private var alarmTime: Date = Date()
     @State private var alarmToggle = false
-    @Binding var pillInfo:PillInfo
+    @Binding var pillInfo:PillInfo?
     @Binding var intakeDay:Int
     @State var isActive = false
     @Environment(\.modelContext) private var modelContext
