@@ -10,6 +10,7 @@ import SwiftUI
 import ActivityKit
 
 struct LiveTimeWidget: Widget {
+    let progressTotal = 2400.0
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveTimeAttributes.self) { context in
             // lock screen & standby(잠금 화면과 notification center, 그리고 전체화면 버전)
@@ -26,7 +27,7 @@ struct LiveTimeWidget: Widget {
                         Text("남았어요")
                     }
                     .foregroundStyle(.customGreen)
-                    ProgressView(value: context.state.progressAmount, total: 600)
+                    ProgressView(value: context.state.progressAmount, total: progressTotal)
                         .tint(.customGreen)
                 }
                 Image("alarm")
@@ -51,7 +52,7 @@ struct LiveTimeWidget: Widget {
                                     .font(.headline)
                                     .foregroundStyle(.customGreen)
                             }
-                            ProgressView(value: context.state.progressAmount, total: 600)
+                            ProgressView(value: context.state.progressAmount, total: progressTotal)
                                 .tint(.customGreen)
                         }
                         Image("alarm")
@@ -62,6 +63,8 @@ struct LiveTimeWidget: Widget {
             } compactLeading: {
                 // compact leading(다이나믹 아일랜드 소형 버전 왼쪽)
                 Image("alarm")
+                    .resizable()
+                    .scaledToFit()
             } compactTrailing: {
                 // compact trailing(다이나믹 아일랜드 소형 버전 오른쪽)
                 Text(context.state.restOfTime, style: .relative)
@@ -69,7 +72,7 @@ struct LiveTimeWidget: Widget {
                     .frame(width: 66)
             } minimal: {
                 // minimal(다이나믹 아일랜드 가장 작은 버전)
-                ProgressView(value: context.state.progressAmount, total: 600)
+                ProgressView(value: context.state.progressAmount, total: progressTotal)
                     .progressViewStyle(.circular)
                     .tint(.customGreen)
             }
