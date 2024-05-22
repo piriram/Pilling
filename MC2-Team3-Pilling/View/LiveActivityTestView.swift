@@ -14,15 +14,37 @@ struct LiveActivityTestView: View {
         formatter.dateFormat = "MM/dd/yyyy_HH:mm:ss"
         return formatter
     }()
+    static let timeIntervalFormatter: DateComponentsFormatter = {
+            let formatter = DateComponentsFormatter()
+            return formatter
+        }()
 //    @State private var isTracking = false
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_22:56:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_23:38:00")!
+    @State private var currentDate = Date.now
+    var restOfTime: TimeInterval {
+        currentDate.timeIntervalSince(alarmTime)
+    }
+    var currentStep: Int {
+        if restOfTime <= 10 { //  ~ 알람 시간 10초 이내
+            return 1
+        } else if restOfTime <= 20 { // ~ 알람 시간 20초 이내
+            return 2
+        } else { // ~
+            return 3
+        }
+    }
+    
     @State private var activity: Activity<LiveTimeAttributes>? = nil
     @State private var progressAmount = 0.0
-    @State private var currentDate = Date.now
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         VStack {
-            Text("\(currentDate.formatted(date: .numeric, time: .standard))")
+            Text("현재 단계: \(currentStep)")
+            Text("남은/지난 시간: \(timeIntervalToString(time: restOfTime))")
+            Text("알람 시간: \(alarmTime.formatted(date: .numeric, time: .standard))")
+            Text("현재 시간: \(currentDate.formatted(date: .numeric, time: .standard))")
                 .onReceive(timer) { input in
                     currentDate = input
                     // 전: 현재 시간이 설정한 알람 시간 전일 때
@@ -122,6 +144,15 @@ struct LiveActivityTestView: View {
 //                    Text(alarmTime, style: .relative)
 //                }
 //            }
+        }
+    }
+    func timeIntervalToString(time: Double) -> String {
+        if time < 0 {
+            return "\(-Int(time)/60)분 \(-Int(time)%60)초"
+        } else if time >= 0 && time < 60 * 60 {
+            return "\(Int(time)/60)분 \(Int(time)%60)초"
+        } else {
+            return "\(Int(time)/(60*60))시 \(Int(time)/60%60)분"
         }
     }
 }
