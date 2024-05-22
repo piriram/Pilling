@@ -10,7 +10,7 @@ import SwiftUI
 import ActivityKit
 
 struct LiveTimeWidget: Widget {
-    let progressTotal = 2400.0
+    let progressTotal = 20.0
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveTimeAttributes.self) { context in
             // lock screen & standby(잠금 화면과 notification center, 그리고 전체화면 버전)
