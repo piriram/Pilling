@@ -62,19 +62,19 @@ struct LiveTimeWidget: Widget {
                 }
             } compactLeading: {
                 // compact leading(다이나믹 아일랜드 소형 버전 왼쪽)
-                Image("alarm")
+                Image(context.state.step == 3 ? "pilling" : "alarm")
                     .resizable()
                     .scaledToFit()
             } compactTrailing: {
                 // compact trailing(다이나믹 아일랜드 소형 버전 오른쪽)
                 Text(context.state.restOfTime, style: .relative)
-                    .foregroundStyle(.customGreen)
+                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
                     .frame(width: 66)
             } minimal: {
                 // minimal(다이나믹 아일랜드 가장 작은 버전)
                 ProgressView(value: context.state.progressAmount, total: progressTotal)
                     .progressViewStyle(.circular)
-                    .tint(.customGreen)
+                    .tint(context.state.step == 3 ? .red : .customGreen)
             }
         }
     }
