@@ -31,29 +31,38 @@ struct LiveTimeWidget: Widget {
             // dynamic island
             DynamicIsland {
                 // expanded dynamic island bottom(다이나믹 아일랜드 꾹 눌러서 확장되는 버전)
-                DynamicIslandExpandedRegion(.leading) {
-                    Image("alarm")
-                        .resizable()
-                        .scaledToFit()
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text(context.state.restOfTime, style: .relative)
-                        .foregroundStyle(.customGreen)
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    VStack {
-                        Divider()
-                            .frame(minHeight: 1)
-                            .overlay(.customGreen)
-                        Button(action: {}, label: {
-                            Spacer()
-                            Text("Button")
-                            Spacer()
-                        })
-                        .foregroundColor(.customGreen)
-                        .buttonStyle(.plain)
+//                DynamicIslandExpandedRegion(.leading, priority: 3) {
+//                        VStack(alignment: .leading) {
+//                            Text("Pilling")
+//                                .font(.subheadline)
+//                            Text("잔디를 심을 시간이에요!")
+//                                .bold()
+//                            Text(context.state.restOfTime, style: .relative)
+//                                .foregroundStyle(.customGreen)
+//                        }
+//                }
+//                DynamicIslandExpandedRegion(.trailing, priority: 1) {
+//                    Image("alarm")
+//                        .resizable()
+//                        .scaledToFit()
+//                }
+                DynamicIslandExpandedRegion(.center) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Pilling")
+                                .font(.subheadline)
+                            Text("잔디를 심을 시간이에요!")
+                                .font(.headline)
+                                .bold()
+                            Text(context.state.restOfTime, style: .relative)
+                                .foregroundStyle(.customGreen)
+                                .font(.title3)
+                        }
+                        Spacer()
+                        Image("alarm")
+                            .resizable()
+                            .scaledToFit()
                     }
-                    .padding()
                 }
             } compactLeading: {
                 // compact leading(다이나믹 아일랜드 소형 버전 왼쪽)
