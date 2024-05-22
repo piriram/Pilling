@@ -12,6 +12,8 @@ struct MainView: View {
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
+    
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -120,7 +122,9 @@ struct MainView: View {
                 .padding()
             }
             .sheet(isPresented: $isModal){
-                EmptyView()
+                ChooseStatusView(showingChooseStatus: $isModal)
+//                ChooseStatusView()
+                    .presentationDetents([.medium])
             }
         }
         

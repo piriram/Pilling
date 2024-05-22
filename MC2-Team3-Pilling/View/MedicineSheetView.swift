@@ -3,6 +3,7 @@ import SwiftUI
 
 struct MedicineSheetView: View {
     @State private var searchText = ""
+
     //    @Binding var showingMedicineSheet: Bool
     
     @Binding var selectedPill: PillInfo?

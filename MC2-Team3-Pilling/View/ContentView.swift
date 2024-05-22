@@ -43,9 +43,9 @@ struct ContentView: View {
                 NavigationLink(destination: SplashScreenView()){
                     Text("SplashScreenView")
                 }
-                NavigationLink(destination: ChooseStatusView()){
-                    Text("ChooseStatusView")
-                }
+//                NavigationLink(destination: ChooseStatusView( showingChooseStatus: $showingChooseStatus)){
+//                    Text("ChooseStatusView")
+//                }
               
             }
             
