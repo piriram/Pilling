@@ -15,7 +15,7 @@ struct MainView: View {
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Query var user:[UserInfo]
     @State var time = Date()
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -141,9 +141,7 @@ struct MainView: View {
                 .padding()
             }
             .sheet(isPresented: $isModal){
-                ChooseStatusView()
-//                ChooseStatusView()
-                    .presentationDetents([.medium])
+                EmptyView()
             }
         }
         .onAppear {

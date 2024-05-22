@@ -86,9 +86,10 @@ struct PiriFirstView: View {
         VStack {
             // footer button
             Button(action: {
-                pillInfo = Config.dummyPillInfos[0]
+                print("Config.dummyPillInfo[0]:\(Config.dummyPillInfos[1].pillName)")
+                pillInfo = Config.dummyPillInfos[1]
+                print("pillInfo.pillName:\(pillInfo.placeboDay)")
                 intakeDay = 5
-            
                 isActive = true // 네비게이션 링크를 활성화
             }, label: {
                 Text("다음으로")
