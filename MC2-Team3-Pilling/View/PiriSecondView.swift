@@ -43,12 +43,9 @@ struct PiriSecondView: View {
             }, label: {
                 
                 ZStack{
-                    
                     DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
-                    
                 }
                 .padding([.leading, .trailing], 20)
-                
             }
             )
             .padding(.vertical, 20)
