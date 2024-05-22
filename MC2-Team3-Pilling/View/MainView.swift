@@ -15,6 +15,7 @@ struct MainView: View {
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Query var user:[UserInfo]
     @State var time = Date()
+    @State var week = 4
     
     var body: some View {
         NavigationStack {
@@ -99,23 +100,24 @@ struct MainView: View {
                             
                         }
                         .regular()
-                        ForEach(0..<(user.first?.curPill?.pillInfo.wholeDay ?? 28)/7) { y in
+                        
+                        ForEach(0..<week) { y in
                             HStack {
                                 ForEach(0..<7) { x in
-                                    if x==3 && y==0{
-                                        TwoCell(isModal: $isModal, backgroundColor: .customGreen)
-                                    }
-                                    else if x==1 && y==0 {
-                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
-                                    }
-                                    else if x==0 && y == 0{
-                                        TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
-                                    }
-                                    else if x>=3 && y == 3{
-                                        PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
-                                    }
-                                    else{
-                                        ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    let idx = y * 7 + x
+                                    let status = user.first?.curPill?.intakeCal[idx].status
+                                    let isToday = false
+                                    switch status {
+                                        case 3: // 위약
+                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
+                                        case 0:
+                                            ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                        case 1:
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customGreen)
+                                        case 2:
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                        default:
+                                            EmptyView()
                                     }
                                     
                                     
@@ -145,11 +147,27 @@ struct MainView: View {
             }
         }
         .onAppear {
-            var scheduleTime = user.first?.scheduleTime
-            print(scheduleTime)
-            time = Config().StringToDate(dateString: scheduleTime ?? "2024-05-21 15:14:27", format: Hourformat) ?? Date()
+            if let userFirst = user.first{
+                if let curPill = userFirst.curPill{
+                    week = curPill.pillInfo.wholeDay/7
+                }
+                
+                var scheduleTime = userFirst.scheduleTime
+                print(scheduleTime)
+                time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
+            }
+            
         }
         
+    }
+    func daysFromStart(startDay: Date) -> Int {
+        let calendar = Calendar.current
+        let today = Date()
+        let components = calendar.dateComponents([.day], from: startDay, to: today)
+        
+        // `components.day`는 시작 날짜부터 오늘까지의 날짜 차이를 반환합니다.
+        // 시작 날짜를 '1일째'로 간주하려면 1을 더해야 합니다.
+        return (components.day ?? 0) + 1
     }
 }
 
@@ -188,14 +206,14 @@ struct PlaceboCell: View {
     var backgroundColor: Color
     var body: some View {
         Rectangle()
-          .foregroundColor(.clear)
-          .frame(width: 45, height: 45)
-          .cornerRadius(10)
-          .overlay(
-            RoundedRectangle(cornerRadius: 10)
-              .inset(by: 0.5)
-              .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
-          )
+            .foregroundColor(.clear)
+            .frame(width: 45, height: 45)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 0.5)
+                    .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
+            )
             .onTapGesture {
                 isModal = true
                 print(isModal)

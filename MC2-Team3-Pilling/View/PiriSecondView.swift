@@ -76,42 +76,7 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
-                let pillInfo = PillInfo(pillName: "야즈", intakeDay: 21, placeboDay: 4)
-                modelContext.insert(pillInfo)
-//                pillInfo.printAllDetails()
-                
-                let dayData = DayData()
-                modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
-//                dayData.printAllDetails()
-                
-                let periodPill = PeriodPill(pillInfo: pillInfo, startIntake: "2024-05-13")
-                for _ in 0..<28 {
-                    let dayData = DayData()
-//                    dayData.periodPill = periodPill
-                    modelContext.insert(dayData)
-                    periodPill.intakeCal.append(dayData)
-                }
-                
-                modelContext.insert(periodPill)
-                periodPill.printAllDetails()
-                
-                
-                
-                let userInfo = UserInfo(scheduleTime: "17:00", curPill: periodPill)
-                print("--------")
-//                print(userInfo.curPill.intakeCal.first?.status)
-                
-                modelContext.insert(userInfo)
-                
-                user.first?.curPill?.printAllDetails()
-                print(user.first?.curPill?.intakeCal.first?.status)
-                do {
-                    try modelContext.save()
-                    print("스데 저장 성공")
-                } catch {
-                    print("Failed to save context: \(error.localizedDescription)")
-                }
-                isActive = true
+                dataSave()
             }) {
                 Text("설정완료!")
                     .font(.title3)
@@ -134,52 +99,45 @@ struct PiriSecondView: View {
             print(intakeDay)
         }
     }
-    func findStartDay(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
-        
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
-        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-        
-    }
-    func save(){
-        let pillInfo = PillInfo(pillName: "야즈", intakeDay: 21, placeboDay: 4)
-        modelContext.insert(pillInfo)
-//                pillInfo.printAllDetails()
-        
-        let dayData = DayData()
-        modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
-//                dayData.printAllDetails()
-        
-        let periodPill = PeriodPill(pillInfo: pillInfo, startIntake: "2024-05-13")
-        for _ in 0..<28 {
+    func dataSave(){
+        if let selectePillInfo = pillInfo {
+            modelContext.insert(selectePillInfo)
+            
+            let startIntake = Config.DateToString(date: Date(), format: Config.dayformat)
+            
+            let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
+            
             let dayData = DayData()
-//                    dayData.periodPill = periodPill
-            modelContext.insert(dayData)
-            periodPill.intakeCal.append(dayData)
+            modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
+            
+            let wholeDay = selectePillInfo.wholeDay
+            for _ in 0..<wholeDay {
+                let dayData = DayData()
+                //                    dayData.periodPill = periodPill
+                modelContext.insert(dayData)
+                periodPill.intakeCal.append(dayData)
+            }
+            modelContext.insert(periodPill)
+            
+            let scheduleTime = Config.DateToString(date: alarmTime, format: Config.Hourformat)
+            let userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
+            userInfo.isAlarm = alarmToggle
+            
+            modelContext.insert(userInfo)
+            
+            do {
+                try modelContext.save()
+                print("스데 저장 성공")
+                isActive = true
+            } catch {
+                print("Failed to save context: \(error.localizedDescription)")
+            }
+            
         }
-        
-        modelContext.insert(periodPill)
-        periodPill.printAllDetails()
-        
-        
-        
-        let userInfo = UserInfo(scheduleTime: "17:00", curPill: periodPill)
-        print("--------")
-//                print(userInfo.curPill.intakeCal.first?.status)
-        
-        modelContext.insert(userInfo)
-        
-        user.first?.curPill?.printAllDetails()
-        print(user.first?.curPill?.intakeCal.first?.status)
-        do {
-            try modelContext.save()
-            print("스데 저장 성공")
-        } catch {
-            print("Failed to save context: \(error.localizedDescription)")
+        else{
+            
         }
-        isActive = true
     }
+    
 }
 
