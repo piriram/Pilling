@@ -65,8 +65,9 @@ struct LiveTimeWidget: Widget {
                     .frame(width: 66)
             } minimal: {
                 // minimal(다이나믹 아일랜드 가장 작은 버전)
-                Text(context.state.restOfTime, style: .relative)
-                    .foregroundStyle(.customGreen)
+                ProgressView(value: context.state.progressAmount, total: 600)
+                    .progressViewStyle(.circular)
+                    .tint(.customGreen)
             }
         }
     }
