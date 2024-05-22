@@ -61,12 +61,14 @@ struct ChooseStatusView: View {
                         Text("\(dosageType.takingType)").tag(dosageType.rawValue)
                     }
                 }
+
                 .pickerStyle(.segmented)
                 .padding(.vertical, 15)
                 // selection Print 되는 값 확인
                 //            .onChange(of: selectedNum) { newValue in
                 //                print("Selected number: \(newValue)")
                 //            }
+
                 
                 // 복용시간 버튼
                 Button(action: {
