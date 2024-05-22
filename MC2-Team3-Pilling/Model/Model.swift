@@ -40,7 +40,7 @@ final class PeriodPill:Identifiable{
     var startIntake:String
     var finishIntake:String?
     @Relationship(deleteRule: .cascade,inverse:\DayData.periodPill)
-    var intakeCal:[DayData]
+    var intakeCal = [DayData]()
     var missDay:Int
     
     var userInfo:UserInfo?
@@ -49,10 +49,56 @@ final class PeriodPill:Identifiable{
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
-        self.intakeCal = []
         self.missDay = 0
         self.finishIntake = nil
     }
+    
+    
+}
+
+@Model
+final class DayData:Identifiable{
+    @Attribute(.unique) let id:UUID
+    var status:Int
+    var time:String?
+    var sideEffect:[Bool]
+    var memo:String
+    
+    var periodPill:PeriodPill?
+    
+    init(periodPill:PeriodPill? = nil) {
+        self.id = UUID()
+        self.status = 0
+        self.sideEffect = [false,false,false]
+        self.memo = ""
+        self.time = nil
+        self.periodPill = periodPill
+    }
+    
+    
+}
+
+@Model
+final class PillInfo:Identifiable{
+    @Attribute(.unique) let id:UUID
+    var pillName:String
+    var intakeDay:Int
+    var placeboDay:Int
+    var wholeDay:Int
+    var descriptionInfo:String?
+    var type:String?
+    
+    init(pillName: String, intakeDay: Int, placeboDay: Int) {
+        self.id = UUID()
+        self.pillName = pillName
+        self.intakeDay = intakeDay
+        self.placeboDay = placeboDay
+        self.wholeDay = intakeDay+placeboDay
+        self.descriptionInfo = nil
+        self.type = nil
+    }
+}
+extension PeriodPill{
     func printAllDetails() {
             print("Period Pill Details:")
             print("ID: \(id)")
@@ -81,27 +127,9 @@ final class PeriodPill:Identifiable{
                 self.intakeCal.append(dayData)
             }
         }
-    
 }
 
-@Model
-final class DayData:Identifiable{
-    @Attribute(.unique) let id:UUID
-    var status:Int
-    var time:String?
-    var sideEffect:[Bool]
-    var memo:String
-    
-    var periodPill:PeriodPill?
-    
-    init(periodPill:PeriodPill? = nil) {
-        self.id = UUID()
-        self.status = 0
-        self.sideEffect = [false,false,false]
-        self.memo = ""
-        self.time = nil
-        self.periodPill = periodPill
-    }
+extension DayData{
     func printAllDetails() {
         print("Day Data Details:")
         print("ID: \(id)")
@@ -114,28 +142,8 @@ final class DayData:Identifiable{
         print("Side Effects: \(sideEffect)")
         print("Memo: \(memo)")
     }
-    
 }
-
-@Model
-final class PillInfo:Identifiable{
-    @Attribute(.unique) let id:UUID
-    var pillName:String
-    var intakeDay:Int
-    var placeboDay:Int
-    var wholeDay:Int
-    var descriptionInfo:String?
-    var type:String?
-    
-    init(pillName: String, intakeDay: Int, placeboDay: Int) {
-        self.id = UUID()
-        self.pillName = pillName
-        self.intakeDay = intakeDay
-        self.placeboDay = placeboDay
-        self.wholeDay = intakeDay+placeboDay
-        self.descriptionInfo = nil
-        self.type = nil
-    }
+extension PillInfo {
     func printAllDetails() {
         print("Pill Info Details:")
         print("ID: \(id)")
