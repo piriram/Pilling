@@ -39,8 +39,7 @@ struct ChooseStatusView: View {
     
     @State private var dosageType: DosageType = .notYet
     
-//    @Binding var showingChooseStatus: Bool
-//    
+    @Binding var showingChooseStatus: Bool
     
     var body: some View {
         VStack {
@@ -118,7 +117,7 @@ struct ChooseStatusView: View {
             
             // footer button
             Button(action: {
-//                self.showingChooseStatus = false
+                self.showingChooseStatus = false
             }, label: {
                 Text("수정")
                     .font(.title3)
