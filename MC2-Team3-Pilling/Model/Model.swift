@@ -14,7 +14,7 @@ final class UserInfo:Identifiable{
     var scheduleTime:String
     
     @Relationship(deleteRule: .cascade,inverse:\PeriodPill.userInfo)
-    var curPill:PeriodPill
+    var curPill:PeriodPill?
     
     var historyPill:[PeriodPill] = [PeriodPill]()
     var isAlarm:Bool
@@ -22,7 +22,7 @@ final class UserInfo:Identifiable{
     
     var periodPill:PeriodPill?
     
-    init(scheduleTime: String, curPill: PeriodPill) {
+    init(scheduleTime: String, curPill: PeriodPill? = nil) {
         self.id = UUID()
         self.scheduleTime = scheduleTime
         self.curPill = curPill
@@ -51,6 +51,7 @@ final class PeriodPill:Identifiable{
         self.startIntake = startIntake
         self.missDay = 0
         self.finishIntake = nil
+//        print(self.intakeCal) []
     }
     
     

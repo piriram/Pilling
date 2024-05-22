@@ -52,7 +52,7 @@ struct MainView: View {
                             HStack {
                                 Text("4일차")
                                     .largeTitle()
-                                if let whole = user.first?.curPill.pillInfo.wholeDay{
+                                if let whole = user.first?.curPill?.pillInfo.wholeDay{
                                     Text("/\(String(describing: whole))")
                                         .secondaryTitle()
                                 }
@@ -61,7 +61,7 @@ struct MainView: View {
                                 }
                                 
                             }
-                            if let intakeDay=user.first?.curPill.pillInfo.intakeDay,let placeboday=user.first?.curPill.pillInfo.placeboDay{
+                            if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
                                 Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
                                     .secondaryRegular()
                             }else{
@@ -99,7 +99,7 @@ struct MainView: View {
                             
                         }
                         .regular()
-                        ForEach(0..<(user.first?.curPill.pillInfo.wholeDay ?? 28)/7) { y in
+                        ForEach(0..<(user.first?.curPill?.pillInfo.wholeDay ?? 28)/7) { y in
                             HStack {
                                 ForEach(0..<7) { x in
                                     if x==3 && y==0{

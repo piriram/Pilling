@@ -31,7 +31,7 @@ struct SwiftDataTestView: View {
                 /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
             })
             withAnimation{
-                Text(user.first?.curPill.pillInfo.pillName ?? "없음")
+                Text(user.first?.curPill?.pillInfo.pillName ?? "없음")
             }
             
         }
