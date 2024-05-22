@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftData
 struct PiriSecondView: View {
     @State private var alarmTime: Date = Date()
     @State private var alarmToggle = false
@@ -14,6 +14,7 @@ struct PiriSecondView: View {
     @Binding var intakeDay:Int
     @State var isActive = false
     @Environment(\.modelContext) private var modelContext
+    @Query var user:[UserInfo]
     
     
     var body: some View {
@@ -85,8 +86,20 @@ struct PiriSecondView: View {
                 var scheduleTime = Config().DateToString(date: alarmTime, format: Hourformat)
                 print(scheduleTime)
                 var periodPill = save(pillInfo: pillInfo, curIntakeDay: intakeDay)
-                print()
+                
+                print(periodPill)
                 var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
+//                print(userInfo.curPill.startIntake)
+                var pillInfo = user.first?.curPill
+//                print(userInfo)
+//                for index in 22...26{
+//                    userInfo.curPill.intakeCal[index].status = 3
+//                }
+//                for index in (pillInfo?.pillInfo.intakeDay ?? 24)...(pillInfo?.pillInfo.wholeDay ?? 28)-1{
+//                    userInfo.curPill.intakeCal[index].status = 3
+//                }
+//                print(userInfo.curPill.intakeCal)
+                            
                 modelContext.insert(userInfo)
                 do {
                     try modelContext.save()
@@ -112,6 +125,9 @@ struct PiriSecondView: View {
                 EmptyView()
             }
             
+        }
+        .onAppear{
+            print(intakeDay)
         }
     }
     func save(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{

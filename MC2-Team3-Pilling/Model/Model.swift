@@ -50,7 +50,6 @@ final class PeriodPill:Identifiable{
         self.pillInfo = pillInfo
         self.startIntake = startIntake
         self.intakeCal = Array(repeating: DayData(), count: pillInfo.wholeDay)
-        
         self.missDay = 0
     }
     

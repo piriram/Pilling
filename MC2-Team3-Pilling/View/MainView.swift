@@ -53,7 +53,7 @@ struct MainView: View {
                                 Text("4일차")
                                     .largeTitle()
                                 if let whole = user.first?.curPill.pillInfo.wholeDay{
-                                    Text("\(String(describing: whole))")
+                                    Text("/\(String(describing: whole))")
                                         .secondaryTitle()
                                 }
                                 else{
@@ -99,7 +99,7 @@ struct MainView: View {
                             
                         }
                         .regular()
-                        ForEach(0..<4) { y in
+                        ForEach(0..<(user.first?.curPill.pillInfo.wholeDay ?? 28)/7) { y in
                             HStack {
                                 ForEach(0..<7) { x in
                                     if x==3 && y==0{
@@ -110,6 +110,9 @@ struct MainView: View {
                                     }
                                     else if x==0 && y == 0{
                                         TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    }
+                                    else if x>=3 && y == 3{
+                                        PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
                                     }
                                     else{
                                         ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
@@ -180,6 +183,26 @@ struct ActivateCell: View {
     }
     
 }
+struct PlaceboCell: View {
+    @Binding var isModal:Bool
+    var backgroundColor: Color
+    var body: some View {
+        Rectangle()
+          .foregroundColor(.clear)
+          .frame(width: 45, height: 45)
+          .cornerRadius(10)
+          .overlay(
+            RoundedRectangle(cornerRadius: 10)
+              .inset(by: 0.5)
+              .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
+          )
+            .onTapGesture {
+                isModal = true
+                print(isModal)
+            }
+    }
+    
+}
 struct TodayCell: View {
     @Binding var isModal:Bool
     var backgroundColor: Color
@@ -187,7 +210,7 @@ struct TodayCell: View {
         Rectangle()
             .foregroundColor(.clear)
             .frame(width: 45, height: 45)
-            .background(backgroundColor)
+            .background(.clear)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)

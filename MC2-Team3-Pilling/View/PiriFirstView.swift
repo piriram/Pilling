@@ -11,8 +11,8 @@ import SwiftUI
 struct PiriFirstView: View {
     @State private var showingMedicineSheet = false
     @State var isActive = false
-    @State var pillInfo = PillInfo(pillName: "", intakeDay: 0, placeboDay: 0)
-    @State var intakeDay = 0
+    @State var pillInfo = PillInfo(pillName: "야즈", intakeDay: 24, placeboDay: 4)
+    @State var intakeDay = 4
     var body: some View {
         Image("making-plan")
             .resizable()
@@ -88,6 +88,7 @@ struct PiriFirstView: View {
             Button(action: {
                 pillInfo = Config().dummyPillInfos[0]
                 intakeDay = 5
+            
                 isActive = true // 네비게이션 링크를 활성화
             }, label: {
                 Text("다음으로")
