@@ -54,7 +54,7 @@ struct MainView: View {
                             .frame(width: 200, height: 200)
                         VStack(alignment: .leading, spacing: 16) {
                             HStack {
-                                Text("\(today)일차")
+                                Text("4일차")
                                     .largeTitle()
                                 if let whole = user.first?.curPill?.pillInfo.wholeDay{
                                     Text("/\(String(describing: whole))")
@@ -108,8 +108,7 @@ struct MainView: View {
                             HStack {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
-                                    let userData = user.first?.curPill?.findDayData(by: idx)
-                                    let status = userData?.status ?? 0
+                                    let status = user.first?.curPill?.intakeCal[idx].status
                                     let isToday = today == idx
                                     
                                     
@@ -123,7 +122,7 @@ struct MainView: View {
                                         case 2:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
                                         default:
-                                            ActivateCell(isModal: $isModal, backgroundColor: Color.white)
+                                            EmptyView()
                                     }
                                     
                                     
@@ -158,9 +157,6 @@ struct MainView: View {
                     week = curPill.pillInfo.wholeDay/7
                     let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
                     today = Config.daysFromStart(startDay: startDate!)
-                    for idx in 0..<curPill.pillInfo.wholeDay{
-                        print("\(idx):\(curPill.intakeCal[idx].status)")
-                    }
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
