@@ -12,10 +12,15 @@ import SwiftData
 final class UserInfo:Identifiable{
     @Attribute(.unique) var id:UUID
     var scheduleTime:String
+    
+    @Relationship(deleteRule: .cascade,inverse:\PeriodPill.userInfo)
     var curPill:PeriodPill
+    
     var historyPill:[PeriodPill] = [PeriodPill]()
     var isAlarm:Bool
     var isSiri:Bool
+    
+    var periodPill:PeriodPill?
     
     init(scheduleTime: String, curPill: PeriodPill) {
         self.id = UUID()
@@ -36,6 +41,8 @@ final class PeriodPill:Identifiable{
     var finishIntake:String?
     var intakeCal:[DayData]
     var missDay:Int
+    
+    var userInfo:UserInfo?
     
     init(pillInfo: PillInfo, startIntake: String) {
         self.id = UUID()
