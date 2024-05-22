@@ -13,7 +13,7 @@ final class UserInfo:Identifiable{
     @Attribute(.unique) var id:UUID
     var scheduleTime:String
     var curPill:PeriodPill
-    @Relationship var historyPill:[PeriodPill] = [PeriodPill]()
+    var historyPill:[PeriodPill] = [PeriodPill]()
     var isAlarm:Bool
     var isSiri:Bool
     
@@ -24,32 +24,23 @@ final class UserInfo:Identifiable{
         self.historyPill = []
         self.isAlarm = false
         self.isSiri = false
+        
     }
-    
-    
 }
 
 @Model
 final class PeriodPill:Identifiable{
     @Attribute(.unique) let id:UUID
-    @Relationship var pillInfo:PillInfo
+    var pillInfo:PillInfo
     var startIntake:String
     var finishIntake:String? = nil
     var intakeCal:[DayData]
     var missDay:Int
-    
-//    init(pillInfo: PillInfo, startIntake: String) {
-//        self.id = UUID()
-//        self.pillInfo = pillInfo
-//        self.startIntake = startIntake
-//        self.intakeCal = []
-//        self.missDay = 0
-//    }
     init(pillInfo: PillInfo, startIntake: String) {
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
-        self.intakeCal = Array(repeating: DayData(), count: pillInfo.wholeDay)
+        self.intakeCal = Array(repeating: DayData(), count: 30)
         self.missDay = 0
     }
     
