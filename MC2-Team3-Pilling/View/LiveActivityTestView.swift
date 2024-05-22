@@ -18,8 +18,14 @@ struct LiveActivityTestView: View {
     @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_23:00:00")!
     @State private var activity: Activity<LiveTimeAttributes>? = nil
     @State private var progressAmount = 0.0
+    @State private var currentDate = Date.now
+        let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         VStack {
+            Text("\(currentDate.formatted(date: .numeric, time: .standard))")
+                        .onReceive(timer) { input in
+                            currentDate = input
+                        }
             Button(action: {
                     isTracking.toggle()
                     if isTracking {
