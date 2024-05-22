@@ -82,3 +82,26 @@ struct TimeWidgetView: View {
     }
 }
 
+
+// preview 설정
+extension LiveTimeAttributes.ContentState {
+    fileprivate static var start: LiveTimeAttributes.ContentState {
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 0)
+     }
+     
+     fileprivate static var middle: LiveTimeAttributes.ContentState {
+         LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 300)
+     }
+    
+    fileprivate static var end: LiveTimeAttributes.ContentState {
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 600)
+    }
+}
+
+#Preview(as: .content, using: LiveTimeAttributes(), widget: {
+    LiveTimeWidget()
+}, contentStates: {
+    LiveTimeAttributes.ContentState.start
+    LiveTimeAttributes.ContentState.middle
+    LiveTimeAttributes.ContentState.end
+})
