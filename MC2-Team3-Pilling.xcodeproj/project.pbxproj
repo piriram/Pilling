@@ -135,17 +135,17 @@
 		219E17582BF6ED79007B7DC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				93EF92D52BFC4187004DEEF1 /* ChooseStatusView.swift */,
 				939C87E12BF307B600572EDC /* ContentView.swift */,
 				9B0411752BF593A0006F8BB9 /* MainView.swift */,
 				939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */,
 				939C882D2BF5CC9100572EDC /* OnboardingFirstView.swift */,
 				939C88352BF6B9BC00572EDC /* OnboardingSecondView.swift */,
-				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
-				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
 				21B5E33A2BFCC83700D1FC06 /* PiriFirstView.swift */,
 				21B5E33C2BFCDB3A00D1FC06 /* PiriSecondView.swift */,
 				939C88732BFBA01C00572EDC /* PopoverView.swift */,
-				93EF92D52BFC4187004DEEF1 /* ChooseStatusView.swift */,
+				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
+				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
 				21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */,
 			);
 			path = View;
@@ -154,10 +154,10 @@
 		219E17592BF6ED88007B7DC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */,
-				939C87E32BF307B600572EDC /* Item.swift */,
-				21B273072BFB390C002BCC67 /* Model.swift */,
 				21B2730D2BFB85E2002BCC67 /* Config.swift */,
+				939C87E32BF307B600572EDC /* Item.swift */,
+				1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */,
+				21B273072BFB390C002BCC67 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
