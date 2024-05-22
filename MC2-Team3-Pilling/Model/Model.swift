@@ -33,15 +33,17 @@ final class PeriodPill:Identifiable{
     @Attribute(.unique) let id:UUID
     var pillInfo:PillInfo
     var startIntake:String
-    var finishIntake:String? = nil
+    var finishIntake:String?
     var intakeCal:[DayData]
     var missDay:Int
+    
     init(pillInfo: PillInfo, startIntake: String) {
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
         self.intakeCal = Array(repeating: DayData(), count: 30)
         self.missDay = 0
+        self.finishIntake = nil
     }
     
 }
@@ -57,8 +59,9 @@ final class DayData:Identifiable{
     init() {
         self.id = UUID()
         self.status = 0
-        self.sideEffect = Array(repeating: false, count: 3)
+        self.sideEffect = [false,false,false]
         self.memo = ""
+        self.time = nil
     }
     
     
@@ -71,8 +74,8 @@ final class PillInfo:Identifiable{
     var intakeDay:Int
     var placeboDay:Int
     var wholeDay:Int
-    var descriptionInfo:String? = nil
-    var type:String? = nil
+    var descriptionInfo:String?
+    var type:String?
     
     init(pillName: String, intakeDay: Int, placeboDay: Int) {
         self.id = UUID()
@@ -80,6 +83,8 @@ final class PillInfo:Identifiable{
         self.intakeDay = intakeDay
         self.placeboDay = placeboDay
         self.wholeDay = intakeDay+placeboDay
+        self.descriptionInfo = nil
+        self.type = nil
     }
     
 }
