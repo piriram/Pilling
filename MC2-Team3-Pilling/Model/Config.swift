@@ -50,37 +50,46 @@ class Config{
         }
     }
     
-    let days = ["일", "월", "화", "수", "목", "금", "토"]
-    func DayDateToString(date: Date) -> String {
-        let format = "yyyy-MM-dd HH:mm:ss"
+    
+    func DateToString(date: Date,format:String) -> String {
+        
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
-    func DayStringToDate(dateString: String) -> Date? {
-        let format = "yyyy-MM-dd HH:mm:ss"
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = format
-        return dateFormatter.date(from: dateString)
-    }
-    func AlarmDateToString(date: Date) -> String {
-        let format = "HH:mm"
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
-    }
+    func StringToDate(dateString: String,format:String) -> Date? {
+           
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.dateFormat = format
+
+            return dateFormatter.date(from: dateString)
+        }
+    
     func AlarmStringToDate(dateString: String) -> Date? {
         let format = "HH:mm"
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
+
         return dateFormatter.date(from: dateString)
     }
-    
-    
+//    func AlarmDateToString(date: Date) -> String {
+//        let format = "HH:mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone.current
+//        dateFormatter.dateFormat = format
+//        return dateFormatter.string(from: date)
+//    }
+//    func AlarmStringToDate(dateString: String) -> Date? {
+//        let format = "HH:mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone.current
+//        dateFormatter.dateFormat = format
+//        return dateFormatter.date(from: dateString)
+//    }
+     
     static let dummyPillInfos: [PillInfo] = [
         PillInfo(pillName: "쎄스콘정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "미뉴렛정", intakeDay: 21, placeboDay: 7),
@@ -96,10 +105,14 @@ class Config{
         PillInfo(pillName: "야스민정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "클래라정", intakeDay: 26, placeboDay: 2)
+
     ]
-    
-    
+ 
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
 var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
+let days = ["일", "월", "화", "수", "목", "금", "토"]
+let dayformat = "yyyy-MM-dd"
+let dayToHourformat = "yyyy-MM-dd HH:mm:ss"
+let Hourformat = "HH:mm"
 
