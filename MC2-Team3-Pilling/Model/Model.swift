@@ -12,8 +12,8 @@ import SwiftData
 final class UserInfo:Identifiable{
     @Attribute(.unique) var id:UUID
     var scheduleTime:String
-    @Relationship var curPill:PeriodPill
-    @Relationship var historyPill:[PeriodPill] = [PeriodPill]()
+    var curPill:PeriodPill
+    var historyPill:[PeriodPill] = [PeriodPill]()
     var isAlarm:Bool
     var isSiri:Bool
     
@@ -24,9 +24,8 @@ final class UserInfo:Identifiable{
         self.historyPill = []
         self.isAlarm = false
         self.isSiri = false
+        
     }
-    
-    
 }
 
 @Model
@@ -35,35 +34,35 @@ final class PeriodPill:Identifiable{
     var pillInfo:PillInfo
     var startIntake:String
     var finishIntake:String? = nil
-    var intakeCal:[Int]
+    var intakeCal:[DayData]
     var missDay:Int
     init(pillInfo: PillInfo, startIntake: String) {
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
-        self.intakeCal = Array(repeating: 0, count: 30)
+        self.intakeCal = Array(repeating: DayData(), count: 30)
         self.missDay = 0
     }
     
 }
-//
-//@Model
-//final class DayData:Identifiable{
-//    @Attribute(.unique) let id:UUID
-//    var status:Int
-//    var time:String?
-//    var sideEffect:[Bool]
-//    var memo:String
-//    
-//    init() {
-//        self.id = UUID()
-//        self.status = 0
-//        self.sideEffect = Array(repeating: false, count: 3)
-//        self.memo = ""
-//    }
-//    
-//    
-//}
+
+@Model
+final class DayData:Identifiable{
+    @Attribute(.unique) let id:UUID
+    var status:Int
+    var time:String?
+    var sideEffect:[Bool]
+    var memo:String
+    
+    init() {
+        self.id = UUID()
+        self.status = 0
+        self.sideEffect = Array(repeating: false, count: 3)
+        self.memo = ""
+    }
+    
+    
+}
 
 @Model
 final class PillInfo:Identifiable{
