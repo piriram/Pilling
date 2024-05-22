@@ -19,7 +19,7 @@ struct LiveActivityTestView: View {
         return formatter
     }()
     
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_00:03:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_00:17:30")!
     @State private var currentDate = Date.now
     var restOfTime: TimeInterval {
         currentDate.timeIntervalSince(alarmTime)
@@ -29,11 +29,11 @@ struct LiveActivityTestView: View {
             return -1
         } else if 0 <= restOfTime && restOfTime <= 1 { // 알람 시간
             return 0
-        } else if restOfTime <= 10 { //  ~ 알람 시간 10초 이내
+        } else if restOfTime < 11 { //  ~ 알람 시간 10초 이내
             return 1
-        } else if restOfTime <= 20 { // ~ 알람 시간 20초 이내
+        } else if restOfTime < 21 { // ~ 알람 시간 20초 이내
             return 2
-        } else if restOfTime <= 30 { // 알람 시간 후 ~
+        } else if restOfTime < 31 { // 알람 시간 후 ~
             return 3
         } else {
             return 4
@@ -61,7 +61,6 @@ struct LiveActivityTestView: View {
                     else if currentStep == 0 {
                         // 라이브 액티비티 실행
                         print("시작: 현재 시간이 설정한 알람 시간일 때")
-                        progressAmount += 1
                         let attributes = LiveTimeAttributes()
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: currentStep)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)

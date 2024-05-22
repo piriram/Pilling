@@ -20,16 +20,16 @@ struct LiveTimeWidget: Widget {
                         .font(.caption)
                     Text("잔디를 심을 시간이")
                         .bold()
-                    HStack(alignment: .bottom, spacing: 0) {
+                    HStack(alignment: .bottom) {
                         Text(context.state.restOfTime)
                             .font(.title)
-                        Text(context.state.step == 1 ? "남았어요" : "지났어요")
+                        Text(context.state.step <= 1 ? "남았어요" : "지났어요")
                     }
-                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
+                    .foregroundStyle(context.state.step >= 3 ? .red : .customGreen)
                     ProgressView(value: context.state.progressAmount, total: progressTotal)
-                        .tint(context.state.step == 3 ? .red : .customGreen)
+                        .tint(context.state.step >= 3 ? .red : .customGreen)
                 }
-                Image(context.state.step == 3 ? "pilling" : "alarm")
+                Image(context.state.step >= 3 ? "pilling" : "alarm")
             }
             .padding()
         } dynamicIsland: { context in
@@ -44,34 +44,34 @@ struct LiveTimeWidget: Widget {
                                 .bold()
                             HStack(alignment: .bottom) {
                                 Text(context.state.restOfTime)
-                                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
+                                    .foregroundStyle(context.state.step >= 3 ? .red : .customGreen)
                                     .font(.title)
-                                Text(context.state.step == 1 ? "남았어요" : "지났어요")
+                                Text(context.state.step <= 1 ? "남았어요" : "지났어요")
                                     .font(.headline)
-                                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
+                                    .foregroundStyle(context.state.step >= 3 ? .red : .customGreen)
                             }
                             ProgressView(value: context.state.progressAmount, total: progressTotal)
-                                .tint(context.state.step == 3 ? .red : .customGreen)
+                                .tint(context.state.step >= 3 ? .red : .customGreen)
                         }
-                        Image(context.state.step == 3 ? "pilling" : "alarm")
+                        Image(context.state.step >= 3 ? "pilling" : "alarm")
                             .resizable()
                             .scaledToFit()
                     }
                 }
             } compactLeading: {
                 // compact leading(다이나믹 아일랜드 소형 버전 왼쪽)
-                Image(context.state.step == 3 ? "pilling" : "alarm")
+                Image(context.state.step >= 3 ? "pilling" : "alarm")
                     .resizable()
                     .scaledToFit()
             } compactTrailing: {
                 // compact trailing(다이나믹 아일랜드 소형 버전 오른쪽)
                 Text(context.state.restOfTime)
-                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
+                    .foregroundStyle(context.state.step >= 3 ? .red : .customGreen)
             } minimal: {
                 // minimal(다이나믹 아일랜드 가장 작은 버전)
                 ProgressView(value: context.state.progressAmount, total: progressTotal)
                     .progressViewStyle(.circular)
-                    .tint(context.state.step == 3 ? .red : .customGreen)
+                    .tint(context.state.step >= 3 ? .red : .customGreen)
             }
         }
     }
