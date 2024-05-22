@@ -4,14 +4,15 @@ import SwiftUI
 struct MedicineSheetView: View {
     @State private var searchText = ""
 
-    //    @Binding var showingMedicineSheet: Bool
+    @Binding var showingMedicineSheet: Bool
+
     
     @Binding var selectedPill: PillInfo?
     
-    let BirthControlNames = [
-        "쎄스콘정", "미뉴렛정", "에이리스정", "머시론정",
-        "마이보라", "미니보라30","트리퀄라", "멜리안정",
-        "센스리베정", "디어미정", "야스민정", "야즈정","클래라정"]
+    //    let BirthControlNames = [
+    //        "쎄스콘정", "미뉴렛정", "에이리스정", "머시론정",
+    //        "마이보라", "미니보라30","트리퀄라", "멜리안정",
+    //        "센스리베정", "디어미정", "야스민정", "야즈정","클래라정"]
     
     var filteredBirthControl: [PillInfo] {
         if searchText.isEmpty {
@@ -27,23 +28,28 @@ struct MedicineSheetView: View {
                 List(filteredBirthControl) { pill in
                     Button(action: {
                         selectedPill = pill
-                        //                        showingMedicineSheet = false
+                        print(pill.pillName)
                     }) {
-                        Text(pill.pillName)
+                        HStack {
+                            Text(pill.pillName)
+                            Text("\(pill.intakeDay)" + "/" + "\(pill.placeboDay)")
+                                .secondaryRegular()
+                            Spacer()
+                            if selectedPill == pill {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(Color.blue)
+                            }
+                        }
                     }
                 }
                 .searchable(text: $searchText)
             } //리스트의 스타일 수정
             .listStyle(PlainListStyle())
-            //화면 터치시 키보드 숨김
-            .onTapGesture {
-                hideKeyboard()
-            }
         }
         
         // footer button
         Button(action: {
-            //            self.showingMedicineSheet = false
+            self.showingMedicineSheet = false
         }, label: {
             Text("설정완료!")
                 .largeBold()
@@ -63,7 +69,7 @@ struct MedicineSheetView: View {
 //캔버스 컨텐츠뷰
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        
+//
 //        MedicineSheetView(showingMedicineSheet: false)
 ////        MedicineSheetView()
 //    }
