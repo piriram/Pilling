@@ -39,6 +39,7 @@ final class PeriodPill:Identifiable{
     var pillInfo:PillInfo
     var startIntake:String
     var finishIntake:String?
+    @Relationship(deleteRule: .cascade,inverse:\DayData.periodPill)
     var intakeCal:[DayData]
     var missDay:Int
     
@@ -48,10 +49,38 @@ final class PeriodPill:Identifiable{
         self.id = UUID()
         self.pillInfo = pillInfo
         self.startIntake = startIntake
-        self.intakeCal = Array(repeating: DayData(), count: 30)
+        self.intakeCal = []
         self.missDay = 0
         self.finishIntake = nil
     }
+    func printAllDetails() {
+            print("Period Pill Details:")
+            print("ID: \(id)")
+            print("Start Intake: \(startIntake)")
+            if let finish = finishIntake {
+                print("Finish Intake: \(finish)")
+            } else {
+                print("Finish Intake: None")
+            }
+            print("Miss Day: \(missDay)")
+            print("Pill Info:")
+            pillInfo.printAllDetails()
+            print("Intake Calendar:")
+            for dayData in intakeCal {
+                dayData.printAllDetails()
+            }
+//            if let user = userInfo {
+//                print("User Info:")
+//                user.printAllDetails()
+//            } else {
+//                print("User Info: None")
+//            }
+        }
+    func addDayDataEntries(count: Int,dayData:DayData) {
+            for _ in 0..<count {
+                self.intakeCal.append(dayData)
+            }
+        }
     
 }
 
@@ -63,14 +92,28 @@ final class DayData:Identifiable{
     var sideEffect:[Bool]
     var memo:String
     
-    init() {
+    var periodPill:PeriodPill?
+    
+    init(periodPill:PeriodPill? = nil) {
         self.id = UUID()
         self.status = 0
         self.sideEffect = [false,false,false]
         self.memo = ""
         self.time = nil
+        self.periodPill = periodPill
     }
-    
+    func printAllDetails() {
+        print("Day Data Details:")
+        print("ID: \(id)")
+        print("Status: \(status)")
+        if let time = time {
+            print("Time: \(time)")
+        } else {
+            print("Time: None")
+        }
+        print("Side Effects: \(sideEffect)")
+        print("Memo: \(memo)")
+    }
     
 }
 
@@ -93,5 +136,22 @@ final class PillInfo:Identifiable{
         self.descriptionInfo = nil
         self.type = nil
     }
-    
+    func printAllDetails() {
+        print("Pill Info Details:")
+        print("ID: \(id)")
+        print("Pill Name: \(pillName)")
+        print("Intake Day: \(intakeDay)")
+        print("Placebo Day: \(placeboDay)")
+        print("Whole Day: \(wholeDay)")
+        if let description = descriptionInfo {
+            print("Description: \(description)")
+        } else {
+            print("Description: None")
+        }
+        if let pillType = type {
+            print("Type: \(pillType)")
+        } else {
+            print("Type: None")
+        }
+    }
 }

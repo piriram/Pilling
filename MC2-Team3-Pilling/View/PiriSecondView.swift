@@ -43,7 +43,7 @@ struct PiriSecondView: View {
             }, label: {
                 
                 ZStack{
-
+                    
                     DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
                     
                 }
@@ -76,8 +76,17 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
+                let pillInfo = PillInfo(pillName: "야즈", intakeDay: 24, placeboDay: 4)
+                pillInfo.printAllDetails()
+                let dayData = DayData()
+                dayData.printAllDetails()
+                let periodPill = PeriodPill(pillInfo: pillInfo, startIntake: "2024-05-13")
+                
+                periodPill.addDayDataEntries(count: 28, dayData: dayData)
+                periodPill.printAllDetails()
+                
                 let userInfo = UserInfo(scheduleTime: "17:00", curPill: PeriodPill(pillInfo: PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4), startIntake: "2024-05-13"))
-
+                
                 modelContext.insert(userInfo)
                 do {
                     try modelContext.save()
