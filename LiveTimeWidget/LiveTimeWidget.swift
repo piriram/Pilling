@@ -32,14 +32,6 @@ struct LiveTimeWidget: Widget {
             // dynamic island
             DynamicIsland {
                 // expanded dynamic island(다이나믹 아일랜드 꾹 눌러서 확장되는 버전)
-                DynamicIslandExpandedRegion(.leading) {
-                        Text("Pilling")
-                            .font(.subheadline)
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("Pilling")
-                        .font(.subheadline)
-                }
                 DynamicIslandExpandedRegion(.center) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -49,8 +41,14 @@ struct LiveTimeWidget: Widget {
                             Text(context.state.restOfTime, style: .relative)
                                 .foregroundStyle(.customGreen)
                                 .font(.title2)
-                            ProgressView(value: context.state.progressAmount, total: 600)
-                                .tint(.customGreen)
+                            Spacer()
+                            ZStack {
+                                ProgressView(value: context.state.progressAmount, total: 600)
+                                    .tint(.customGreen)
+                                Image(systemName: "mappin")
+                                    .foregroundColor(.secondary)
+                                    .offset(x: -20, y: -10)
+                            }
                         }
                         Spacer()
                         Image("alarm")
