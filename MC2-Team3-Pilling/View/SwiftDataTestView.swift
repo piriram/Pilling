@@ -11,6 +11,7 @@ import SwiftData
 struct SwiftDataTestView: View {
     @Environment(\.modelContext) private var modelContext
     @State var txt = ""
+    @Query var user: [UserInfo]
     
     
     var body: some View {
@@ -24,11 +25,14 @@ struct SwiftDataTestView: View {
                 } catch {
                     print("Failed to save context: \(error.localizedDescription)")
                 }
+                
             }
                    , label: {
                 /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
             })
-            
+            withAnimation{
+                Text(user.first?.curPill.pillInfo.pillName ?? "없음")
+            }
             
         }
         .padding()
