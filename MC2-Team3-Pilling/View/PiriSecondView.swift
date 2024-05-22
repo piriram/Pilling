@@ -43,13 +43,7 @@ struct PiriSecondView: View {
             }, label: {
                 
                 ZStack{
-//                    HStack {
-//                        Image(systemName: "clock")
-//                        Text("복용 시간")
-//                            .secondaryTitle()
-//                        Spacer()
-//                        
-//                    }
+
                     DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
                     
                 }
@@ -82,24 +76,18 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
-                print(alarmTime)
+//                print(alarmTime)
                 var scheduleTime = Config().DateToString(date: alarmTime, format: Hourformat)
                 print(scheduleTime)
-                var periodPill = save(pillInfo: pillInfo, curIntakeDay: intakeDay)
+                var periodPill = findStartDay(pillInfo: pillInfo, curIntakeDay: intakeDay)
                 
                 print(periodPill)
+                print("periodPillInfo:\(periodPill.startIntake)")
                 var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
-//                print(userInfo.curPill.startIntake)
+                userInfo.curPill.intakeCal=Array(repeating: DayData(), count: 30)
+                print("userInfo:\(userInfo.curPill.intakeCal[0])")
                 var pillInfo = user.first?.curPill
-//                print(userInfo)
-//                for index in 22...26{
-//                    userInfo.curPill.intakeCal[index].status = 3
-//                }
-//                for index in (pillInfo?.pillInfo.intakeDay ?? 24)...(pillInfo?.pillInfo.wholeDay ?? 28)-1{
-//                    userInfo.curPill.intakeCal[index].status = 3
-//                }
-//                print(userInfo.curPill.intakeCal)
-                            
+
                 modelContext.insert(userInfo)
                 do {
                     try modelContext.save()
@@ -130,7 +118,7 @@ struct PiriSecondView: View {
             print(intakeDay)
         }
     }
-    func save(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
+    func findStartDay(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
         
         let currentDate = Date()
         let calendar = Calendar.current
