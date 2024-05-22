@@ -23,14 +23,14 @@ struct LiveTimeWidget: Widget {
                     HStack(alignment: .bottom, spacing: 0) {
                         Text(context.state.restOfTime, style: .relative)
                             .font(.title)
-                            .frame(maxWidth: 125, maxHeight: 25)
-                        Text("남았어요")
+                            .frame(maxWidth: 130, maxHeight: 25)
+                        Text(context.state.step == 1 ? "남았어요" : "지났어요")
                     }
-                    .foregroundStyle(.customGreen)
+                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
                     ProgressView(value: context.state.progressAmount, total: progressTotal)
-                        .tint(.customGreen)
+                        .tint(context.state.step == 3 ? .red : .customGreen)
                 }
-                Image("alarm")
+                Image(context.state.step == 3 ? "pilling" : "alarm")
             }
             .padding()
         } dynamicIsland: { context in
@@ -92,15 +92,15 @@ struct TimeWidgetView: View {
 // preview 설정
 extension LiveTimeAttributes.ContentState {
     fileprivate static var start: LiveTimeAttributes.ContentState {
-        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 0)
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 0, step: 1)
     }
     
     fileprivate static var middle: LiveTimeAttributes.ContentState {
-        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 300)
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 300, step: 2)
     }
     
     fileprivate static var end: LiveTimeAttributes.ContentState {
-        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 600)
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 600, step: 3)
     }
 }
 

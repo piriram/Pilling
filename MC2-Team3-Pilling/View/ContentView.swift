@@ -61,12 +61,12 @@ struct ContentView: View {
                         // start live activity
                         progressAmount = 0.0
                         let attributes = LiveTimeAttributes()
-                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: progressAmount)
+                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: progressAmount, step: 1)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
                         activity = try? Activity<LiveTimeAttributes>.request(attributes: attributes, content: content, pushType: nil)
                     } else {
                         // end live activity
-                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: 600)
+                        let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: 600, step: 3)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(600))
                         Task {
                             await activity?.end(content, dismissalPolicy:.immediate)
@@ -79,8 +79,7 @@ struct ContentView: View {
             if isTracking {
                 Button(action: {
                     progressAmount += 50
-                    let attributes = LiveTimeAttributes()
-                    let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: progressAmount)
+                    let state = LiveTimeAttributes.ContentState(restOfTime: alarmTime, progressAmount: progressAmount, step: 3)
                     let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
                     Task {
                         await activity?.update(content)
