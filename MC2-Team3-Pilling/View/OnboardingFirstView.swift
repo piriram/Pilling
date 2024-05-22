@@ -48,8 +48,8 @@ struct OnboardingFirstView: View {
             .foregroundColor(.secondary)
             .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
-//                MedicineSheetView(showingMedicineSheet: true)
-                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
+                MedicineSheetView(selectedPill: $selectedPill)
+                //                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
                     .presentationDetents([.medium])
             }
             
@@ -79,7 +79,7 @@ struct OnboardingFirstView: View {
         // footer button
         Button(action: {
             //            OnboardingView02()
-
+            
         }, label: {
             Text("다음으로")
                 .largeBold()
@@ -91,7 +91,7 @@ struct OnboardingFirstView: View {
         .foregroundColor(.black)
         .padding()
     }
-
+    
 }
 
 #Preview {

@@ -3,8 +3,7 @@ import SwiftUI
 
 struct MedicineSheetView: View {
     @State private var searchText = ""
-    @Binding var showingMedicineSheet: Bool
-//    @State var showingMedicineSheet = false
+    //    @Binding var showingMedicineSheet: Bool
     
     @Binding var selectedPill: PillInfo?
     
@@ -27,7 +26,7 @@ struct MedicineSheetView: View {
                 List(filteredBirthControl) { pill in
                     Button(action: {
                         selectedPill = pill
-                        showingMedicineSheet = false
+                        //                        showingMedicineSheet = false
                     }) {
                         Text(pill.pillName)
                     }
@@ -43,7 +42,7 @@ struct MedicineSheetView: View {
         
         // footer button
         Button(action: {
-            self.showingMedicineSheet = false
+            //            self.showingMedicineSheet = false
         }, label: {
             Text("설정완료!")
                 .largeBold()
@@ -84,7 +83,7 @@ extension View {
 
 
 #Preview {
-
-//    MedicineSheetView()
+    
+    //    MedicineSheetView()
     OnboardingFirstView()
 }
