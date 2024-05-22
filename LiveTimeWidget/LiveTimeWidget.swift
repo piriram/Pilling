@@ -39,22 +39,21 @@ struct LiveTimeWidget: Widget {
                 DynamicIslandExpandedRegion(.center) {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("잔디를 심을 시간이에요!")
+                            Text("잔디를 심을 시간이")
                                 .font(.headline)
                                 .bold()
-                            Text(context.state.restOfTime, style: .relative)
-                                .foregroundStyle(.customGreen)
-                                .font(.title2)
-                            Spacer()
-                            ZStack {
-                                ProgressView(value: context.state.progressAmount, total: 600)
-                                    .tint(.customGreen)
-                                Image(systemName: "mappin")
-                                    .foregroundColor(.secondary)
-                                    .offset(x: -20, y: -10)
+                            HStack(alignment: .bottom) {
+                                Text(context.state.restOfTime, style: .relative)
+                                    .foregroundStyle(.customGreen)
+                                    .font(.title)
+                                    .frame(maxWidth: 125)
+                                Text("남았어요")
+                                    .font(.headline)
+                                    .foregroundStyle(.customGreen)
                             }
+                            ProgressView(value: context.state.progressAmount, total: 600)
+                                .tint(.customGreen)
                         }
-                        Spacer()
                         Image("alarm")
                             .resizable()
                             .scaledToFit()
@@ -91,11 +90,11 @@ struct TimeWidgetView: View {
 extension LiveTimeAttributes.ContentState {
     fileprivate static var start: LiveTimeAttributes.ContentState {
         LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 0)
-     }
-     
-     fileprivate static var middle: LiveTimeAttributes.ContentState {
-         LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 300)
-     }
+    }
+    
+    fileprivate static var middle: LiveTimeAttributes.ContentState {
+        LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 300)
+    }
     
     fileprivate static var end: LiveTimeAttributes.ContentState {
         LiveTimeAttributes.ContentState(restOfTime: Date.now, progressAmount: 600)
