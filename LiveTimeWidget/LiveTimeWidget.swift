@@ -45,17 +45,17 @@ struct LiveTimeWidget: Widget {
                                 .bold()
                             HStack(alignment: .bottom) {
                                 Text(context.state.restOfTime, style: .relative)
-                                    .foregroundStyle(.customGreen)
+                                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
                                     .font(.title)
                                     .frame(maxWidth: 125)
-                                Text("남았어요")
+                                Text(context.state.step == 1 ? "남았어요" : "지났어요")
                                     .font(.headline)
-                                    .foregroundStyle(.customGreen)
+                                    .foregroundStyle(context.state.step == 3 ? .red : .customGreen)
                             }
                             ProgressView(value: context.state.progressAmount, total: progressTotal)
-                                .tint(.customGreen)
+                                .tint(context.state.step == 3 ? .red : .customGreen)
                         }
-                        Image("alarm")
+                        Image(context.state.step == 3 ? "pilling" : "alarm")
                             .resizable()
                             .scaledToFit()
                     }
