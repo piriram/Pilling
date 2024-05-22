@@ -51,15 +51,17 @@ final class PeriodPill:Identifiable{
         self.startIntake = startIntake
         self.missDay = 0
         self.finishIntake = nil
-//        print(self.intakeCal) []
+        //        print(self.intakeCal) []
     }
-    
+    func findDayData(by num: Int) -> DayData? {
+            return intakeCal.first { $0.num == num }
+        }
     
 }
 
 @Model
 final class DayData:Identifiable{
-    @Attribute(.unique) let id:UUID
+    @Attribute(.unique) let num:Int
     var status:Int
     var time:String?
     var sideEffect:[Bool]
@@ -67,8 +69,8 @@ final class DayData:Identifiable{
     
     var periodPill:PeriodPill?
     
-    init(periodPill:PeriodPill? = nil) {
-        self.id = UUID()
+    init(num:Int,periodPill:PeriodPill? = nil) {
+        self.num=num
         self.status = 0
         self.sideEffect = [false,false,false]
         self.memo = ""
@@ -101,33 +103,33 @@ final class PillInfo:Identifiable{
 }
 extension PeriodPill{
     func printAllDetails() {
-            print("Period Pill Details:")
-            print("ID: \(id)")
-            print("Start Intake: \(startIntake)")
-            if let finish = finishIntake {
-                print("Finish Intake: \(finish)")
-            } else {
-                print("Finish Intake: None")
-            }
-            print("Miss Day: \(missDay)")
-            print("Pill Info:")
-            pillInfo.printAllDetails()
-            print("Intake Calendar:")
-            for dayData in intakeCal {
-                dayData.printAllDetails()
-            }
-//            if let user = userInfo {
-//                print("User Info:")
-//                user.printAllDetails()
-//            } else {
-//                print("User Info: None")
-//            }
+        print("Period Pill Details:")
+        print("ID: \(id)")
+        print("Start Intake: \(startIntake)")
+        if let finish = finishIntake {
+            print("Finish Intake: \(finish)")
+        } else {
+            print("Finish Intake: None")
         }
+        print("Miss Day: \(missDay)")
+        print("Pill Info:")
+        pillInfo.printAllDetails()
+        print("Intake Calendar:")
+        for dayData in intakeCal {
+            dayData.printAllDetails()
+        }
+        //            if let user = userInfo {
+        //                print("User Info:")
+        //                user.printAllDetails()
+        //            } else {
+        //                print("User Info: None")
+        //            }
+    }
     func addDayDataEntries(count: Int,dayData:DayData) {
-            for _ in 0..<count {
-                self.intakeCal.append(dayData)
-            }
+        for _ in 0..<count {
+            self.intakeCal.append(dayData)
         }
+    }
 }
 
 extension DayData{

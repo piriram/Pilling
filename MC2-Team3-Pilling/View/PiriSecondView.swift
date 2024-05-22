@@ -100,19 +100,17 @@ struct PiriSecondView: View {
         if let selectePillInfo = pillInfo {
             modelContext.insert(selectePillInfo)
             
-            let startIntake = Config.DateToString(date: Date(), format: Config.dayformat)
+//            let startIntake = Config.DateToString(date: Date(), format: Config.dayformat)
+            let startIntake = "2024-05-19"
             
             let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
-            
-            let dayData = DayData()
-            modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
             
             let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
             let today = Config.daysFromStart(startDay: startDate!)
             
             let wholeDay = selectePillInfo.wholeDay
-            for _ in 0..<wholeDay {
-                let dayData = DayData()
+            for idx in 0..<wholeDay {
+                let dayData = DayData(num:idx)
                 //                    dayData.periodPill = periodPill
                 modelContext.insert(dayData)
                 periodPill.intakeCal.append(dayData)
@@ -125,8 +123,12 @@ struct PiriSecondView: View {
                 }
             }
             //위약 status 초기화
-            for idx in pillInfo!.intakeDay-1..<wholeDay{
+            for idx in pillInfo!.intakeDay..<wholeDay{
                 periodPill.intakeCal[idx].status=3
+            }
+            
+            for idx in 0..<wholeDay{
+                print("\(idx):\(periodPill.intakeCal[idx].status)")
             }
             
             modelContext.insert(periodPill)
