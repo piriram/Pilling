@@ -31,12 +31,7 @@ struct MC2_Team3_PillingApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack{
-                if user.isEmpty {
-                    OnboardingFirstView()
-                }
-                else{
-                    MainView()
-                }
+                SplashScreenView()
             }
             
         }

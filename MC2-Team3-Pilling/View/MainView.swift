@@ -27,7 +27,7 @@ struct MainView: View {
     @State private var showingMedicineSheet = false
     
 //    @State private var selectedPill: PillInfo? = nil
-    @State private var selectedPill: PillInfo? 
+    @State private var selectedPill: PillInfo?
         
     var body: some View {
         
