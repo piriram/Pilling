@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B38E53A2BFDE11500CFD48B /* LiveActivityTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B38E5392BFDE11500CFD48B /* LiveActivityTestView.swift */; };
 		1B6530442BFB7C1600452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
 		1B65304C2BFB8A0C00452ACB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B65304B2BFB8A0C00452ACB /* WidgetKit.framework */; };
 		1B65304E2BFB8A0C00452ACB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B65304D2BFB8A0C00452ACB /* SwiftUI.framework */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B38E5392BFDE11500CFD48B /* LiveActivityTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityTestView.swift; sourceTree = "<group>"; };
 		1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTimeAttributes.swift; sourceTree = "<group>"; };
 		1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LiveTimeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B65304B2BFB8A0C00452ACB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 			children = (
 				93EF92D52BFC4187004DEEF1 /* ChooseStatusView.swift */,
 				939C87E12BF307B600572EDC /* ContentView.swift */,
+				1B38E5392BFDE11500CFD48B /* LiveActivityTestView.swift */,
 				9B0411752BF593A0006F8BB9 /* MainView.swift */,
 				939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */,
 				939C882D2BF5CC9100572EDC /* OnboardingFirstView.swift */,
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B38E53A2BFDE11500CFD48B /* LiveActivityTestView.swift in Sources */,
 				21B5E33B2BFCC83700D1FC06 /* PiriFirstView.swift in Sources */,
 				939C87E22BF307B600572EDC /* ContentView.swift in Sources */,
 				93EF92D62BFC4187004DEEF1 /* ChooseStatusView.swift in Sources */,
@@ -361,7 +365,9 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 223UXY9RY6;
+
+
+				DEVELOPMENT_TEAM = 62WZR6T98R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiveTimeWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LiveTimeWidget;
@@ -390,7 +396,8 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 223UXY9RY6;
+
+				DEVELOPMENT_TEAM = 62WZR6T98R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiveTimeWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LiveTimeWidget;
@@ -537,7 +544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team3-Pilling/Preview Content\"";
-				DEVELOPMENT_TEAM = F5WP2FDW4U;
+				DEVELOPMENT_TEAM = 62WZR6T98R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -577,7 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team3-Pilling/Preview Content\"";
-				DEVELOPMENT_TEAM = F5WP2FDW4U;
+				DEVELOPMENT_TEAM = 62WZR6T98R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
