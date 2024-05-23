@@ -21,9 +21,9 @@ struct OnboardingSecondView: View {
     
     var body: some View {
         VStack{
-            Image("clock")
-                .resizable()
-                .frame(width: 240, height: 240)
+            Image("onboardingSecond")
+                //.resizable()
+                //.frame(width: 240, height: 240)
             
             // Text
             HStack {
@@ -80,7 +80,7 @@ struct OnboardingSecondView: View {
                 Text("설정완료!")
                     .font(.title3)
                     .bold()
-                    .padding(.vertical, 30)
+                    .padding(.vertical, 25)
                     .frame(maxWidth: .infinity)
                     .background(Color.customGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 20))

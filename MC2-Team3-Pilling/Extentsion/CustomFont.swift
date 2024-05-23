@@ -21,7 +21,7 @@ extension View {
         self.modifier(CustomFontStyle(fontType: .body, isBold: true, color: .black, kerning: -1.5))
     }
     func largeBold() -> some View {
-        self.modifier(CustomFontStyle(fontType: .title2, isBold: true, color: .black, kerning: -1.5))
+        self.modifier(CustomFontStyle(fontType: .title3, isBold: true, color: .black, kerning: -1.5))
     }
     func regular() -> some View {
         self.modifier(CustomFontStyle(fontType: .body, isBold: false, color: .black, kerning: -1.5))

@@ -42,7 +42,7 @@ struct ChooseStatusView: View {
     @Binding var showingChooseStatus: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing:20) {
             // 현재일 / 전체복용일수
             HStack {
                 Text("4일차")
@@ -57,12 +57,14 @@ struct ChooseStatusView: View {
                 // 약 복용 여부 확인
                 Picker("selection", selection: $dosageType) {
                     ForEach(DosageType.allCases) { dosageType in
-                        Text("\(dosageType.takingType)").tag(dosageType.rawValue)
+                        Text("\(dosageType.takingType)")
+                            .tag(dosageType.rawValue)
+                        
                     }
                 }
 
                 .pickerStyle(.segmented)
-                .padding(.vertical, 15)
+                .padding(.vertical, 10)
                 // selection Print 되는 값 확인
                 //            .onChange(of: selectedNum) { newValue in
                 //                print("Selected number: \(newValue)")
@@ -85,7 +87,7 @@ struct ChooseStatusView: View {
                     }
                     .padding([.leading, .trailing], 20)
                 })
-                .padding(.vertical, 16)
+                .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
                 .background(.customGray02)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -94,7 +96,8 @@ struct ChooseStatusView: View {
                 
                 
                 // 부작용 섹션
-                VStack {
+                VStack(spacing: 16) {
+                    
                     Toggle("부정출혈", isOn: $irrBleedingToggle)
                     
                     Toggle("구역질", isOn: $nauseaToggle)
@@ -103,11 +106,10 @@ struct ChooseStatusView: View {
                     
                     
                     HStack {
-                        Text("메모")
-                            .padding(.trailing, 10)
-                        TextField("", text: $sideEffectMemo)
-                            .padding(5)
+                        TextField("관련 사항 메모", text: $sideEffectMemo)
+                            .padding(10)
                             .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(10)
                     }
                 }
                 .padding([.top, .bottom], 15)
@@ -123,7 +125,7 @@ struct ChooseStatusView: View {
                     .font(.title3)
                     .bold()
             })
-            .padding(.vertical, 30)
+            .padding(.vertical, 25)
             .frame(maxWidth: .infinity)
             .background(.customGreen)
             .clipShape(RoundedRectangle(cornerRadius: 20))
