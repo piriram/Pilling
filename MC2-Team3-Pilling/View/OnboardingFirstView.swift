@@ -1,13 +1,19 @@
+//
+//  PiriView.swift
+//  MC2-Team3-Pilling
+//
+//  Created by ram on 5/21/24.
+//
+
 
 import SwiftUI
 
 struct OnboardingFirstView: View {
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
-    
-    @State private var selectedTakingDays: Int = 0
-    
-    
+    @State var isActive = false
+    @State var pillInfo = PillInfo(pillName: "야즈", intakeDay: 24, placeboDay: 4)
+    @State var selectedTakingDays = 4
     
     var body: some View {
         Image("making-plan")
@@ -40,7 +46,6 @@ struct OnboardingFirstView: View {
                     Text("약 종류")
                         .secondaryRegular()
                     Spacer()
-                    
                     Image(systemName: "chevron.right")
                 }
                 .padding([.leading, .trailing], 25)
@@ -53,9 +58,9 @@ struct OnboardingFirstView: View {
             .padding([.leading, .trailing], 16)
             .sheet(isPresented: $showingMedicineSheet){
                 MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
-                //                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
                     .presentationDetents([.medium])
             }
+            
             
             
             Button(action: {}, label: {
@@ -93,24 +98,34 @@ struct OnboardingFirstView: View {
         
         Spacer()
         
-        // footer button
-        Button(action: {
-            //            OnboardingView02()
+        VStack {
+            // footer button
+            Button(action: {
+                pillInfo = Config.dummyPillInfos[1]
+                print("pillInfo.pillName:\(pillInfo.placeboDay)")
+                selectedTakingDays = 5
+                isActive = true // 네비게이션 링크를 활성화
+            }, label: {
+                Text("다음으로")
+                    .largeBold()
+            })
+            .padding(.vertical, 30)
+            .frame(maxWidth: .infinity)
+            .background(Color.customGreen)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .foregroundColor(.black)
+            .padding()
             
-        }, label: {
-            Text("다음으로")
-                .largeBold()
-        })
-        .padding(.vertical, 30)
-        .frame(maxWidth: .infinity)
-        .background(.customGreen)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.black)
-        .padding()
+            // 버튼과 네비게이션링크를 같이 띄우는 방법?
+            
+            NavigationLink(
+                destination: OnboardingSecondView(pillInfo: $selectedPill, intakeDay: $selectedTakingDays),
+                isActive: $isActive,
+                label: {
+                    EmptyView() // 보이지 않게 설정
+                }
+            )
+        }
     }
     
-}
-
-#Preview {
-    OnboardingFirstView()
 }

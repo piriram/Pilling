@@ -85,12 +85,3 @@ extension View {
 }
 #endif
 
-
-
-
-
-#Preview {
-    
-    //    MedicineSheetView()
-    OnboardingFirstView()
-}
