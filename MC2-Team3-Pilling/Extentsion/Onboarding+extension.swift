@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-extension PiriSecondView{
+extension OnboardingFirstView{
     
     func findStartDay(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
         

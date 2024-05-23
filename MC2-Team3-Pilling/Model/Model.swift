@@ -65,6 +65,7 @@ final class DayData:Identifiable{
     var sideEffect:[Bool]
     var memo:String
     
+    
     var periodPill:PeriodPill?
     
     init(periodPill:PeriodPill? = nil) {
