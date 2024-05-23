@@ -19,21 +19,22 @@ struct LiveActivityTestView: View {
         return formatter
     }()
     
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_09:13:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_11:34:10")!
     @State private var currentDate = Date.now
+    let alarmDeadline: Double = 10 //
     var restOfTime: TimeInterval {
-        currentDate.timeIntervalSince(alarmTime)
+        currentDate.timeIntervalSince(alarmTime) - alarmDeadline
     }
     var currentStep: Int {
-        if restOfTime < 0 { // 알람 시간 전
+        if restOfTime < -alarmDeadline - 1 { // 알람 시간 전
             return -1
-        } else if 0 <= restOfTime && restOfTime <= 1 { // 알람 시간
+        } else if -alarmDeadline - 1 <= restOfTime && restOfTime <= -alarmDeadline { // 알람 시간
             return 0
-        } else if restOfTime < 11 { //  ~ 알람 시간 10초 이내
+        } else if restOfTime < -alarmDeadline + 11 { //  ~ 알람 시간 10초 이내
             return 1
-        } else if restOfTime < 21 { // ~ 알람 시간 20초 이내
+        } else if restOfTime < -alarmDeadline + 21 { // ~ 알람 시간 20초 이내
             return 2
-        } else if restOfTime < 31 { // 알람 시간 후 ~
+        } else if restOfTime < -alarmDeadline + 31 { // 알람 시간 후 ~
             return 3
         } else {
             return 4
