@@ -26,144 +26,144 @@ struct MainView: View {
     
     @State private var showingMedicineSheet = false
     
-//    @State private var selectedPill: PillInfo? = nil
+    //    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo? 
-        
+    
     var body: some View {
         
         
-        NavigationStack {
-            ZStack {
-                GreenGradient()
-                VStack(spacing: 20) {
-                    // navigation icons
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            showingPopover = true
-                        }, label: {
-                            
-                            Image(systemName: "info.circle.fill")
-                                .Icon()
-                        })
-                        .popover(isPresented: $showingPopover, attachmentAnchor: .point(.bottom),
-                                 arrowEdge: .top) {
-                            PopoverView()
-                                .padding()
-                                .presentationCompactAdaptation(.popover)
-                        }
-                        NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
-                            Image(systemName: "gearshape")
-                                .Icon()
-                        })
-                    }
-                    
-                    // status header
-                    HStack(alignment: .center) {
-                        Image("1case")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                        VStack(alignment: .leading, spacing: 16) {
-                            HStack {
-                                Text("4일차")
-                                    .largeTitle()
-                                if let whole = user.first?.curPill?.pillInfo.wholeDay{
-                                    Text("/\(String(describing: whole))")
-                                        .secondaryTitle()
-                                }
-                                else{
-                                    Text("")
-                                }
-                                
-                            }
-                            if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
-                                Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
-                                    .secondaryRegular()
-                            }else{
-                                Label("", systemImage: "calendar")
-                                    .secondaryRegular()
-                            }
-                            
-                            Label(user.first?.scheduleTime ?? "00:00", systemImage: "clock.fill")
-                                .secondaryRegular()
-                            
-                        }
-                        Spacer()
-                    }
-                    
-                    // now statement
-                    HStack {
-                        Image(systemName: "drop")
-                            .foregroundColor(.customGreen)
-                        Text(statusMessage.description)
-                            .boldRegular()
-                        Spacer()
-                    }
-                    .padding(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.customGray, lineWidth: 1)
-                    )
-                    
-                    // calendar view
-                    VStack(spacing: 10) {
-                        HStack {
-                            ForEach(startNum...(startNum+6),id:\.self){ num in
-                                DayView(num: (num%7))
-                            }
-                            
-                        }
-                        .regular()
+        
+        ZStack {
+            GreenGradient()
+            VStack(spacing: 20) {
+                // navigation icons
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showingPopover = true
+                    }, label: {
                         
-                        ForEach(0..<week) { y in
-                            HStack {
-                                ForEach(0..<7) { x in
-                                    let idx = y * 7 + x
-                                    let status = user.first?.curPill?.intakeCal[idx].status
-                                    let isToday = today == idx
-                                    
-                                    
-                                    switch status {
-                                        case 3: // 위약
-                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
-                                        case 0:
-                                            ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
-                                        case 1:
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customGreen)
-                                        case 2:
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
-                                        default:
-                                            EmptyView()
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                }
+                        Image(systemName: "info.circle.fill")
+                            .Icon()
+                    })
+                    .popover(isPresented: $showingPopover, attachmentAnchor: .point(.bottom),
+                             arrowEdge: .top) {
+                        PopoverView()
+                            .padding()
+                            .presentationCompactAdaptation(.popover)
+                    }
+                    NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
+                        Image(systemName: "gearshape")
+                            .Icon()
+                    })
+                }
+                
+                // status header
+                HStack(alignment: .center) {
+                    Image("1case")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            Text("4일차")
+                                .largeTitle()
+                            if let whole = user.first?.curPill?.pillInfo.wholeDay{
+                                Text("/\(String(describing: whole))")
+                                    .secondaryTitle()
                             }
+                            else{
+                                Text("")
+                            }
+                            
                         }
+                        if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
+                            Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
+                                .secondaryRegular()
+                        }else{
+                            Label("", systemImage: "calendar")
+                                .secondaryRegular()
+                        }
+                        
+                        Label(user.first?.scheduleTime ?? "00:00", systemImage: "clock.fill")
+                            .secondaryRegular()
+                        
                     }
                     Spacer()
-                    
-                    // footer button
-                    Button(action: {}, label: {
-                        Text("잔디 심기")
-                            .largeBold()
-                    })
-                    .padding(.vertical, 25)
-                    .frame(maxWidth: .infinity)
-                    .background(.customGreen)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .foregroundColor(.black)
                 }
-                .padding()
-                LiveActivityView()
-                    .opacity(0.0)
+                
+                // now statement
+                HStack {
+                    Image(systemName: "drop")
+                        .foregroundColor(.customGreen)
+                    Text(statusMessage.description)
+                        .boldRegular()
+                    Spacer()
+                }
+                .padding(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.customGray, lineWidth: 1)
+                )
+                
+                // calendar view
+                VStack(spacing: 10) {
+                    HStack {
+                        ForEach(startNum...(startNum+6),id:\.self){ num in
+                            DayView(num: (num%7))
+                        }
+                        
+                    }
+                    .regular()
+                    
+                    ForEach(0..<week) { y in
+                        HStack {
+                            ForEach(0..<7) { x in
+                                let idx = y * 7 + x
+                                let status = user.first?.curPill?.intakeCal[idx].status
+                                let isToday = today == idx
+                                
+                                
+                                switch status {
+                                    case 3: // 위약
+                                        PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
+                                    case 0:
+                                        ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    case 1:
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customGreen)
+                                    case 2:
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                    default:
+                                        EmptyView()
+                                }
+                                
+                                
+                                
+                                
+                            }
+                        }
+                    }
+                }
+                Spacer()
+                
+                // footer button
+                Button(action: {}, label: {
+                    Text("잔디 심기")
+                        .largeBold()
+                })
+                .padding(.vertical, 25)
+                .frame(maxWidth: .infinity)
+                .background(.customGreen)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .foregroundColor(.black)
             }
-            .sheet(isPresented: $isModal){
-                ChooseStatusView(showingChooseStatus: $isModal)
-                    .presentationDetents([.medium])
-            }
+            .padding()
+            LiveActivityView()
+                .opacity(0.0)
+        }
+        .sheet(isPresented: $isModal){
+            ChooseStatusView(showingChooseStatus: $isModal)
+                .presentationDetents([.medium])
+            
         }
         
         .onAppear {
@@ -180,7 +180,7 @@ struct MainView: View {
             }
             var changeUser = user.first?.curPill?.intakeCal[0]
             changeUser?.status = 0
-//            modelContext.update(changeUser)
+            //            modelContext.update(changeUser)
             
         }
         
