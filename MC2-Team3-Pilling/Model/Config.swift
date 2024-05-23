@@ -52,7 +52,7 @@ class Config{
     
 
     
-    func AlarmStringToDate(dateString: String) -> Date? {
+    static func AlarmStringToDate(dateString: String) -> Date? {
         let format = "HH:mm"
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
