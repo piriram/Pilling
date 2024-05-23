@@ -17,6 +17,8 @@ struct OnboardingSecondView: View {
     @Query var user:[UserInfo]
     
     var body: some View {
+
+
         NavigationStack{
             if !isActive {
                 VStack{
@@ -24,6 +26,7 @@ struct OnboardingSecondView: View {
                     //.resizable()
                     //.frame(width: 240, height: 240)
                     
+
                     // Text
                     HStack {
                         VStack(alignment: .leading) {
