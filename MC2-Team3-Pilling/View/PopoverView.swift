@@ -4,19 +4,28 @@ import SwiftUI
 struct PopoverView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Text("필링 가이드")
-                .largeBold()
+            HStack {
+                Image(systemName: "book.fill")
+                    .foregroundColor(.customGray)
+                    .font(.title)
+                
+                Text("필링 가이드")
+                    .largeBold()
                 .padding(.bottom, 3)
+            }
             Text("피임약 복용 상태를 잔디로 알려줘요!")
                 .secondaryRegular()
-                .padding(.bottom)
-            
+                
+            Divider()
+                .padding(.vertical, 8)
+                
             HStack{
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 45, height: 45)
                     .foregroundStyle(.customGreen)
                 
                 Text("피임약 복용")
+                    .regular()
             }
             .padding(.bottom)
             
@@ -40,6 +49,7 @@ struct PopoverView: View {
                 .frame(width: 45, height: 45)
                 
                 Text("피임약 2알 복용")
+                    .regular()
             }
             .padding(.bottom)
             
@@ -49,6 +59,8 @@ struct PopoverView: View {
                     .foregroundStyle(.customBrown)
                 
                 Text("미복용")
+                    .regular()
+                    
             }
             .padding(.bottom)
             
@@ -65,7 +77,25 @@ struct PopoverView: View {
                         
                     )
                 
-                Text("현재")
+                Text("오늘")
+                    .regular()
+            }
+            .padding(.bottom)
+            
+            HStack{
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 45, height: 45)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .inset(by: 0.5)
+                            .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 2)
+                        
+                    )
+                
+                Text("위약/휴약")
+                    .regular()
             }
         }
     }
