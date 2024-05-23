@@ -24,6 +24,7 @@ extension Config{
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
+    
     static func StringToDate(dateString: String,format:String) -> Date? {
            
             let dateFormatter = DateFormatter()
