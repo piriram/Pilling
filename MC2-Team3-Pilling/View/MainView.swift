@@ -152,6 +152,8 @@ struct MainView: View {
                     .foregroundColor(.black)
                 }
                 .padding()
+                LiveActivityView()
+                    .opacity(0.0)
             }
             .sheet(isPresented: $isModal){
                 ChooseStatusView(showingChooseStatus: $isModal)
