@@ -9,6 +9,7 @@ import SwiftUI
 import ActivityKit
 
 struct LiveActivityView: View {
+    @State var alarmTime: Date
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy_HH:mm:ss"
@@ -18,10 +19,8 @@ struct LiveActivityView: View {
         let formatter = DateComponentsFormatter()
         return formatter
     }()
-    
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_12:32:00")!
     @State private var currentDate = Date.now
-    let alarmDeadline: Double = 10 //
+    let alarmDeadline: Double = 60 * 30 // LiveTimeWidget의 progressTotal과 동일하게 설정
     var restOfTime: TimeInterval {
         currentDate.timeIntervalSince(alarmTime) - alarmDeadline
     }
@@ -30,11 +29,11 @@ struct LiveActivityView: View {
             return -1
         } else if -alarmDeadline - 1 <= restOfTime && restOfTime <= -alarmDeadline { // 알람 시간
             return 0
-        } else if restOfTime < -alarmDeadline + 11 { //  ~ 알람 시간 10초 이내
+        } else if restOfTime <  1 { //  ~ 30분 이내
             return 1
-        } else if restOfTime < -alarmDeadline + 21 { // ~ 알람 시간 20초 이내
+        } else if restOfTime < alarmDeadline * 3 + 1 { // ~ 2시간 이내
             return 2
-        } else if restOfTime < -alarmDeadline + 31 { // 알람 시간 후 ~
+        } else if restOfTime < alarmDeadline * 7 + 1  { // ~ 4시간 이내
             return 3
         } else {
             return 4
@@ -47,6 +46,8 @@ struct LiveActivityView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
+        Text("현재 시간: \(currentDate.formatted(date: .numeric, time: .standard))")
+        Text("알람 시간: \(alarmTime.formatted(date: .numeric, time: .standard))")
         Text("남은/지난 시간: \(timeIntervalToString(time: restOfTime))")
             .onReceive(timer) { input in
                 currentDate = input
@@ -121,5 +122,5 @@ struct LiveActivityView: View {
 }
 
 #Preview {
-    LiveActivityView()
+    LiveActivityView(alarmTime: LiveActivityView.dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_15:53:10")!)
 }
