@@ -19,7 +19,7 @@ struct LiveActivityTestView: View {
         return formatter
     }()
     
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_11:34:10")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_12:20:10")!
     @State private var currentDate = Date.now
     let alarmDeadline: Double = 10 //
     var restOfTime: TimeInterval {
@@ -49,9 +49,9 @@ struct LiveActivityTestView: View {
     var body: some View {
         VStack {
             Text("현재 단계: \(currentStep)")
-            Text("남은/지난 시간: \(timeIntervalToString(time: restOfTime))")
-            Text("알람 시간: \(alarmTime.formatted(date: .numeric, time: .standard))")
             Text("현재 시간: \(currentDate.formatted(date: .numeric, time: .standard))")
+            Text("알람 시간: \(alarmTime.formatted(date: .numeric, time: .standard))")
+            Text("남은 or 지난 시간: \(timeIntervalToString(time: restOfTime))")
                 .onReceive(timer) { input in
                     currentDate = input
                     // 전: 현재 시간이 설정한 알람 시간 전일 때
