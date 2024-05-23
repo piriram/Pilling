@@ -65,7 +65,7 @@ struct MainView: View {
                             .frame(width: 200, height: 200)
                         VStack(alignment: .leading, spacing: 16) {
                             HStack {
-                                Text("4일차")
+                                Text("\(today)일차")
                                     .largeTitle()
                                 if let whole = user.first?.curPill?.pillInfo.wholeDay{
                                     Text("/\(String(describing: whole))")
@@ -176,14 +176,16 @@ struct MainView: View {
                     week = curPill.pillInfo.wholeDay/7
                     let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
                     today = Config.daysFromStart(startDay: startDate!)
+                    
+                    print("today:\(today)")
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
                 print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
-            var changeUser = user.first?.curPill?.intakeCal[0]
-            changeUser?.status = 0
+//            var changeUser = user.first?.curPill?.intakeCal[0]
+//            changeUser?.status = 0
 //            modelContext.update(changeUser)
             
         }

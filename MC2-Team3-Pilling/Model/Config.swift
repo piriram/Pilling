@@ -91,6 +91,17 @@ class Config{
         PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "클래라정", intakeDay: 26, placeboDay: 2)
     ]
+    
+    static func findStartDay(curIntakeDay:Int) -> Date?{
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
+        
+        return startDate
+        
+    }
+    
  
 }
 let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]

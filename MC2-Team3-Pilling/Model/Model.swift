@@ -64,6 +64,7 @@ final class DayData:Identifiable{
     var time:String?
     var sideEffect:[Bool]
     var memo:String
+    var isRecord:Bool //기록한건 초기화 못하게
     
     
     
@@ -76,6 +77,7 @@ final class DayData:Identifiable{
         self.memo = ""
         self.time = nil
         self.periodPill = periodPill
+        isRecord = false
     }
     
     

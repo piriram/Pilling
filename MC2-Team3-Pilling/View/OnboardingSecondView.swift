@@ -101,24 +101,26 @@ struct OnboardingSecondView: View {
             if let selectePillInfo = pillInfo{
                 modelContext.insert(selectePillInfo)
                 
-                let startIntake = Config.DateToString(date: Date(), format: Config.dayformat)
-                
-                let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
+                let startIntake = Config.findStartDay(curIntakeDay: intakeDay)
+                let startIntakeToString = Config.DateToString(date: startIntake!, format: dayformat)
+                let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntakeToString)
                 
                 let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
                 let today = Config.daysFromStart(startDay: startDate!)
                 
+                
                 let wholeDay = selectePillInfo.wholeDay
+                
                 for idx in 0..<wholeDay {
                     let dayData = DayData(num: idx)
                     //                    dayData.periodPill = periodPill
                     modelContext.insert(dayData)
                     periodPill.intakeCal.append(dayData)
                 }
-                
+                print("온보딩today:\(today)")
                 //이미 지난 것은 복용 status=1로 변경
                 if today>1{
-                    for idx in 0..<today{
+                    for idx in 0..<today-1{
                         periodPill.intakeCal[idx].status=1
                     }
                 }

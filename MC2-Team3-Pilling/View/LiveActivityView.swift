@@ -95,7 +95,7 @@ struct LiveActivityView: View {
                 // 종료: 현재 시간이 지정한 알람 시간 이후 30초 지났을 때
                 else if currentStep == 4 {
                     // 라이브 액티비티 종료
-                    print("종료: 현재 시간이 지정한 알람 시간 이후 30초 지났을 때")
+//                    print("종료: 현재 시간이 지정한 알람 시간 이후 30초 지났을 때")
                     if let activity {
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: 3)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: alarmTime.addingTimeInterval(60))

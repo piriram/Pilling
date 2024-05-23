@@ -110,7 +110,6 @@ struct OnboardingFirstView: View {
             Button(action: {
                 pillInfo = Config.dummyPillInfos[1]
                 print("pillInfo.pillName:\(pillInfo.placeboDay)")
-                selectedTakingDays = 5
                 isActive = true // 네비게이션 링크를 활성화
                 
             }, label: {

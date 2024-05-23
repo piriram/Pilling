@@ -11,15 +11,6 @@ import SwiftData
 
 extension OnboardingFirstView{
     
-    func findStartDay(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
-        
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
-        let startIntakeString = Config.DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-        
-    }
     
     
 //    func save(){
