@@ -52,10 +52,10 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-//                        NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
-//                            Image(systemName: "gearshape")
-//                                .Icon()
-//                        })
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
+                            Image(systemName: "gearshape")
+                                .Icon()
+                        })
                     }
                     
                     // status header
