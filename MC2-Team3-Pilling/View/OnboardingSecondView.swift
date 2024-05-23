@@ -21,9 +21,8 @@ struct OnboardingSecondView: View {
     
     var body: some View {
         VStack{
+            
             Image("onboardingSecond")
-                //.resizable()
-                //.frame(width: 240, height: 240)
             
             // Text
             HStack {
