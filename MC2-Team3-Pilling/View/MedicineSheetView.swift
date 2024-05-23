@@ -6,7 +6,7 @@ struct MedicineSheetView: View {
 
     @Binding var showingMedicineSheet: Bool
 
-    
+    @Environment(\.presentationMode) var presentationMode
     @Binding var selectedPill: PillInfo?
     
     //    let BirthControlNames = [
@@ -49,7 +49,10 @@ struct MedicineSheetView: View {
         
         // footer button
         Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
             self.showingMedicineSheet = false
+            
+            
         }, label: {
             Text("설정완료!")
                 .largeBold()

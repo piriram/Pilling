@@ -136,7 +136,8 @@ struct ChooseStatusView: View {
     }
 }
 
-#Preview {
-//    ChooseStatusView()
-    MainView()
-}
+//#Preview {
+//    @State private var showingMedicineSheet = false
+////    ChooseStatusView()
+//    MainView(showingMedicineSheet: $showingMedicineSheet)
+//}

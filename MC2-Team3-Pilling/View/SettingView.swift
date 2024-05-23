@@ -70,6 +70,6 @@ struct SettingView: View {
     }
 }
 
-#Preview {
-    MainView()
-}
+//#Preview {
+//    MainView()
+//}
