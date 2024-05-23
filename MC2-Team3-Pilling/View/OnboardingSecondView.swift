@@ -106,15 +106,12 @@ struct OnboardingSecondView: View {
             
             let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
             
-            let dayData = DayData()
-            modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
-            
             let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
             let today = Config.daysFromStart(startDay: startDate!)
             
             let wholeDay = selectePillInfo.wholeDay
-            for _ in 0..<wholeDay {
-                let dayData = DayData()
+            for idx in 0..<wholeDay {
+                let dayData = DayData(num: idx)
                 //                    dayData.periodPill = periodPill
                 modelContext.insert(dayData)
                 periodPill.intakeCal.append(dayData)
