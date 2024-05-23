@@ -16,7 +16,7 @@ struct LiveTimeWidget: Widget {
             // lock screen & standby(잠금 화면과 notification center, 그리고 전체화면 버전)
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Pilling")
+                    Text("필링")
                         .font(.caption)
                     Text("잔디를 심을 시간이")
                         .bold()
