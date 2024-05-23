@@ -42,6 +42,7 @@ struct ContentView: View {
                 NavigationLink(destination: LiveActivityTestView()){
                     Text("LiveActivityTestView")
                 }
+
             }
         }
         
