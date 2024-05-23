@@ -1,12 +1,20 @@
 
 import SwiftUI
+import SwiftData
 
 struct SplashScreenView: View {
     @State var isActive: Bool = false
-    
+    @Query var user:[UserInfo]
     var body: some View {
         if isActive {
-            ContentView()
+            if user.first != nil{
+                NavigationStack{
+                    MainView()
+                }
+            }
+            else{
+                OnboardingFirstView()
+            }
         } else {
             VStack {
                 Image("Splash")
@@ -15,7 +23,7 @@ struct SplashScreenView: View {
                 
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     withAnimation {
                         self.isActive = true
                     }
