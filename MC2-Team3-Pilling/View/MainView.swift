@@ -135,36 +135,36 @@ struct MainView: View {
                                     default:
                                         EmptyView()
                                 }
-                                
-                                
-                                
-                                
                             }
                         }
                     }
+                    Spacer()
+                    
+                    // footer button
+                    Button(action: {}, label: {
+                        Text("잔디 심기")
+                            .largeBold()
+                    })
+                    .padding(.vertical, 25)
+                    .frame(maxWidth: .infinity)
+                    .background(.customGreen)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(.black)
                 }
-                Spacer()
-                
-                // footer button
-                Button(action: {}, label: {
-                    Text("잔디 심기")
-                        .largeBold()
-                })
-                .padding(.vertical, 25)
-                .frame(maxWidth: .infinity)
-                .background(.customGreen)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .foregroundColor(.black)
+                .padding()
+                // 알람 시간(type: Date)을 alarmTime에 넘겨주세요
+                // 중요! date: 오늘 날짜(시스템상), time: 알람 시간으로 넘겨주세요
+                if let timeString = user.first?.scheduleTime {
+                    LiveActivityView(alarmTime: Config.AlarmStringToDate(dateString: timeString)!)
+                        .opacity(0.0)
+                }
             }
-            .padding()
-            LiveActivityView()
-                .opacity(0.0)
+            .sheet(isPresented: $isModal){
+                ChooseStatusView(showingChooseStatus: $isModal)
+                    .presentationDetents([.medium])
+            }
         }
-        .sheet(isPresented: $isModal){
-            ChooseStatusView(showingChooseStatus: $isModal)
-                .presentationDetents([.medium])
-            
-        }
+        
         .onAppear {
             if let userFirst = user.first{
                 if let curPill = userFirst.curPill{
