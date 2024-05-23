@@ -10,9 +10,12 @@ import SwiftUI
 
 struct PiriFirstView: View {
     @State private var showingMedicineSheet = false
+    @State private var selectedPill: PillInfo?
+    @State private var selectedTakingDays: Int = 0
     @State var isActive = false
     @State var pillInfo = PillInfo(pillName: "야즈", intakeDay: 24, placeboDay: 4)
     @State var intakeDay = 4
+    
     var body: some View {
         Image("making-plan")
             .resizable()
@@ -54,11 +57,10 @@ struct PiriFirstView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(.secondary)
             .padding([.leading, .trailing], 16)
-//            .sheet(isPresented: $showingMedicineSheet){
-//                //                MedicineSheetView(showingMedicineSheet: true)
-////                MedicineSheetView(selectedPill: $showingMedicineSheet)
-////                    .presentationDetents([.medium])
-//            }
+            .sheet(isPresented: $showingMedicineSheet){
+                MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)
+                    .presentationDetents([.medium])
+            }
             
             
             
@@ -86,7 +88,6 @@ struct PiriFirstView: View {
         VStack {
             // footer button
             Button(action: {
-                print("Config.dummyPillInfo[0]:\(Config.dummyPillInfos[1].pillName)")
                 pillInfo = Config.dummyPillInfos[1]
                 print("pillInfo.pillName:\(pillInfo.placeboDay)")
                 intakeDay = 5
@@ -101,11 +102,11 @@ struct PiriFirstView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .foregroundColor(.black)
             .padding()
-
+            
             // 버튼과 네비게이션링크를 같이 띄우는 방법?
             
             NavigationLink(
-                destination: PiriSecondView(pillInfo: $pillInfo,intakeDay:$intakeDay),
+                destination: PiriSecondView(pillInfo: $selectedPill,intakeDay:$intakeDay),
                 isActive: $isActive,
                 label: {
                     EmptyView() // 보이지 않게 설정

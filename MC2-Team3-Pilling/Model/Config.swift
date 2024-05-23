@@ -50,22 +50,7 @@ class Config{
         }
     }
     
-    
-    func DateToString(date: Date,format:String) -> String {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
-    }
-    func StringToDate(dateString: String,format:String) -> Date? {
-           
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone.current
-            dateFormatter.dateFormat = format
 
-            return dateFormatter.date(from: dateString)
-        }
     
     func AlarmStringToDate(dateString: String) -> Date? {
         let format = "HH:mm"

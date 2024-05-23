@@ -10,12 +10,26 @@ import SwiftData
 
 @main
 struct MC2_Team3_PillingApp: App {
-    
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            UserInfo.self,
+            PeriodPill.self,
+            DayData.self,
+            PillInfo.self
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for:UserInfo.self)
+        .modelContainer(sharedModelContainer)
     }
 }

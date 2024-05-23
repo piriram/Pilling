@@ -16,6 +16,8 @@
 		1B6530552BFB8A0C00452ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6530542BFB8A0C00452ACB /* Assets.xcassets */; };
 		1B6530592BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1B6530492BFB8A0C00452ACB /* LiveTimeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1B65305E2BFB8ACD00452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
+		210E58632BFE56EC005B7AE4 /* model+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58622BFE56EC005B7AE4 /* model+extension.swift */; };
+		210E58652BFE5A24005B7AE4 /* Onboarding+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
 		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
 		21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730D2BFB85E2002BCC67 /* Config.swift */; };
@@ -71,6 +73,8 @@
 		1B6530522BFB8A0C00452ACB /* LiveTimeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTimeWidget.swift; sourceTree = "<group>"; };
 		1B6530542BFB8A0C00452ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B6530562BFB8A0C00452ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		210E58622BFE56EC005B7AE4 /* model+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "model+extension.swift"; sourceTree = "<group>"; };
+		210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+extension.swift"; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
 		21B2730D2BFB85E2002BCC67 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				9BE4AA1C2BF6E280008BE893 /* CustomFont.swift */,
+				210E58622BFE56EC005B7AE4 /* model+extension.swift */,
+				210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */,
 			);
 			path = Extentsion;
 			sourceTree = "<group>";
@@ -334,9 +340,11 @@
 				21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */,
 				21B273082BFB390C002BCC67 /* Model.swift in Sources */,
 				939C88362BF6B9BC00572EDC /* OnboardingSecondView.swift in Sources */,
+				210E58652BFE5A24005B7AE4 /* Onboarding+extension.swift in Sources */,
 				939C88302BF5CC9F00572EDC /* SettingView.swift in Sources */,
 				939C88742BFBA01C00572EDC /* PopoverView.swift in Sources */,
 				21B5E33D2BFCDB3A00D1FC06 /* PiriSecondView.swift in Sources */,
+				210E58632BFE56EC005B7AE4 /* model+extension.swift in Sources */,
 				21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */,
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */,

@@ -16,6 +16,10 @@ struct MainView: View {
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Query var user:[UserInfo]
     @State var time = Date()
+    @State var week = 4
+    @State var today = 1
+    @State var isToday = false
+    @State var isActive = false
     
 //    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo? 
@@ -58,7 +62,7 @@ struct MainView: View {
                             HStack {
                                 Text("4일차")
                                     .largeTitle()
-                                if let whole = user.first?.curPill.pillInfo.wholeDay{
+                                if let whole = user.first?.curPill?.pillInfo.wholeDay{
                                     Text("/\(String(describing: whole))")
                                         .secondaryTitle()
                                 }
@@ -67,7 +71,7 @@ struct MainView: View {
                                 }
                                 
                             }
-                            if let intakeDay=user.first?.curPill.pillInfo.intakeDay,let placeboday=user.first?.curPill.pillInfo.placeboDay{
+                            if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
                                 Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
                                     .secondaryRegular()
                             }else{
@@ -105,23 +109,26 @@ struct MainView: View {
                             
                         }
                         .regular()
-                        ForEach(0..<(user.first?.curPill.pillInfo.wholeDay ?? 28)/7) { y in
+                        
+                        ForEach(0..<week) { y in
                             HStack {
                                 ForEach(0..<7) { x in
-                                    if x==3 && y==0{
-                                        TwoCell(isModal: $isModal, backgroundColor: .customGreen)
-                                    }
-                                    else if x==1 && y==0 {
-                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
-                                    }
-                                    else if x==0 && y == 0{
-                                        TodayCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
-                                    }
-                                    else if x>=3 && y == 3{
-                                        PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
-                                    }
-                                    else{
-                                        ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                    let idx = y * 7 + x
+                                    let status = user.first?.curPill?.intakeCal[idx].status
+                                    let isToday = today == idx
+                                    
+                                    
+                                    switch status {
+                                        case 3: // 위약
+                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
+                                        case 0:
+                                            ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                        case 1:
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customGreen)
+                                        case 2:
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                        default:
+                                            EmptyView()
                                     }
                                     
                                     
@@ -152,12 +159,22 @@ struct MainView: View {
             }
         }
         .onAppear {
-            var scheduleTime = user.first?.scheduleTime
-            print(scheduleTime)
-            time = Config().StringToDate(dateString: scheduleTime ?? "2024-05-21 15:14:27", format: Hourformat) ?? Date()
+            if let userFirst = user.first{
+                if let curPill = userFirst.curPill{
+                    week = curPill.pillInfo.wholeDay/7
+                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
+                    today = Config.daysFromStart(startDay: startDate!)
+                }
+                
+                var scheduleTime = userFirst.scheduleTime
+                print(scheduleTime)
+                time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
+            }
+            
         }
         
     }
+    
 }
 
 

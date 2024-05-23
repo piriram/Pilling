@@ -10,7 +10,7 @@ import SwiftData
 struct PiriSecondView: View {
     @State private var alarmTime: Date = Date()
     @State private var alarmToggle = false
-    @Binding var pillInfo:PillInfo
+    @Binding var pillInfo:PillInfo?
     @Binding var intakeDay:Int
     @State var isActive = false
     @Environment(\.modelContext) private var modelContext
@@ -43,12 +43,9 @@ struct PiriSecondView: View {
             }, label: {
                 
                 ZStack{
-
                     DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
-                    
                 }
                 .padding([.leading, .trailing], 20)
-                
             }
             )
             .padding(.vertical, 20)
@@ -76,46 +73,7 @@ struct PiriSecondView: View {
             Spacer()
             
             Button(action: {
-//                print(alarmTime)
-                var scheduleTime = Config().DateToString(date: alarmTime, format: Hourformat)
-                print(scheduleTime)
-                
-                var arr = Array(repeating: DayData(), count: 30)
-                print(arr)
-                print(arr[0].status)
-                
-                
-                let currentDate = Date()
-                let calendar = Calendar.current
-                let startDate = calendar.date(byAdding: .day, value: -5, to: currentDate)
-                let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-                 
-                var periodPill = PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-                
-                print(periodPill)
-                print("periodPillInfo:\(periodPill.startIntake)")
-                
-                periodPill.intakeCal = arr
-                
-                
-                print("----------")
-                print(periodPill.intakeCal.first?.status)
-                var userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
-                print("1")
-                print(userInfo.curPill.pillInfo.pillName)
-                userInfo.curPill.intakeCal = arr
-                
-                print("userInfo:\(userInfo.curPill.intakeCal.first)")
-                var pillInfo = user.first?.curPill
-
-                modelContext.insert(userInfo)
-                do {
-                    try modelContext.save()
-                    print("스데 저장 성공")
-                } catch {
-                    print("Failed to save context: \(error.localizedDescription)")
-                }
-                isActive = true
+                dataSave()
             }) {
                 Text("설정완료!")
                     .font(.title3)
@@ -138,14 +96,59 @@ struct PiriSecondView: View {
             print(intakeDay)
         }
     }
-    func findStartDay(pillInfo:PillInfo,curIntakeDay:Int) -> PeriodPill{
-        
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let startDate = calendar.date(byAdding: .day, value: -curIntakeDay, to: currentDate)
-        let startIntakeString = Config().DateToString(date: startDate ?? currentDate,format:dayformat) //디폴트값 수정해야함
-        return PeriodPill(pillInfo: pillInfo, startIntake: startIntakeString)
-        
+    func dataSave(){
+        if let selectePillInfo = pillInfo {
+            modelContext.insert(selectePillInfo)
+            
+            let startIntake = Config.DateToString(date: Date(), format: Config.dayformat)
+            
+            let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
+            
+            let dayData = DayData()
+            modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
+            
+            let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
+            let today = Config.daysFromStart(startDay: startDate!)
+            
+            let wholeDay = selectePillInfo.wholeDay
+            for _ in 0..<wholeDay {
+                let dayData = DayData()
+                //                    dayData.periodPill = periodPill
+                modelContext.insert(dayData)
+                periodPill.intakeCal.append(dayData)
+            }
+            
+            //이미 지난 것은 복용 status=1로 변경
+            if today>1{
+                for idx in 0..<today{
+                    periodPill.intakeCal[idx].status=1
+                }
+            }
+            //위약 status 초기화
+            for idx in pillInfo!.intakeDay..<wholeDay{
+                periodPill.intakeCal[idx].status=3
+            }
+            
+            modelContext.insert(periodPill)
+            
+            let scheduleTime = Config.DateToString(date: alarmTime, format: Config.Hourformat)
+            let userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
+            userInfo.isAlarm = alarmToggle
+            
+            modelContext.insert(userInfo)
+            
+            do {
+                try modelContext.save()
+                print("스데 저장 성공")
+                isActive = true
+            } catch {
+                print("Failed to save context: \(error.localizedDescription)")
+            }
+            
+        }
+        else{
+            
+        }
     }
+    
 }
-
