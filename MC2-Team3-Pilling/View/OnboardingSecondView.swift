@@ -123,6 +123,7 @@ struct OnboardingSecondView: View {
                     periodPill.intakeCal[idx].status=1
                 }
             }
+            
             //위약 status 초기화
             for idx in pillInfo!.intakeDay..<wholeDay{
                 periodPill.intakeCal[idx].status=3

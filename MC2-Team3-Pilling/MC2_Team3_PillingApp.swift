@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct MC2_Team3_PillingApp: App {
+    @Query var user:[UserInfo]
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             UserInfo.self,
@@ -18,7 +20,7 @@ struct MC2_Team3_PillingApp: App {
             PillInfo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
@@ -28,7 +30,15 @@ struct MC2_Team3_PillingApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                if user.isEmpty {
+                    OnboardingFirstView()
+                }
+                else{
+                    MainView()
+                }
+            }
+            
         }
         .modelContainer(sharedModelContainer)
     }
