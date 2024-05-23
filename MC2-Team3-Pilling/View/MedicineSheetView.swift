@@ -1,5 +1,6 @@
 
 import SwiftUI
+import SwiftData
 
 struct MedicineSheetView: View {
     @State private var searchText = ""
@@ -8,6 +9,7 @@ struct MedicineSheetView: View {
 
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedPill: PillInfo?
+    @Query var user:[UserInfo]
     
     //    let BirthControlNames = [
     //        "쎄스콘정", "미뉴렛정", "에이리스정", "머시론정",
@@ -28,9 +30,11 @@ struct MedicineSheetView: View {
                     List(filteredBirthControl) { pill in
                         Button(action: {
                             selectedPill = pill
+                            
                             print(pill.pillName)
                             
                             if selectedPill == pill {
+                                user.first?.curPill?.pillInfo=selectedPill!
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                             

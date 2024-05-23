@@ -6,20 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SettingView: View {
-    @State private var selectedAlarmTime = Date.now
+    @Environment(\.modelContext) private var modelContext
+    @Query var user:[UserInfo]
+    
+    @State private var selectedAlarmTime = Date()
     @State private var isSoundOn = false
-    //    @State private var selectedPill = 0
+//    @State private var selectedPill = 0
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
     @Binding var showingMedicineSheet: Bool
 
-    
-
-    
-    
-    //    let pills = [(name: "야즈", type: "24일/4일"), (name: "머쉬론", type: "21일/7일")]
     
     var body: some View {
         NavigationStack {
@@ -40,7 +39,7 @@ struct SettingView: View {
                     
                     NavigationLink(destination: MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)) {
                         HStack {
-                            Text("Select Pill")
+                            Text("약 선택")
                             Spacer()
                             if let pill = selectedPill {
                                 Text(pill.pillName)
@@ -55,10 +54,28 @@ struct SettingView: View {
                 
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
+                        .onChange(of: selectedAlarmTime) { oldValue, newValue in
+                            let newValueToString = Config.DateToString(date: newValue, format: Hourformat)
+                            user.first?.scheduleTime = newValueToString
+                            print(newValueToString)
+                        }
                     
                     Toggle("알람", isOn: $isSoundOn)
+                        .onChange(of: isSoundOn) { oldValue, newValueAlarm in
+                            user.first?.isAlarm = newValueAlarm
+                        }
+                    // Optional, unWrapped
                     
                 }
+            }
+            .onAppear{
+                if let userInfo = user.first {
+                    selectedPill = userInfo.curPill?.pillInfo
+                    selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Hourformat)!
+//                    selectedAlarmTime = Config.DateToString(date: selectedAlarmTime, format: Hourformat)
+                    isSoundOn = userInfo.isAlarm
+                }
+                
             }
             .navigationTitle("Settings")
             //            .sheet(isPresented: $isShowingPills, content: {
