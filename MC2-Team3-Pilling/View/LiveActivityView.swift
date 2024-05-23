@@ -19,7 +19,7 @@ struct LiveActivityView: View {
         return formatter
     }()
     
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_12:20:10")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_12:32:00")!
     @State private var currentDate = Date.now
     let alarmDeadline: Double = 10 //
     var restOfTime: TimeInterval {
