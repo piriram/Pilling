@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 struct MainView: View {
     @State private var showingPopover = false
+    @State private var showingChooseStatus = false
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
@@ -16,7 +17,12 @@ struct MainView: View {
     @Query var user:[UserInfo]
     @State var time = Date()
     
+//    @State private var selectedPill: PillInfo? = nil
+    @State private var selectedPill: PillInfo? 
+        
     var body: some View {
+        
+        
         NavigationStack {
             ZStack {
                 GreenGradient()
@@ -37,7 +43,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        NavigationLink(destination: SettingView(), label: {
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
                         })
@@ -141,7 +147,8 @@ struct MainView: View {
                 .padding()
             }
             .sheet(isPresented: $isModal){
-                EmptyView()
+                ChooseStatusView(showingChooseStatus: $isModal)
+                    .presentationDetents([.medium])
             }
         }
         .onAppear {
@@ -188,14 +195,14 @@ struct PlaceboCell: View {
     var backgroundColor: Color
     var body: some View {
         Rectangle()
-          .foregroundColor(.clear)
-          .frame(width: 45, height: 45)
-          .cornerRadius(10)
-          .overlay(
-            RoundedRectangle(cornerRadius: 10)
-              .inset(by: 0.5)
-              .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
-          )
+            .foregroundColor(.clear)
+            .frame(width: 45, height: 45)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 0.5)
+                    .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
+            )
             .onTapGesture {
                 isModal = true
                 print(isModal)

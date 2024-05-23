@@ -105,7 +105,6 @@ class Config{
         PillInfo(pillName: "야스민정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "클래라정", intakeDay: 26, placeboDay: 2)
-
     ]
  
 }
