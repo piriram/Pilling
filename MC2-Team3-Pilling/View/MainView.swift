@@ -157,8 +157,12 @@ struct MainView: View {
                     .foregroundColor(.black)
                 }
                 .padding()
-                LiveActivityView()
-                    .opacity(0.0)
+                // 알람 시간(type: Date)을 alarmTime에 넘겨주세요
+                // 중요! date: 오늘 날짜(시스템상), time: 알람 시간으로 넘겨주세요
+                if let timeString = user.first?.scheduleTime {
+                    LiveActivityView(alarmTime: Config.AlarmStringToDate(dateString: timeString)!)
+                        .opacity(0.0)
+                }
             }
             .sheet(isPresented: $isModal){
                 ChooseStatusView(showingChooseStatus: $isModal)
