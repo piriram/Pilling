@@ -16,9 +16,9 @@ struct OnboardingFirstView: View {
     @State var selectedTakingDays = 4
     
     var body: some View {
-        Image("making-plan")
-            .resizable()
-            .frame(width: 240, height: 240)
+        Image("onboardingFirst")
+            //.resizable()
+            //.frame(width: 240, height: 240)
            
         
         // Text
@@ -117,7 +117,7 @@ struct OnboardingFirstView: View {
                     Text("다음으로")
                         .largeBold()
             })
-            .padding(.vertical, 30)
+            .padding(.vertical, 25)
             .frame(maxWidth: .infinity)
             .background(selectedPill == nil ? Color.customGray : Color.customGreen)
             .clipShape(RoundedRectangle(cornerRadius: 20))

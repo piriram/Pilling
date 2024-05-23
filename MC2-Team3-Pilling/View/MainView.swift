@@ -150,7 +150,7 @@ struct MainView: View {
                         Text("잔디 심기")
                             .largeBold()
                     })
-                    .padding(.vertical, 30)
+                    .padding(.vertical, 25)
                     .frame(maxWidth: .infinity)
                     .background(.customGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -165,6 +165,7 @@ struct MainView: View {
                     .presentationDetents([.medium])
             }
         }
+        
         .onAppear {
             if let userFirst = user.first{
                 if let curPill = userFirst.curPill{

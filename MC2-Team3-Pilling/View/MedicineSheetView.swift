@@ -42,7 +42,7 @@ struct MedicineSheetView: View {
                                 Spacer()
                                 if selectedPill == pill {
                                     Image(systemName: "checkmark")
-                                        .foregroundStyle(Color.blue)
+                                    .foregroundStyle(.customGreen)
                                 }
                             }
                         }
