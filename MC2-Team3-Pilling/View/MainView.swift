@@ -24,6 +24,7 @@ struct MainView: View {
     @State var isToday = false
     @State var isActive = false
     
+    @State private var showingMedicineSheet = false
     
 //    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo? 
