@@ -122,6 +122,8 @@ struct OnboardingFirstView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .foregroundColor(.black)
             .padding()
+            // 정보가 없으면 넘어가지 않도록 함
+            .disabled(selectedPill == nil)
             
             // 버튼과 네비게이션링크를 같이 띄우는 방법?
             
