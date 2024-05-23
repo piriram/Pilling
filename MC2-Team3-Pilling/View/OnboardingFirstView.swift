@@ -46,6 +46,12 @@ struct OnboardingFirstView: View {
                     Text("약 종류")
                         .secondaryRegular()
                     Spacer()
+
+                    // Optional 해결방법
+                    if let selectedPill = selectedPill{
+                        Text(selectedPill.pillName)
+                    }
+
                     Image(systemName: "chevron.right")
                 }
                 .padding([.leading, .trailing], 25)
