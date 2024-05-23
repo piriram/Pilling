@@ -17,7 +17,12 @@ struct MainView: View {
     @Query var user:[UserInfo]
     @State var time = Date()
     
+//    @State private var selectedPill: PillInfo? = nil
+    @State private var selectedPill: PillInfo? 
+        
     var body: some View {
+        
+        
         NavigationStack {
             ZStack {
                 GreenGradient()
@@ -38,7 +43,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        NavigationLink(destination: SettingView(), label: {
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
                         })
