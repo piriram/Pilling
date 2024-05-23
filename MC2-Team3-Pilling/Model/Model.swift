@@ -51,7 +51,7 @@ final class PeriodPill:Identifiable{
         self.startIntake = startIntake
         self.missDay = 0
         self.finishIntake = nil
-//        print(self.intakeCal) []
+        //        print(self.intakeCal) []
     }
     
     
@@ -103,33 +103,33 @@ final class PillInfo:Identifiable{
 }
 extension PeriodPill{
     func printAllDetails() {
-            print("Period Pill Details:")
-            print("ID: \(id)")
-            print("Start Intake: \(startIntake)")
-            if let finish = finishIntake {
-                print("Finish Intake: \(finish)")
-            } else {
-                print("Finish Intake: None")
-            }
-            print("Miss Day: \(missDay)")
-            print("Pill Info:")
-            pillInfo.printAllDetails()
-            print("Intake Calendar:")
-            for dayData in intakeCal {
-                dayData.printAllDetails()
-            }
-//            if let user = userInfo {
-//                print("User Info:")
-//                user.printAllDetails()
-//            } else {
-//                print("User Info: None")
-//            }
+        print("Period Pill Details:")
+        print("ID: \(id)")
+        print("Start Intake: \(startIntake)")
+        if let finish = finishIntake {
+            print("Finish Intake: \(finish)")
+        } else {
+            print("Finish Intake: None")
         }
+        print("Miss Day: \(missDay)")
+        print("Pill Info:")
+        pillInfo.printAllDetails()
+        print("Intake Calendar:")
+        for dayData in intakeCal {
+            dayData.printAllDetails()
+        }
+        //            if let user = userInfo {
+        //                print("User Info:")
+        //                user.printAllDetails()
+        //            } else {
+        //                print("User Info: None")
+        //            }
+    }
     func addDayDataEntries(count: Int,dayData:DayData) {
-            for _ in 0..<count {
-                self.intakeCal.append(dayData)
-            }
+        for _ in 0..<count {
+            self.intakeCal.append(dayData)
         }
+    }
 }
 
 extension DayData{
