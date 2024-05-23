@@ -13,27 +13,44 @@ struct SettingView: View {
     //    @State private var selectedPill = 0
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
+    @Binding var showingMedicineSheet: Bool
+
+    
 
     
     
-//    let pills = [(name: "야즈", type: "24일/4일"), (name: "머쉬론", type: "21일/7일")]
+    //    let pills = [(name: "야즈", type: "24일/4일"), (name: "머쉬론", type: "21일/7일")]
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("약 패키지") {
-                    Picker("Pill", selection: $selectedPill) {
-                        ForEach(Config.dummyPillInfos) { pill in
-                            HStack {
+                    //                    Picker("Pill", selection: $selectedPill) {
+                    //                        ForEach(Config.dummyPillInfos) { pill in
+                    //                            HStack {
+                    //                                Text(pill.pillName)
+                    //                                    .bold()
+                    //                                Text("\(pill.intakeDay)" + "\\" + "\(pill.placeboDay)")
+                    //                                    .secondaryRegular()
+                    //                            }
+                    //                            .tag(pill)
+                    //                        }
+                    //                    }
+                    //                    .pickerStyle(.navigationLink)
+                    
+                    NavigationLink(destination: MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)) {
+                        HStack {
+                            Text("Select Pill")
+                            Spacer()
+                            if let pill = selectedPill {
                                 Text(pill.pillName)
-                                    .bold()
-                                Text("\(pill.intakeDay)" + "\\" + "\(pill.placeboDay)")
-                                    .secondaryRegular()
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text("None")
+                                    .foregroundColor(.gray)
                             }
-                            .tag(pill)
                         }
                     }
-                    .pickerStyle(.navigationLink)
                 }
                 
                 Section("알림") {
@@ -44,10 +61,10 @@ struct SettingView: View {
                 }
             }
             .navigationTitle("Settings")
-//            .sheet(isPresented: $isShowingPills, content: {
-//                Text("Pills")
-//                    .presentationDetents([.height(300), .large])
-//            })
+            //            .sheet(isPresented: $isShowingPills, content: {
+            //                Text("Pills")
+            //                    .presentationDetents([.height(300), .large])
+            //            })
             
         }
     }

@@ -21,6 +21,8 @@ struct MainView: View {
     @State var isToday = false
     @State var isActive = false
     
+    @State var showingMedicineSheet = false
+    
 //    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo? 
         
@@ -47,7 +49,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        NavigationLink(destination: SettingView(selectedPill: $selectedPill), label: {
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
                         })
