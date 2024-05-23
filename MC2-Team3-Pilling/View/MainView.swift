@@ -27,7 +27,7 @@ struct MainView: View {
     @State private var showingMedicineSheet = false
     
     //    @State private var selectedPill: PillInfo? = nil
-    @State private var selectedPill: PillInfo? 
+    @State private var selectedPill: PillInfo?
     
     var body: some View {
         
@@ -165,7 +165,6 @@ struct MainView: View {
                 .presentationDetents([.medium])
             
         }
-        
         .onAppear {
             if let userFirst = user.first{
                 if let curPill = userFirst.curPill{
@@ -183,8 +182,10 @@ struct MainView: View {
             //            modelContext.update(changeUser)
             
         }
+        .navigationBarBackButtonHidden()
         
     }
+    
     
 }
 

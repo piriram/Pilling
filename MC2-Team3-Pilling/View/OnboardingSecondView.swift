@@ -86,7 +86,7 @@ struct OnboardingSecondView: View {
                             .foregroundColor(.black)
                             .padding()
                     }
-
+                    
                 }
             } else {
                 MainView()
