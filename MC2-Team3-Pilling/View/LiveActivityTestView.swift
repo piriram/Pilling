@@ -19,7 +19,7 @@ struct LiveActivityTestView: View {
         return formatter
     }()
     
-    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_09:13:00")!
+    @State private var alarmTime = dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_09:55:00")!
     @State private var currentDate = Date.now
     var restOfTime: TimeInterval {
         currentDate.timeIntervalSince(alarmTime)
