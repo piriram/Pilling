@@ -112,16 +112,18 @@ struct OnboardingFirstView: View {
                 print("pillInfo.pillName:\(pillInfo.placeboDay)")
                 selectedTakingDays = 5
                 isActive = true // 네비게이션 링크를 활성화
+                
             }, label: {
-                Text("다음으로")
-                    .largeBold()
+                    Text("다음으로")
+                        .largeBold()
             })
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity)
-            .background(Color.customGreen)
+            .background(selectedPill == nil ? Color.customGray : Color.customGreen)
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .foregroundColor(.black)
             .padding()
+            .disabled(selectedPill == nil)
             
             // 버튼과 네비게이션링크를 같이 띄우는 방법?
             
