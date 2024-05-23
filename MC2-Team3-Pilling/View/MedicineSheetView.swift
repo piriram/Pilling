@@ -24,45 +24,54 @@ struct MedicineSheetView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List(filteredBirthControl) { pill in
-                    Button(action: {
-                        selectedPill = pill
-                        print(pill.pillName)
-                    }) {
-                        HStack {
-                            Text(pill.pillName)
-                            Text("\(pill.intakeDay)" + "/" + "\(pill.placeboDay)")
-                                .secondaryRegular()
-                            Spacer()
+                VStack {
+                    List(filteredBirthControl) { pill in
+                        Button(action: {
+                            selectedPill = pill
+                            print(pill.pillName)
+                            
                             if selectedPill == pill {
-                                Image(systemName: "checkmark")
-                                    .foregroundStyle(Color.blue)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                            
+                        }) {
+                            HStack {
+                                Text(pill.pillName)
+                                Text("\(pill.intakeDay)" + "/" + "\(pill.placeboDay)")
+                                    .secondaryRegular()
+                                Spacer()
+                                if selectedPill == pill {
+                                    Image(systemName: "checkmark")
+                                        .foregroundStyle(Color.blue)
+                                }
                             }
                         }
                     }
-                }
-                .searchable(text: $searchText)
-            } //리스트의 스타일 수정
-            .listStyle(PlainListStyle())
-        }
+                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                } //리스트의 스타일 수정
+                .listStyle(PlainListStyle())
+                .navigationTitle("💊")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+        
+
         
         // footer button
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-            self.showingMedicineSheet = false
-            
-            
-        }, label: {
-            Text("설정완료!")
-                .largeBold()
-        })
-        .padding(.vertical, 30)
-        .frame(maxWidth: .infinity)
-        .background(.customGreen)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(.black)
-        .padding()
+//        Button(action: {
+//            self.presentationMode.wrappedValue.dismiss()
+//            self.showingMedicineSheet = false
+//            
+//            
+//        }, label: {
+//            Text("설정완료!")
+//                .largeBold()
+//        })
+//        .padding(.vertical, 20)
+//        .frame(maxWidth: .infinity)
+//        .background(.customGreen)
+//        .clipShape(RoundedRectangle(cornerRadius: 20))
+//        .foregroundColor(.black)
+//        .padding()
         
     }
 }
@@ -80,11 +89,11 @@ struct MedicineSheetView: View {
 
 
 //화면 터치시 키보드 숨김
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
+//#if canImport(UIKit)
+//extension View {
+//    func hideKeyboard() {
+//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//    }
+//}
+//#endif
 
