@@ -51,7 +51,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        NavigationLink(destination: SettingView(selectedPill: $selectedPill), label: {
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
                         })
