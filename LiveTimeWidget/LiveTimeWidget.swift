@@ -89,7 +89,7 @@ struct TimeWidgetView: View {
 // preview 설정
 extension LiveTimeAttributes.ContentState {
     fileprivate static var start: LiveTimeAttributes.ContentState {
-        LiveTimeAttributes.ContentState(restOfTime: "3분 3초", progressAmount: 0, step: 1)
+        LiveTimeAttributes.ContentState(restOfTime: "3분 3초", progressAmount: 8, step: 1)
     }
     
     fileprivate static var middle: LiveTimeAttributes.ContentState {
