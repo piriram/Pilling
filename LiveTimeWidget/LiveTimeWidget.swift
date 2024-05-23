@@ -29,9 +29,11 @@ struct LiveTimeWidget: Widget {
                     ProgressView(value: context.state.progressAmount, total: progressTotal)
                         .tint(context.state.step >= 3 ? .red : .customGreen)
                 }
+                .foregroundStyle(.white)
                 Image(context.state.step >= 3 ? "pilling" : "alarm")
             }
             .padding()
+            .background(.black)
         } dynamicIsland: { context in
             // dynamic island
             DynamicIsland {

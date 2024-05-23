@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+
+
 struct MainView: View {
     @State private var showingPopover = false
     @State private var showingChooseStatus = false
@@ -14,6 +16,7 @@ struct MainView: View {
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
+    @Environment(\.modelContext) private var modelContext
     @Query var user:[UserInfo]
     @State var time = Date()
     @State var week = 4
@@ -21,7 +24,6 @@ struct MainView: View {
     @State var isToday = false
     @State var isActive = false
     
-    @State var showingMedicineSheet = false
     
 //    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo? 
@@ -154,6 +156,8 @@ struct MainView: View {
                     .foregroundColor(.black)
                 }
                 .padding()
+                LiveActivityView()
+                    .opacity(0.0)
             }
             .sheet(isPresented: $isModal){
                 ChooseStatusView(showingChooseStatus: $isModal)
@@ -172,6 +176,9 @@ struct MainView: View {
                 print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
+            var changeUser = user.first?.curPill?.intakeCal[0]
+            changeUser?.status = 0
+//            modelContext.update(changeUser)
             
         }
         

@@ -19,6 +19,7 @@ struct OnboardingFirstView: View {
         Image("making-plan")
             .resizable()
             .frame(width: 240, height: 240)
+           
         
         // Text
         HStack {

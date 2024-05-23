@@ -59,17 +59,18 @@ final class PeriodPill:Identifiable{
 
 @Model
 final class DayData:Identifiable{
-    @Attribute(.unique) let id:UUID
+    @Attribute(.unique) let num:Int
     var status:Int
     var time:String?
     var sideEffect:[Bool]
     var memo:String
     
     
+    
     var periodPill:PeriodPill?
     
-    init(periodPill:PeriodPill? = nil) {
-        self.id = UUID()
+    init(num:Int,periodPill:PeriodPill? = nil) {
+        self.num = num
         self.status = 0
         self.sideEffect = [false,false,false]
         self.memo = ""

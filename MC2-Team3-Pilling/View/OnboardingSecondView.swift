@@ -17,6 +17,8 @@ struct OnboardingSecondView: View {
     @Query var user:[UserInfo]
     
     
+    
+    
     var body: some View {
         VStack{
             Image("clock")
@@ -45,10 +47,10 @@ struct OnboardingSecondView: View {
                 ZStack{
                     DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
                 }
-                .padding([.leading, .trailing], 20)
+                .padding([.leading, .trailing], 15)
             }
             )
-            .padding(.vertical, 20)
+            .padding(.vertical, 15)
             .frame(maxWidth: .infinity)
             .background(.customGray02)
             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -78,8 +80,8 @@ struct OnboardingSecondView: View {
                 Text("설정완료!")
                     .font(.title3)
                     .bold()
+                    .padding(.vertical, 30)
                     .frame(maxWidth: .infinity)
-                    .padding()
                     .background(Color.customGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .foregroundColor(.black)
@@ -104,15 +106,12 @@ struct OnboardingSecondView: View {
             
             let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntake)
             
-            let dayData = DayData()
-            modelContext.insert(dayData) // 이거하니깐 오류안남 ㅠㅠㅠㅠㅠ
-            
             let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
             let today = Config.daysFromStart(startDay: startDate!)
             
             let wholeDay = selectePillInfo.wholeDay
-            for _ in 0..<wholeDay {
-                let dayData = DayData()
+            for idx in 0..<wholeDay {
+                let dayData = DayData(num: idx)
                 //                    dayData.periodPill = periodPill
                 modelContext.insert(dayData)
                 periodPill.intakeCal.append(dayData)
@@ -152,3 +151,4 @@ struct OnboardingSecondView: View {
     }
     
 }
+
