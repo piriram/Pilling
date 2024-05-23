@@ -8,7 +8,7 @@
 import SwiftUI
 import ActivityKit
 
-struct LiveActivityTestView: View {
+struct LiveActivityView: View {
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy_HH:mm:ss"
@@ -121,5 +121,5 @@ struct LiveActivityTestView: View {
 }
 
 #Preview {
-    LiveActivityTestView()
+    LiveActivityView()
 }
