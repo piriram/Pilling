@@ -5,6 +5,9 @@ struct OnboardingFirstView: View {
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
     
+    @State private var selectedTakingDays: Int = 0
+    
+    
     
     var body: some View {
         Image("making-plan")
@@ -37,6 +40,7 @@ struct OnboardingFirstView: View {
                     Text("약 종류")
                         .secondaryRegular()
                     Spacer()
+                    
                     Image(systemName: "chevron.right")
                 }
                 .padding([.leading, .trailing], 25)
@@ -54,14 +58,27 @@ struct OnboardingFirstView: View {
             }
             
             
-            
             Button(action: {}, label: {
                 // sfSymbol 부재 : uis-calender
+                
                 HStack {
                     Image(systemName: "note")
                     Text("현재 복용 일수")
                         .secondaryRegular()
                     Spacer()
+                    
+                    // Picker
+                    Picker("", selection: $selectedTakingDays) {
+                        ForEach(1 ..< 28) { num in
+                            Text("\(num)")
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .padding(-10)
+                    .accentColor(Color.secondary)
+                    
+                    Text("일 차")
+                    
                 }
                 .padding([.leading, .trailing], 25)
             })

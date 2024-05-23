@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 struct MainView: View {
     @State private var showingPopover = false
+    @State private var showingChooseStatus = false
     @State var startNum = 4
     @State var statusMessage: Config.StatusMessage = .plantGrass
     @State var isModal = false
@@ -20,7 +21,12 @@ struct MainView: View {
     @State var isToday = false
     @State var isActive = false
     
+//    @State private var selectedPill: PillInfo? = nil
+    @State private var selectedPill: PillInfo? 
+        
     var body: some View {
+        
+        
         NavigationStack {
             ZStack {
                 GreenGradient()
@@ -41,7 +47,7 @@ struct MainView: View {
                                 .padding()
                                 .presentationCompactAdaptation(.popover)
                         }
-                        NavigationLink(destination: SettingView(), label: {
+                        NavigationLink(destination: SettingView(selectedPill: $selectedPill), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
                         })
@@ -148,7 +154,8 @@ struct MainView: View {
                 .padding()
             }
             .sheet(isPresented: $isModal){
-                EmptyView()
+                ChooseStatusView(showingChooseStatus: $isModal)
+                    .presentationDetents([.medium])
             }
         }
         .onAppear {
