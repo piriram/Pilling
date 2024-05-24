@@ -17,3 +17,12 @@ struct GreenGradient: View {
 #Preview {
     GreenGradient()
 }
+
+struct DayView: View {
+    var num:Int
+    var body: some View {
+        Text(days[num])
+            .frame(width: 45, height: 45)
+    }
+}
+

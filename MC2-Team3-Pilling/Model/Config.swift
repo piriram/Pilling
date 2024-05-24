@@ -30,10 +30,10 @@ class Config{
     
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
         case plantGrass = 0
-        case limitTwoHours = 1
-        case plantTwoGrass = 2
-        case grassGrowingWell = 3
-        case notRecording = 4
+        case limitTwoHours = 6
+        case plantTwoGrass = 4
+        case grassGrowingWell = 2
+        case notRecording = 5
         
         var description: String {
             switch self {

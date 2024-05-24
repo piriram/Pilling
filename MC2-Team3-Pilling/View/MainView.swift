@@ -13,7 +13,7 @@ struct MainView: View {
     @State private var showingPopover = false
     @State private var showingChooseStatus = false
     @State var startNum = 4
-    @State var statusMessage: Config.StatusMessage = .plantGrass
+    @State var statusMessage = ""
     @State var isModal = false
     @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Environment(\.modelContext) private var modelContext
@@ -28,13 +28,14 @@ struct MainView: View {
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
+    @State var imageNum = 0
     var body: some View {
         
         
         NavigationStack {
             ZStack {
                 GreenGradient()
-                VStack(spacing: 20) {
+                VStack(spacing: 10) {
                     // navigation icons
                     HStack {
                         Spacer()
@@ -61,16 +62,33 @@ struct MainView: View {
                     
                     // status header
                     HStack(alignment: .center) {
-                        
-                        if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{
-                            Image("1case")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        } else if sortedDay[today-1].status == 1{
-                            Image("taking")
-                                .resizable()
-                                .frame(width: 200, height: 200)
+                        switch imageNum{
+                            case 1:
+                                Image("1case")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
+                            case 2:
+                                Image("taking")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
+                            case 3:
+                                Image("rest")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
+                            case 4:
+                                Image("2case")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
+                            case 5:
+                                Image("nottaking")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
+                            default:
+                                Image("1case")
+                                    .resizable()
+                                    .frame(width: 200, height: 200)
                         }
+                        
                             
                             
                         VStack(alignment: .leading, spacing: 16) {
@@ -193,6 +211,14 @@ struct MainView: View {
                         sortedDay[today-1].status = 1
                         sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                         sortedDay[today-1].isRecord = true
+                        if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{
+                            imageNum = 1
+                        } else if sortedDay[today-1].status == 1{
+                            imageNum = 2
+                        }
+                        else if sortedDay[today-1].status == 3{
+                            imageNum = 3
+                        }
                         
                         
                         
@@ -234,10 +260,34 @@ struct MainView: View {
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
             
+            if today == 1 && sortedDay[today-1].status == 0{ //첫째날 -> 약먹어야함
+                imageNum = 1
+            }
+            else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{ // 약먹어야함
+                imageNum = 1
+            } else if sortedDay[today-1].status == 1{ // 약먹음 -> 윙크
+                imageNum = 2
+            }
+            else if sortedDay[today-1].status == 3{ // 위약
+                imageNum = 3
+            }
+            else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음
+                imageNum = 4
+            }
+            else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-2].status==0{ // 이틀째 안먹음
+                imageNum = 5
+            }
+            if let msg = Config.StatusMessage(rawValue: imageNum){
+                statusMessage = msg.description
+            }
+            
+            
             for dayData in sortedDay {
                 print("num : \(dayData.num)")
                 print("status : \(dayData.status)")
             }
+            
+            
             
             
         }
@@ -248,14 +298,6 @@ struct MainView: View {
 
 
 
-
-struct DayView: View {
-    var num:Int
-    var body: some View {
-        Text(days[num])
-            .frame(width: 45, height: 45)
-    }
-}
 
 
 
