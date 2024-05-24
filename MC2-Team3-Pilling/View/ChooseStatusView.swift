@@ -39,7 +39,7 @@ struct ChooseStatusView: View {
     @State private var swellingToggle = false
     @State var sideEffectMemo: String = ""
     
-    @State private var dosageType: DosageType = .notYet
+    @State private var dosageType: DosageType
     
     @Binding var showingChooseStatus: Bool
     @Binding var dayData: DayData
@@ -121,6 +121,9 @@ struct ChooseStatusView: View {
                 }
                 .padding([.top, .bottom], 15)
                 .padding([.leading, .trailing], 10)
+//                .onChange(of: irrBleedingToggle, nauseaToggle, swellingToggle) { oldValue, newValue in
+//                    dayData.status = newValue.rawValue
+//                }
                 
             }
             
@@ -141,7 +144,13 @@ struct ChooseStatusView: View {
         }
         .padding(25)
         .onAppear {
+            if let dosage = DosageType(rawValue: dayData.status) {
+                dosageType = dosage
+            } else {
+                dosageType = .notYet
+            }
             takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat)!
+            
         }
     }
 }
