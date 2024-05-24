@@ -37,10 +37,6 @@ struct ContentView: View {
                 NavigationLink(destination: OnboardingFirstView()){
                     Text("PiriView")
                 }
-//                NavigationLink(destination: LiveActivityView()){
-//                    Text("LiveActivityView")
-//                }
-
             }
         }
         
