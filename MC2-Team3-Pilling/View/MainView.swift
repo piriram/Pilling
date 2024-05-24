@@ -23,7 +23,7 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
-
+    
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
@@ -55,7 +55,8 @@ struct MainView: View {
                         NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
                             Image(systemName: "gearshape")
                                 .Icon()
-                        })
+                        }
+                        )
                     }
                     
                     // status header
@@ -120,24 +121,44 @@ struct MainView: View {
                             HStack {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
-
+                                    
                                     let status = sortedDay[idx].status
                                     let isToday = today-1 == idx
-
+                                    
                                     
                                     
                                     switch status {
                                         case 3: // 위약
-                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white, isToday: isToday)
+                                            PlaceboCell(isModal: $isModal, dayData: sortedDay[idx], backgroundColor: Color.white, isToday: isToday)
+                                                .onTapGesture {
+                                                    dayData = sortedDay[idx]
 
+                                                    isModal = true
+                                                    print(isModal)
+                                                }
                                             
                                         case 0:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
+                                                .onTapGesture {
+                                                    dayData = sortedDay[idx]
+                                                    isModal = true
+                                                    print(isModal)
+                                                }
                                         case 1:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
+                                                .onTapGesture {
+                                                    dayData = sortedDay[idx]
+                                                    isModal = true
+                                                    print(isModal)
+                                                }
                                             
                                         case 2:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
+                                                .onTapGesture {
+                                                    dayData = sortedDay[idx]
+                                                    isModal = true
+                                                    print(isModal)
+                                                }
                                             
                                         default:
                                             EmptyView()
@@ -149,7 +170,13 @@ struct MainView: View {
                     Spacer()
                     
                     // footer button
-                    Button(action: {}, label: {
+                    Button(action: {
+                        let todayData = sortedDay[today-1]
+                        todayData.status = 1
+                        todayData.time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
+                        
+                        
+                    }, label: {
                         Text("잔디 심기")
                             .largeBold()
                     })
@@ -190,7 +217,7 @@ struct MainView: View {
             //            var changeUser = user.first?.curPill?.intakeCal[0]
             //            changeUser?.status = 0
             //            modelContext.update(changeUser)
-//            user.first?.curPill?.printAllDetails()
+            //            user.first?.curPill?.printAllDetails()
             for dayData in sortedDay {
                 print("num : \(dayData.num)")
                 print("status : \(dayData.status)")
@@ -220,4 +247,4 @@ struct DayView: View {
 }
 
 
-    
+
