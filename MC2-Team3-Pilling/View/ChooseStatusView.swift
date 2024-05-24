@@ -28,7 +28,9 @@ enum DosageType: Int, CaseIterable, Identifiable {
 }
 
 struct ChooseStatusView: View {
-//    @State private var selectedNum = 0
+    @Environment(\.modelContext) private var modelContext
+    @Query var user:[UserInfo]
+    
     @State private var takeMedicineTime: Date = Date()
     
     // 부작용 섹션 vars
@@ -42,7 +44,6 @@ struct ChooseStatusView: View {
     @Binding var showingChooseStatus: Bool
     @Binding var dayData: DayData
     
-    @Query var user:[UserInfo]
     
     var body: some View {
         VStack(spacing:20) {
@@ -67,11 +68,10 @@ struct ChooseStatusView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.vertical, 10)
-                // selection Print 되는 값 확인
-                //            .onChange(of: selectedNum) { newValue in
-                //                print("Selected number: \(newValue)")
-                //            }
-
+                .onChange(of: dosageType) { oldValue, newValue in
+                    dayData.status = newValue.rawValue
+                }
+                
                 
                 // 복용시간 버튼
                 Button(action: {
@@ -86,7 +86,11 @@ struct ChooseStatusView: View {
                             
                         }
                         DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
-                            
+                            .onChange(of: takeMedicineTime) { oldValue, newValue in
+                                let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Hourformat)
+                                dayData.time = newTakeMedicTimeToString
+                            }
+                        
                     }
                     .padding([.leading, .trailing], 20)
                 })
@@ -135,9 +139,10 @@ struct ChooseStatusView: View {
             .foregroundColor(.black)
             
         }
-            
         .padding(25)
-        
+        .onAppear {
+            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat)!
+        }
     }
 }
 
