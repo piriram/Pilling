@@ -144,12 +144,13 @@ struct ChooseStatusView: View {
         }
         .padding(25)
         .onAppear {
+
             if let dosage = DosageType(rawValue: dayData.status) {
                 dosageType = dosage
             } else {
                 dosageType = .notYet
             }
-            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat)!
+            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
             
         }
     }
