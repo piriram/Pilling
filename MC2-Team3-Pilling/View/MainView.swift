@@ -137,12 +137,23 @@ struct MainView: View {
                                                 }
                                             
                                         case 0:
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
-                                                .onTapGesture {
-                                                    dayData = sortedDay[idx]
-                                                    isModal = true
-                                                    print(isModal)
-                                                }
+                                            if idx < today-1{
+                                                ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
+                                                    .onTapGesture {
+                                                        dayData = sortedDay[idx]
+                                                        isModal = true
+                                                        print(isModal)
+                                                    }
+                                            }
+                                            else{
+                                                ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
+                                                    .onTapGesture {
+                                                        dayData = sortedDay[idx]
+                                                        isModal = true
+                                                        print(isModal)
+                                                    }
+                                            }
+                                            
                                         case 1:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
                                                 .onTapGesture {
@@ -170,9 +181,10 @@ struct MainView: View {
                     
                     // footer button
                     Button(action: {
-                        let todayData = sortedDay[today-1]
-                        todayData.status = 1
-                        todayData.time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
+                        sortedDay[today-1].status = 1
+                        sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
+                        sortedDay[today-1].isRecord = true
+                        
                         
                         
                     }, label: {
