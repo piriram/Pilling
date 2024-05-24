@@ -15,6 +15,7 @@ struct OnboardingSecondView: View {
     @State var isActive = false
     @Environment(\.modelContext) private var modelContext
     @Query var user:[UserInfo]
+    @Query(sort:\DayData.num) var sortedDay:[DayData]
     
     var body: some View {
 
@@ -124,13 +125,13 @@ struct OnboardingSecondView: View {
                 //이미 지난 것은 복용 status=1로 변경
                 if today>1{
                     for idx in 0..<today-1{
-                        periodPill.intakeCal[idx].status=1
+                        sortedDay[idx].status=1
                     }
                 }
                 
                 //위약 status 초기화
                 for idx in pillInfo!.intakeDay..<wholeDay{
-                    periodPill.intakeCal[idx].status=3
+                    sortedDay[idx].status=3
                 }
                 
                 modelContext.insert(periodPill)

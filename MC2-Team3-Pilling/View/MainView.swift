@@ -25,7 +25,7 @@ struct MainView: View {
     @State var isActive = false
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
-    //    @Query(sort:\DayData.num) var sortedDay:[DayData]
+    @Query(sort:\DayData.num) var sortedDay:[DayData]
     var body: some View {
         
         
@@ -118,7 +118,7 @@ struct MainView: View {
                             HStack {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
-                                    let status = user.first?.curPill?.intakeCal[idx].status
+                                    let status = sortedDay[idx].status
                                     let isToday = today-1 == idx
                                     
                                     
@@ -185,7 +185,12 @@ struct MainView: View {
             //            var changeUser = user.first?.curPill?.intakeCal[0]
             //            changeUser?.status = 0
             //            modelContext.update(changeUser)
-            user.first?.curPill?.printAllDetails()
+//            user.first?.curPill?.printAllDetails()
+            for dayData in sortedDay {
+                print("num : \(dayData.num)")
+                print("status : \(dayData.status)")
+            }
+            print("----")
             
         }
         
@@ -210,3 +215,4 @@ struct DayView: View {
 }
 
 
+    
