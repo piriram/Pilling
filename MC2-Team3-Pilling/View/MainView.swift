@@ -132,7 +132,6 @@ struct MainView: View {
                                             PlaceboCell(isModal: $isModal, dayData: sortedDay[idx], backgroundColor: Color.white, isToday: isToday)
                                                 .onTapGesture {
                                                     dayData = sortedDay[idx]
-
                                                     isModal = true
                                                     print(isModal)
                                                 }

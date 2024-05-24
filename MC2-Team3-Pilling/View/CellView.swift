@@ -18,7 +18,7 @@ struct ActivateCell: View {
             .foregroundColor(backgroundColor)
             .overlay(
                 isToday ? RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.red, lineWidth: 3)
+                    .stroke(Color(hex:"#507E20"), lineWidth: 4)
                 : nil
             )
             
@@ -41,7 +41,7 @@ struct PlaceboCell: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .inset(by: 0.5)
-                    .stroke(isToday ? Color.red : Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: isToday ? 3 : 1) // Conditional stroke color
+                    .stroke(isToday ? Color.green : Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: isToday ? 4 : 1) // Conditional stroke color
             )
             
     }

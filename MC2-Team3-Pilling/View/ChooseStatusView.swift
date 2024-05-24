@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftData
 // 복용 여부 enum
 enum DosageType: Int, CaseIterable, Identifiable {
     case notYet = 0
@@ -42,13 +42,15 @@ struct ChooseStatusView: View {
     @Binding var showingChooseStatus: Bool
     @Binding var dayData: DayData
     
+    @Query var user:[UserInfo]
+    
     var body: some View {
         VStack(spacing:20) {
             // 현재일 / 전체복용일수
             HStack {
-                Text("4일차")
+                Text("\(dayData.num+1)일차")
                     .largeTitle()
-                Text("/28")
+                Text("/\(String(describing: user.first?.curPill?.pillInfo.wholeDay ?? 40))")
                     .secondaryTitle()
                 
                 Spacer()
@@ -63,7 +65,6 @@ struct ChooseStatusView: View {
                         
                     }
                 }
-
                 .pickerStyle(.segmented)
                 .padding(.vertical, 10)
                 // selection Print 되는 값 확인
@@ -85,6 +86,7 @@ struct ChooseStatusView: View {
                             
                         }
                         DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
+                            
                     }
                     .padding([.leading, .trailing], 20)
                 })
