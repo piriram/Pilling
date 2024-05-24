@@ -121,14 +121,16 @@ struct ChooseStatusView: View {
                 }
                 .padding([.top, .bottom], 15)
                 .padding([.leading, .trailing], 10)
-//                .onChange(of: irrBleedingToggle, nauseaToggle, swellingToggle) { oldValue, newValue in
-//                    dayData.status = newValue.rawValue
-//                }
                 
             }
             
             // footer button
             Button(action: {
+                dayData.sideEffect[0] = irrBleedingToggle
+                dayData.sideEffect[1] = nauseaToggle
+                dayData.sideEffect[2] = swellingToggle
+                dayData.memo = sideEffectMemo
+                
                 self.showingChooseStatus = false
             }, label: {
                 Text("수정")
@@ -144,14 +146,19 @@ struct ChooseStatusView: View {
         }
         .padding(25)
         .onAppear {
-
+            
             if let dosage = DosageType(rawValue: dayData.status) {
                 dosageType = dosage
             } else {
                 dosageType = .notYet
             }
+            
             takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
             
+            irrBleedingToggle = dayData.sideEffect[0]
+            nauseaToggle = dayData.sideEffect[1]
+            swellingToggle = dayData.sideEffect[2]
+            sideEffectMemo = dayData.memo
         }
     }
 }
