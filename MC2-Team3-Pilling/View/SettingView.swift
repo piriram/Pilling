@@ -78,6 +78,7 @@ struct SettingView: View {
                 
             }
             .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
             //            .sheet(isPresented: $isShowingPills, content: {
             //                Text("Pills")
             //                    .presentationDetents([.height(300), .large])
