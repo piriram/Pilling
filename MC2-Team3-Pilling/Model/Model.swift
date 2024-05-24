@@ -137,7 +137,7 @@ extension PeriodPill{
 extension DayData{
     func printAllDetails() {
         print("Day Data Details:")
-        print("ID: \(id)")
+        print("num: \(num)")
         print("Status: \(status)")
         if let time = time {
             print("Time: \(time)")

@@ -23,12 +23,9 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
-    
     @State private var showingMedicineSheet = false
-    
-//    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo?
-        
+    //    @Query(sort:\DayData.num) var sortedDay:[DayData]
     var body: some View {
         
         
@@ -78,7 +75,6 @@ struct MainView: View {
                                 
                             }
                             
-                            
                             if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
                                 Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
                                     .secondaryRegular()
@@ -123,7 +119,7 @@ struct MainView: View {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
                                     let status = user.first?.curPill?.intakeCal[idx].status
-                                    let isToday = today == idx
+                                    let isToday = today-1 == idx
                                     
                                     
                                     switch status {
@@ -131,20 +127,16 @@ struct MainView: View {
                                             PlaceboCell(isModal: $isModal, backgroundColor: Color.white, isToday: isToday)
                                             
                                         case 0:
-                                            ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]],isToday:isToday)
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
                                         case 1:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
-                                               
+                                            
                                         case 2:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
                                             
                                         default:
                                             EmptyView()
                                     }
-                                    
-                                    
-                                    
-                                    
                                 }
                             }
                         }
@@ -187,12 +179,13 @@ struct MainView: View {
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
-                print(scheduleTime)
+                //                print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
-//            var changeUser = user.first?.curPill?.intakeCal[0]
-//            changeUser?.status = 0
-//            modelContext.update(changeUser)
+            //            var changeUser = user.first?.curPill?.intakeCal[0]
+            //            changeUser?.status = 0
+            //            modelContext.update(changeUser)
+            user.first?.curPill?.printAllDetails()
             
         }
         
