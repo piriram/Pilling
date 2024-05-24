@@ -24,6 +24,8 @@ struct MainView: View {
     @State var isToday = false
     @State var isActive = false
     
+    @State var dayData = DayData(num: 1)
+    
     @State private var showingMedicineSheet = false
     
 //    @State private var selectedPill: PillInfo? = nil
@@ -121,11 +123,13 @@ struct MainView: View {
                                     let idx = y * 7 + x
                                     let status = user.first?.curPill?.intakeCal[idx].status
                                     let isToday = today == idx
+//                                    dayData = (user.first?.curPill!.intakeCal[idx])!
                                     
                                     
                                     switch status {
                                         case 3: // 위약
                                             PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
+                                            
                                         case 0:
                                             ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
                                         case 1:
@@ -165,7 +169,7 @@ struct MainView: View {
                 }
             }
             .sheet(isPresented: $isModal){
-                ChooseStatusView(showingChooseStatus: $isModal)
+                ChooseStatusView(showingChooseStatus: $isModal, dayData: $dayData)
                     .presentationDetents([.medium])
             }
         }
