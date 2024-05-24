@@ -18,6 +18,7 @@
 		1B65305E2BFB8ACD00452ACB /* LiveTimeAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */; };
 		210E58632BFE56EC005B7AE4 /* model+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58622BFE56EC005B7AE4 /* model+extension.swift */; };
 		210E58652BFE5A24005B7AE4 /* Onboarding+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */; };
+		210E58832BFF76D5005B7AE4 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58822BFF76D5005B7AE4 /* CellView.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
 		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
 		21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730D2BFB85E2002BCC67 /* Config.swift */; };
@@ -73,6 +74,7 @@
 		1B6530562BFB8A0C00452ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210E58622BFE56EC005B7AE4 /* model+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "model+extension.swift"; sourceTree = "<group>"; };
 		210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+extension.swift"; sourceTree = "<group>"; };
+		210E58822BFF76D5005B7AE4 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
 		21B2730D2BFB85E2002BCC67 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
 				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
 				21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */,
+				210E58822BFF76D5005B7AE4 /* CellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				939C87E42BF307B600572EDC /* Item.swift in Sources */,
 				9BE4AA1D2BF6E280008BE893 /* CustomFont.swift in Sources */,
 				939C88382BF6DF7000572EDC /* SplashScreenView.swift in Sources */,
+				210E58832BFF76D5005B7AE4 /* CellView.swift in Sources */,
 				1B6530442BFB7C1600452ACB /* LiveTimeAttributes.swift in Sources */,
 				939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */,
 				939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */,

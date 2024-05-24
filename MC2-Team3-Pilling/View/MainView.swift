@@ -23,14 +23,10 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
-    
-    @State var dayData = DayData(num: 1)
-    
+
     @State private var showingMedicineSheet = false
-    
-//    @State private var selectedPill: PillInfo? = nil
     @State private var selectedPill: PillInfo?
-        
+    @Query(sort:\DayData.num) var sortedDay:[DayData]
     var body: some View {
         
         
@@ -47,7 +43,8 @@ struct MainView: View {
                             
                             Image(systemName: "info.circle.fill")
                                 .Icon()
-                        })
+                        }
+                        )
                         .popover(isPresented: $showingPopover, attachmentAnchor: .point(.bottom),
                                  arrowEdge: .top) {
                             PopoverView()
@@ -78,6 +75,7 @@ struct MainView: View {
                                 }
                                 
                             }
+                            
                             if let intakeDay=user.first?.curPill?.pillInfo.intakeDay,let placeboday=user.first?.curPill?.pillInfo.placeboDay{
                                 Label("\(String(describing: intakeDay))/\(String(describing: placeboday))", systemImage: "calendar")
                                     .secondaryRegular()
@@ -121,28 +119,28 @@ struct MainView: View {
                             HStack {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
-                                    let status = user.first?.curPill?.intakeCal[idx].status
-                                    let isToday = today == idx
-//                                    dayData = (user.first?.curPill!.intakeCal[idx])!
+
+                                    let status = sortedDay[idx].status
+                                    let isToday = today-1 == idx
+
                                     
                                     
                                     switch status {
                                         case 3: // 위약
-                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white)
+                                            PlaceboCell(isModal: $isModal, backgroundColor: Color.white, isToday: isToday)
+
                                             
                                         case 0:
-                                            ActivateCell(isModal: $isModal, backgroundColor: colorArr[myArray[y*7+x]])
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
                                         case 1:
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customGreen)
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
+                                            
                                         case 2:
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown)
+                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
+                                            
                                         default:
                                             EmptyView()
                                     }
-                                    
-                                    
-                                    
-                                    
                                 }
                             }
                         }
@@ -185,12 +183,18 @@ struct MainView: View {
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
-                print(scheduleTime)
+                //                print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
-//            var changeUser = user.first?.curPill?.intakeCal[0]
-//            changeUser?.status = 0
-//            modelContext.update(changeUser)
+            //            var changeUser = user.first?.curPill?.intakeCal[0]
+            //            changeUser?.status = 0
+            //            modelContext.update(changeUser)
+//            user.first?.curPill?.printAllDetails()
+            for dayData in sortedDay {
+                print("num : \(dayData.num)")
+                print("status : \(dayData.status)")
+            }
+            print("----")
             
         }
         
@@ -214,81 +218,5 @@ struct DayView: View {
     }
 }
 
-struct ActivateCell: View {
-    @Binding var isModal:Bool
-    var backgroundColor: Color
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .frame(width: 45, height: 45)
-            .foregroundColor(backgroundColor)
-            .onTapGesture {
-                isModal = true
-                print(isModal)
-            }
-    }
+
     
-}
-struct PlaceboCell: View {
-    @Binding var isModal:Bool
-    var backgroundColor: Color
-    var body: some View {
-        Rectangle()
-            .foregroundColor(.clear)
-            .frame(width: 45, height: 45)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .inset(by: 0.5)
-                    .stroke(Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: 1)
-            )
-            .onTapGesture {
-                isModal = true
-                print(isModal)
-            }
-    }
-    
-}
-struct TodayCell: View {
-    @Binding var isModal:Bool
-    var backgroundColor: Color
-    var body: some View {
-        Rectangle()
-            .foregroundColor(.clear)
-            .frame(width: 45, height: 45)
-            .background(.clear)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .inset(by: 1)
-                    .stroke(Color.green,lineWidth: 3)
-                
-            )
-    }
-    
-}
-struct TwoCell: View {
-    @Binding var isModal:Bool
-    var backgroundColor: Color
-    var body: some View {
-        HStack(spacing: 5){
-            
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: 20, height: 45)
-                .background(.customGreen)
-                .cornerRadius(10)
-            
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: 20, height: 45)
-                .background(Color(red: 0.5, green: 0.87, blue: 0.11))
-                .cornerRadius(10)
-            
-            
-        }
-        .frame(width: 45, height: 45)
-        
-        
-    }
-    
-}

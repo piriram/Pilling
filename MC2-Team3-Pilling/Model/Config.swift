@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 class Config{
     enum IntakeStatus: Int {
@@ -110,6 +111,8 @@ class Config{
         return startDate
         
     }
+    
+//    static var fetchDescriptor: FetchDescriptor<DayData>
     
  
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class UserInfo:Identifiable{
+final class UserInfo{
     @Attribute(.unique) var id:UUID
     var scheduleTime:String
     
@@ -34,10 +34,10 @@ final class UserInfo:Identifiable{
 }
 
 @Model
-final class PeriodPill:Identifiable{
-    @Attribute(.unique) let id:UUID
+final class PeriodPill{
+//    @Attribute(.unique) let id:UUID
     var pillInfo:PillInfo
-    var startIntake:String
+    @Attribute(.unique) var startIntake:String
     var finishIntake:String?
     @Relationship(deleteRule: .cascade,inverse:\DayData.periodPill)
     var intakeCal = [DayData]()
@@ -46,7 +46,7 @@ final class PeriodPill:Identifiable{
     var userInfo:UserInfo?
     
     init(pillInfo: PillInfo, startIntake: String) {
-        self.id = UUID()
+        
         self.pillInfo = pillInfo
         self.startIntake = startIntake
         self.missDay = 0
@@ -58,7 +58,7 @@ final class PeriodPill:Identifiable{
 }
 
 @Model
-final class DayData:Identifiable{
+final class DayData{
     @Attribute(.unique) let num:Int
     var status:Int
     var time:String?
@@ -84,9 +84,9 @@ final class DayData:Identifiable{
 }
 
 @Model
-final class PillInfo:Identifiable{
-    @Attribute(.unique) let id:UUID
-    var pillName:String
+final class PillInfo{
+//    @Attribute(.unique) let id:UUID
+    @Attribute(.unique) var pillName:String
     var intakeDay:Int
     var placeboDay:Int
     var wholeDay:Int
@@ -94,7 +94,7 @@ final class PillInfo:Identifiable{
     var type:String?
     
     init(pillName: String, intakeDay: Int, placeboDay: Int) {
-        self.id = UUID()
+//        self.id = UUID()
         self.pillName = pillName
         self.intakeDay = intakeDay
         self.placeboDay = placeboDay
@@ -137,7 +137,7 @@ extension PeriodPill{
 extension DayData{
     func printAllDetails() {
         print("Day Data Details:")
-        print("ID: \(id)")
+        print("num: \(num)")
         print("Status: \(status)")
         if let time = time {
             print("Time: \(time)")
