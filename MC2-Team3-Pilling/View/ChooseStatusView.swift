@@ -141,7 +141,9 @@ struct ChooseStatusView: View {
         }
         .padding(25)
         .onAppear {
-            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat)!
+            if let dayTime=dayData.time{
+                takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
+            }
         }
     }
 }
