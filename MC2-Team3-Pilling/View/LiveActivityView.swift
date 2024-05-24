@@ -27,7 +27,7 @@ struct LiveActivityView: View {
     var currentStep: Int {
         if restOfTime < -alarmDeadline - 1 { // 알람 시간 전
             return -1
-        } else if -alarmDeadline - 1 <= restOfTime && restOfTime <= -alarmDeadline { // 알람 시간
+        } else if -alarmDeadline - 1 <= restOfTime && restOfTime < -alarmDeadline { // 알람 시간
             return 0
         } else if restOfTime <  1 { //  ~ 30분 이내
             return 1
