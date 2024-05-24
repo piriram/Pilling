@@ -54,13 +54,22 @@ class Config{
 
     
     static func AlarmStringToDate(dateString: String) -> Date? {
-        let format = "HH:mm"
+        let format = "MM/dd/yyyy_HH:mm:ss"
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
 
-        return dateFormatter.date(from: dateString)
+        return dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_\(dateString):00") // 오늘 날짜의 지정한 알람 시간으로 live activity에 전달
     }
+    
+//    static func AlarmStringToDate(dateString: String) -> Date? {
+//        let format = "HH:mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone.current
+//        dateFormatter.dateFormat = format
+//
+//        return dateFormatter.date(from: dateString)
+//    }
 //    func AlarmDateToString(date: Date) -> String {
 //        let format = "HH:mm"
 //        let dateFormatter = DateFormatter()

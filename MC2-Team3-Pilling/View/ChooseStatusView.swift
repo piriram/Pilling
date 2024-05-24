@@ -40,6 +40,7 @@ struct ChooseStatusView: View {
     @State private var dosageType: DosageType = .notYet
     
     @Binding var showingChooseStatus: Bool
+    @Binding var dayData: DayData
     
     var body: some View {
         VStack(spacing:20) {

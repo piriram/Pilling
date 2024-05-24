@@ -13,7 +13,7 @@ struct OnboardingFirstView: View {
     @State private var selectedPill: PillInfo?
     @State var isActive = false
     @State var pillInfo = PillInfo(pillName: "야즈", intakeDay: 24, placeboDay: 4)
-    @State var selectedTakingDays = 4
+    @State var selectedTakingDays = 0
     
     var body: some View {
         VStack{

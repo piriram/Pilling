@@ -23,6 +23,7 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
+
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
@@ -118,13 +119,16 @@ struct MainView: View {
                             HStack {
                                 ForEach(0..<7) { x in
                                     let idx = y * 7 + x
+
                                     let status = sortedDay[idx].status
                                     let isToday = today-1 == idx
+
                                     
                                     
                                     switch status {
                                         case 3: // 위약
                                             PlaceboCell(isModal: $isModal, backgroundColor: Color.white, isToday: isToday)
+
                                             
                                         case 0:
                                             ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
@@ -163,7 +167,7 @@ struct MainView: View {
                 }
             }
             .sheet(isPresented: $isModal){
-                ChooseStatusView(showingChooseStatus: $isModal)
+                ChooseStatusView(showingChooseStatus: $isModal, dayData: $dayData)
                     .presentationDetents([.medium])
             }
         }
