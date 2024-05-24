@@ -159,9 +159,6 @@ struct ChooseStatusView: View {
             } else {
                 dosageType = .notYet
             }
-            
-//            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
-            
             irrBleedingToggle = dayData.sideEffect[0]
             nauseaToggle = dayData.sideEffect[1]
             swellingToggle = dayData.sideEffect[2]
