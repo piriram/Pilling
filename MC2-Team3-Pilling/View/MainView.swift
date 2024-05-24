@@ -61,6 +61,7 @@ struct MainView: View {
                     
                     // status header
                     HStack(alignment: .center) {
+                        
                         Image("1case")
                             .resizable()
                             .frame(width: 200, height: 200)
@@ -218,22 +219,18 @@ struct MainView: View {
                     let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
                     today = Config.daysFromStart(startDay: startDate!)
                     
-                    print("today:\(today)")
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
                 //                print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
-            //            var changeUser = user.first?.curPill?.intakeCal[0]
-            //            changeUser?.status = 0
-            //            modelContext.update(changeUser)
-            //            user.first?.curPill?.printAllDetails()
+
             for dayData in sortedDay {
                 print("num : \(dayData.num)")
                 print("status : \(dayData.status)")
             }
-            print("----")
+        
             
         }
         
