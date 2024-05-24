@@ -19,6 +19,7 @@
 		210E58632BFE56EC005B7AE4 /* model+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58622BFE56EC005B7AE4 /* model+extension.swift */; };
 		210E58652BFE5A24005B7AE4 /* Onboarding+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */; };
 		210E58832BFF76D5005B7AE4 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58822BFF76D5005B7AE4 /* CellView.swift */; };
+		21A039932C00B5C00071C4C2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A039922C00B5C00071C4C2 /* GradientView.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
 		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
 		21B2730E2BFB85E2002BCC67 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730D2BFB85E2002BCC67 /* Config.swift */; };
@@ -75,6 +76,7 @@
 		210E58622BFE56EC005B7AE4 /* model+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "model+extension.swift"; sourceTree = "<group>"; };
 		210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+extension.swift"; sourceTree = "<group>"; };
 		210E58822BFF76D5005B7AE4 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		21A039922C00B5C00071C4C2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
 		21B2730D2BFB85E2002BCC67 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -139,8 +141,10 @@
 		219E17582BF6ED79007B7DC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				210E58822BFF76D5005B7AE4 /* CellView.swift */,
 				93EF92D52BFC4187004DEEF1 /* ChooseStatusView.swift */,
 				939C87E12BF307B600572EDC /* ContentView.swift */,
+				21A039922C00B5C00071C4C2 /* GradientView.swift */,
 				1B38E5392BFDE11500CFD48B /* LiveActivityView.swift */,
 				9B0411752BF593A0006F8BB9 /* MainView.swift */,
 				939C88312BF6B4AC00572EDC /* MedicineSheetView.swift */,
@@ -150,7 +154,6 @@
 				939C882F2BF5CC9F00572EDC /* SettingView.swift */,
 				939C88372BF6DF7000572EDC /* SplashScreenView.swift */,
 				21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */,
-				210E58822BFF76D5005B7AE4 /* CellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				210E58832BFF76D5005B7AE4 /* CellView.swift in Sources */,
 				1B6530442BFB7C1600452ACB /* LiveTimeAttributes.swift in Sources */,
 				939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */,
+				21A039932C00B5C00071C4C2 /* GradientView.swift in Sources */,
 				939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

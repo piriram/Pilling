@@ -62,9 +62,17 @@ struct MainView: View {
                     // status header
                     HStack(alignment: .center) {
                         
-                        Image("1case")
-                            .resizable()
-                            .frame(width: 200, height: 200)
+                        if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{
+                            Image("1case")
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                        } else if sortedDay[today-1].status == 1{
+                            Image("taking")
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                        }
+                            
+                            
                         VStack(alignment: .leading, spacing: 16) {
                             HStack {
                                 Text("\(today)일차")
@@ -225,12 +233,12 @@ struct MainView: View {
                 //                print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
-
+            
             for dayData in sortedDay {
                 print("num : \(dayData.num)")
                 print("status : \(dayData.status)")
             }
-        
+            
             
         }
         
@@ -239,12 +247,7 @@ struct MainView: View {
 }
 
 
-struct GreenGradient: View {
-    var body: some View {
-        LinearGradient(stops: [.init(color: .customGreen.opacity(0.3), location: 0), .init(color: .white, location: 0.15)], startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea()
-    }
-}
+
 
 struct DayView: View {
     var num:Int
