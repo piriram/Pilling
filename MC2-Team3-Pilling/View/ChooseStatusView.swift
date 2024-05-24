@@ -78,6 +78,7 @@ struct ChooseStatusView: View {
                     
                 }, label: {
                     ZStack{
+                        
                         HStack {
                             Image(systemName: "clock")
                             Text("복용 시간")
@@ -85,11 +86,17 @@ struct ChooseStatusView: View {
                             Spacer()
                             
                         }
-                        DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
-                            .onChange(of: takeMedicineTime) { oldValue, newValue in
-                                let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Hourformat)
-                                dayData.time = newTakeMedicTimeToString
-                            }
+                        if let dayTime = dayData.time{
+                            DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
+                                .onChange(of: takeMedicineTime) { oldValue, newValue in
+                                    let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Hourformat)
+                                    dayData.time = newTakeMedicTimeToString
+                                }
+                                .onAppear{
+                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Hourformat)!
+                                }
+                        }
+                        
                         
                     }
                     .padding([.leading, .trailing], 20)
@@ -153,7 +160,7 @@ struct ChooseStatusView: View {
                 dosageType = .notYet
             }
             
-            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
+//            takeMedicineTime = Config.StringToDate(dateString: dayData.time!, format: Hourformat) ?? Date()
             
             irrBleedingToggle = dayData.sideEffect[0]
             nauseaToggle = dayData.sideEffect[1]
