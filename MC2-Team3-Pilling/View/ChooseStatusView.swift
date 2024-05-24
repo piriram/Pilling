@@ -39,7 +39,7 @@ struct ChooseStatusView: View {
     @State private var swellingToggle = false
     @State var sideEffectMemo: String = ""
     
-    @State private var dosageType: DosageType
+    @State private var dosageType: DosageType = .notYet
     
     @Binding var showingChooseStatus: Bool
     @Binding var dayData: DayData

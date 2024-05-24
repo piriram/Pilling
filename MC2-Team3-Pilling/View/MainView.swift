@@ -28,6 +28,7 @@ struct MainView: View {
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
+//    @State var dosageType
     @State var imageNum = 0
     var body: some View {
         
