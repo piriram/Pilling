@@ -30,6 +30,30 @@ struct MainView: View {
     @State var dayData = DayData(num: 1)
     //    @State var dosageType
     @State var imageNum = 0
+    fileprivate func refreshData() {
+        if today == 1 && sortedDay[today-1].status == 0{ //첫째날 -> 약먹어야함
+            imageNum = 1
+        }
+        else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{ // 약먹어야함
+            imageNum = 1
+        } else if sortedDay[today-1].status == 1{ // 약먹음 -> 윙크
+            imageNum = 2
+        }
+        else if sortedDay[today-1].status == 3{ // 위약
+            imageNum = 3
+        }
+        else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-2].status==0{ // 이틀째 안먹음
+            imageNum = 5
+        }
+        else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음
+            imageNum = 4
+        }
+        
+        if let msg = Config.StatusMessage(rawValue: imageNum){
+            statusMessage = msg.description
+        }
+    }
+    
     var body: some View {
         
         ZStack {
@@ -79,7 +103,7 @@ struct MainView: View {
                                 .resizable()
                                 .frame(width: 200, height: 200)
                         case 5:
-                            Image("nottaking")
+                            Image("notaking")
                                 .resizable()
                                 .frame(width: 200, height: 200)
                         default:
@@ -210,14 +234,7 @@ struct MainView: View {
                     sortedDay[today-1].status = 1
                     sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                     sortedDay[today-1].isRecord = true
-                    if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{
-                        imageNum = 1
-                    } else if sortedDay[today-1].status == 1{
-                        imageNum = 2
-                    }
-                    else if sortedDay[today-1].status == 3{
-                        imageNum = 3
-                    }
+                   refreshData()
                     
                     
                     
@@ -244,6 +261,9 @@ struct MainView: View {
                 .presentationDetents([.medium])
             
         }
+        .onChange(of: isModal){
+            refreshData()
+        }
         
         .onAppear {
             if let userFirst = user.first{
@@ -259,26 +279,7 @@ struct MainView: View {
                 time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
             }
             
-            if today == 1 && sortedDay[today-1].status == 0{ //첫째날 -> 약먹어야함
-                imageNum = 1
-            }
-            else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{ // 약먹어야함
-                imageNum = 1
-            } else if sortedDay[today-1].status == 1{ // 약먹음 -> 윙크
-                imageNum = 2
-            }
-            else if sortedDay[today-1].status == 3{ // 위약
-                imageNum = 3
-            }
-            else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음
-                imageNum = 4
-            }
-            else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-2].status==0{ // 이틀째 안먹음
-                imageNum = 5
-            }
-            if let msg = Config.StatusMessage(rawValue: imageNum){
-                statusMessage = msg.description
-            }
+            refreshData()
             
             
             for dayData in sortedDay {
