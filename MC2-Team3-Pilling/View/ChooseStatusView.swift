@@ -93,7 +93,7 @@ struct ChooseStatusView: View {
                                     dayData.time = newTakeMedicTimeToString
                                 }
                                 .onAppear{
-                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Hourformat)!
+                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Hourformat) ?? Date()
                                 }
                         }
                         
