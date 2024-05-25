@@ -48,6 +48,9 @@ struct MainView: View {
         else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음
             imageNum = 4
         }
+        else{
+            imageNum = 0
+        }
         
         if let msg = Config.StatusMessage(rawValue: imageNum){
             statusMessage = msg.description
@@ -247,6 +250,8 @@ struct MainView: View {
                 .background(.customGreen)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .foregroundColor(.black)
+                .disabled(sortedDay[today-1].status != 0)
+                
             }
             .padding()
             // 알람 시간(type: Date)을 alarmTime에 넘겨주세요

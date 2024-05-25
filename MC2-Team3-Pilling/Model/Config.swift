@@ -29,7 +29,7 @@ class Config{
     }
     
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
-        case plantGrass = 0
+        case plantGrass = 1
         case limitTwoHours = 6
         case plantTwoGrass = 4
         case grassGrowingWell = 2
