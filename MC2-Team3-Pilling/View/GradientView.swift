@@ -23,6 +23,7 @@ struct DayView: View {
     var body: some View {
         Text(days[num])
             .frame(width: 45, height: 45)
+            .foregroundStyle(Color.gray)
     }
 }
 

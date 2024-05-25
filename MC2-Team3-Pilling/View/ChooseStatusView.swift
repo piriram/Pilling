@@ -43,7 +43,7 @@ struct ChooseStatusView: View {
     
     @Binding var showingChooseStatus: Bool
     @Binding var dayData: DayData
-    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(spacing:20) {
@@ -139,6 +139,8 @@ struct ChooseStatusView: View {
                 dayData.memo = sideEffectMemo
                 
                 self.showingChooseStatus = false
+                self.presentationMode.wrappedValue.dismiss()
+
             }, label: {
                 Text("수정")
                     .font(.title3)
