@@ -274,14 +274,14 @@ struct MainView: View {
             if let userFirst = user.first{
                 if let curPill = userFirst.curPill{
                     week = curPill.pillInfo.wholeDay/7
-                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
+                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: Config.dayformat)
                     today = Config.daysFromStart(startDay: startDate!)
                     
                 }
                 
                 var scheduleTime = userFirst.scheduleTime
                 //                print(scheduleTime)
-                time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
+                time = Config.StringToDate(dateString: scheduleTime , format: Config.Hourformat) ?? Date()
             }
             
             refreshData()

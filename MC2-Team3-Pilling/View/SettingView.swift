@@ -41,7 +41,7 @@ struct SettingView: View {
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
                         .onChange(of: selectedAlarmTime) { oldValue, newValue in
-                            let newValueToString = Config.DateToString(date: newValue, format: Hourformat)
+                            let newValueToString = Config.DateToString(date: newValue, format: Config.Hourformat)
                             user.first?.scheduleTime = newValueToString
                             print(newValueToString)
                         }
@@ -57,7 +57,7 @@ struct SettingView: View {
             .onAppear{
                 if let userInfo = user.first {
                     selectedPill = userInfo.curPill?.pillInfo
-                    selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Hourformat)!
+                    selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Config.Hourformat)!
                     isSoundOn = userInfo.isAlarm
                 }
                 

@@ -18,12 +18,12 @@ class Config{
         
         var color: Color {
             switch self {
-            case .notYet:
-                return .customGray
-            case .onePill, .twoPills:
-                return .customGreen
-            case .placebo:
-                return .white
+                case .notYet:
+                    return .customGray
+                case .onePill, .twoPills:
+                    return .customGreen
+                case .placebo:
+                    return .white
             }
         }
     }
@@ -37,31 +37,31 @@ class Config{
         
         var description: String {
             switch self {
-            case .plantGrass:
-                return "잔디를 심어주세요"
-            case .limitTwoHours:
-                return "잔디는 2시간을 초과하지 않게 심어주세요!"
-            case .plantTwoGrass:
-                return "2개의 잔디를 심어주세요"
-            case .grassGrowingWell:
-                return "잔디가 잘 자라고 있어요!"
-            case .notRecording:
-                return "기록을 안하고 계신가요?"
+                case .plantGrass:
+                    return "잔디를 심어주세요"
+                case .limitTwoHours:
+                    return "잔디는 2시간을 초과하지 않게 심어주세요!"
+                case .plantTwoGrass:
+                    return "2개의 잔디를 심어주세요"
+                case .grassGrowingWell:
+                    return "잔디가 잘 자라고 있어요!"
+                case .notRecording:
+                    return "기록을 안하고 계신가요?"
             }
         }
     }
     
-
+    
     
     static func AlarmStringToDate(dateString: String) -> Date? {
         let format = "MM/dd/yyyy_HH:mm:ss"
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
-
+        
         return dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_\(dateString):00") // 오늘 날짜의 지정한 알람 시간으로 live activity에 전달
     }
-     
+    
     static let dummyPillInfos: [PillInfo] = [
         PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4),
         PillInfo(pillName: "머시론정", intakeDay: 21, placeboDay: 7),
@@ -90,14 +90,34 @@ class Config{
         
     }
     
-//    static var fetchDescriptor: FetchDescriptor<DayData>
+    static func DateToString(date: Date,format:String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
     
- 
+    static func StringToDate(dateString: String,format:String) -> Date? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        
+        return dateFormatter.date(from: dateString)
+    }
+    
+    static func daysFromStart(startDay: Date) -> Int {
+        let calendar = Calendar.current
+        let today = Date()
+        let components = calendar.dateComponents([.day], from: startDay, to: today)
+        
+        return (components.day ?? 0) + 1 //시작날짜를 1일로 친다면 +1을 더해줌
+    }
+    static let days = ["일", "월", "화", "수", "목", "금", "토"]
+    static let dayformat = "yyyy-MM-dd"
+    static let dayToHourformat = "yyyy-MM-dd HH:mm:ss"
+    static let Hourformat = "HH:mm"
+    
+    
 }
-let myArray: [Int] = [1, 2 , 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3]
-var colorArr:[Color] = [.customGray,.customGreen,.customGreen,.white]
-let days = ["일", "월", "화", "수", "목", "금", "토"]
-let dayformat = "yyyy-MM-dd"
-let dayToHourformat = "yyyy-MM-dd HH:mm:ss"
-let Hourformat = "HH:mm"
-

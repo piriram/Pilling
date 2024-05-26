@@ -21,7 +21,7 @@ struct GreenGradient: View {
 struct DayView: View {
     var num:Int
     var body: some View {
-        Text(days[num])
+        Text(Config.days[num])
             .frame(width: 45, height: 45)
             .foregroundStyle(Color.gray)
     }

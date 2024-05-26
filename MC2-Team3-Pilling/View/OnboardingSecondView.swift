@@ -106,10 +106,10 @@ struct OnboardingSecondView: View {
                 modelContext.insert(selectePillInfo)
                 
                 let startIntake = Config.findStartDay(curIntakeDay: intakeDay)
-                let startIntakeToString = Config.DateToString(date: startIntake!, format: dayformat)
+                let startIntakeToString = Config.DateToString(date: startIntake!, format: Config.dayformat)
                 let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntakeToString)
                 
-                let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
+                let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: Config.dayformat)
                 let today = Config.daysFromStart(startDay: startDate!)
                 
                 

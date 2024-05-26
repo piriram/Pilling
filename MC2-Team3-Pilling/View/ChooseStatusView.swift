@@ -89,11 +89,11 @@ struct ChooseStatusView: View {
                         if let dayTime = dayData.time{
                             DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
                                 .onChange(of: takeMedicineTime) { oldValue, newValue in
-                                    let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Hourformat)
+                                    let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Config.Hourformat)
                                     dayData.time = newTakeMedicTimeToString
                                 }
                                 .onAppear{
-                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Hourformat) ?? Date()
+                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Config.Hourformat) ?? Date()
                                 }
                         }
                         
