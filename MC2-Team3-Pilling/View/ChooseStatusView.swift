@@ -17,12 +17,12 @@ enum DosageType: Int, CaseIterable, Identifiable {
     
     var takingType: String {
         switch self {
-        case .notYet:
-            "미복용"
-        case .onePill:
-            "복용"
-        case .twoPills:
-            "2알 복용"
+            case .notYet:
+                "미복용"
+            case .onePill:
+                "복용"
+            case .twoPills:
+                "2알 복용"
         }
     }
 }
@@ -140,7 +140,7 @@ struct ChooseStatusView: View {
                 
                 self.showingChooseStatus = false
                 self.presentationMode.wrappedValue.dismiss()
-
+                
             }, label: {
                 Text("수정")
                     .font(.title3)

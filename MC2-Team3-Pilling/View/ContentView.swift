@@ -10,9 +10,9 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-
+    
     @Query private var user: [UserInfo] // 하나만 쓰고싶다면?
-   
+    
     var body: some View {
         NavigationStack{
             VStack(spacing:20){
@@ -30,10 +30,10 @@ struct ContentView: View {
                 NavigationLink(destination: SplashScreenView()){
                     Text("SplashScreenView")
                 }
-
-//                NavigationLink(destination: ChooseStatusView()){
-//                    Text("ChooseStatusView")
-//                }
+                
+                //                NavigationLink(destination: ChooseStatusView()){
+                //                    Text("ChooseStatusView")
+                //                }
                 NavigationLink(destination: OnboardingFirstView()){
                     Text("PiriView")
                 }

@@ -17,7 +17,7 @@ struct SettingView: View {
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
     @Binding var showingMedicineSheet: Bool
-
+    
     
     var body: some View {
         NavigationStack {
@@ -64,7 +64,7 @@ struct SettingView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-
+            
             
         }
     }

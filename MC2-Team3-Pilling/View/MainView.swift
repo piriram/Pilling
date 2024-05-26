@@ -237,7 +237,7 @@ struct MainView: View {
                     sortedDay[today-1].status = 1
                     sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                     sortedDay[today-1].isRecord = true
-                   refreshData()
+                    refreshData()
                     
                     
                     

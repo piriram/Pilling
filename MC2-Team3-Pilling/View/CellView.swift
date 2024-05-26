@@ -21,7 +21,7 @@ struct ActivateCell: View {
                     .stroke(Color(hex:"#507E20"), lineWidth: 4)
                 : nil
             )
-            
+        
     }
     
 }
@@ -43,7 +43,7 @@ struct PlaceboCell: View {
                     .inset(by: 0.5)
                     .stroke(isToday ? Color.green : Color(red: 0.91, green: 0.91, blue: 0.92), lineWidth: isToday ? 4 : 1)
             )
-            
+        
     }
 }
 
