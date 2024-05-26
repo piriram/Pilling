@@ -61,29 +61,6 @@ class Config{
 
         return dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_\(dateString):00") // 오늘 날짜의 지정한 알람 시간으로 live activity에 전달
     }
-    
-//    static func AlarmStringToDate(dateString: String) -> Date? {
-//        let format = "HH:mm"
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.dateFormat = format
-//
-//        return dateFormatter.date(from: dateString)
-//    }
-//    func AlarmDateToString(date: Date) -> String {
-//        let format = "HH:mm"
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.dateFormat = format
-//        return dateFormatter.string(from: date)
-//    }
-//    func AlarmStringToDate(dateString: String) -> Date? {
-//        let format = "HH:mm"
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.dateFormat = format
-//        return dateFormatter.date(from: dateString)
-//    }
      
     static let dummyPillInfos: [PillInfo] = [
         PillInfo(pillName: "야즈정", intakeDay: 24, placeboDay: 4),
@@ -93,8 +70,8 @@ class Config{
         PillInfo(pillName: "쎄스콘정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "미뉴렛정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "에이리스정", intakeDay: 21, placeboDay: 7),
-        
         PillInfo(pillName: "보니타정", intakeDay: 21, placeboDay: 7),
+        PillInfo(pillName: "미니보라 30", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "트리퀄라", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "멜리안정", intakeDay: 21, placeboDay: 7),
         PillInfo(pillName: "센스베리정", intakeDay: 21, placeboDay: 7),

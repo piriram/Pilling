@@ -42,7 +42,7 @@ struct MainView: View {
         else if sortedDay[today-1].status == 3{ // 위약
             imageNum = 3
         }
-        else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-2].status==0{ // 이틀째 안먹음
+        else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-3].status==0{ // 이틀째 안먹음
             imageNum = 5
         }
         else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음

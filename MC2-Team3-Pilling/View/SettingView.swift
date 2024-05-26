@@ -14,7 +14,6 @@ struct SettingView: View {
     
     @State private var selectedAlarmTime = Date()
     @State private var isSoundOn = false
-//    @State private var selectedPill = 0
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
     @Binding var showingMedicineSheet: Bool
@@ -24,19 +23,6 @@ struct SettingView: View {
         NavigationStack {
             Form {
                 Section("약 패키지") {
-                    //                    Picker("Pill", selection: $selectedPill) {
-                    //                        ForEach(Config.dummyPillInfos) { pill in
-                    //                            HStack {
-                    //                                Text(pill.pillName)
-                    //                                    .bold()
-                    //                                Text("\(pill.intakeDay)" + "\\" + "\(pill.placeboDay)")
-                    //                                    .secondaryRegular()
-                    //                            }
-                    //                            .tag(pill)
-                    //                        }
-                    //                    }
-                    //                    .pickerStyle(.navigationLink)
-                    
                     NavigationLink(destination: MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)) {
                         HStack {
                             Text("약 선택")
@@ -72,22 +58,14 @@ struct SettingView: View {
                 if let userInfo = user.first {
                     selectedPill = userInfo.curPill?.pillInfo
                     selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Hourformat)!
-//                    selectedAlarmTime = Config.DateToString(date: selectedAlarmTime, format: Hourformat)
                     isSoundOn = userInfo.isAlarm
                 }
                 
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            //            .sheet(isPresented: $isShowingPills, content: {
-            //                Text("Pills")
-            //                    .presentationDetents([.height(300), .large])
-            //            })
+
             
         }
     }
 }
-
-//#Preview {
-//    MainView()
-//}
