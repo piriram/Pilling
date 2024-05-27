@@ -28,25 +28,17 @@ struct MainView: View {
     @State var dayData = DayData(num: 1)
     @State var statusNum = 0
     
-    
     var body: some View {
-        
         ZStack {
             
-            if statusNum == 5{
-                BrownGradient()
-            }
-            else{
-                GreenGradient()
-            }
+            gradientView
+            
             VStack(spacing: 10) {
-                // navigation icons
                 HStack {
                     Spacer()
                     Button(action: {
                         showingPopover = true
                     }, label: {
-                        
                         Image(systemName: "info.circle.fill")
                             .Icon()
                     }
@@ -216,19 +208,11 @@ struct MainView: View {
                     sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                     sortedDay[today-1].isRecord = true
                     refreshData(today: today, sortedDay: sortedDay)
-                    
-                    
-                    
-                    
                 }, label: {
                     Text("잔디 심기")
                         .largeBold()
                 })
-                .padding(.vertical, 25)
-                .frame(maxWidth: .infinity)
-                .background(.customGreen)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .foregroundColor(.black)
+                .buttonStyle(CustomButtonStyle(isDisabled: sortedDay[today-1].status != 0))
                 .disabled(sortedDay[today-1].status != 0)
                 
             }
@@ -251,34 +235,8 @@ struct MainView: View {
         }
         
         .onAppear {
-            if let userFirst = user.first{
-                if let curPill = userFirst.curPill{
-                    week = curPill.pillInfo.wholeDay/7
-                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: Config.dayformat)
-                    today = Config.daysFromStart(startDay: startDate!)
-                    if let startDate = startDate{
-                        startWeekNum = Config.dayIndex(from: startDate)!
-                    }
-                    
-                    
-                }
-                
-                let scheduleTime = userFirst.scheduleTime
-                //                print(scheduleTime)
-                time = Config.StringToDate(dateString: scheduleTime , format: Config.Hourformat) ?? Date()
-            }
-            
+            calculateData()
             refreshData(today: today, sortedDay: sortedDay)
-            
-            
-            
-            for dayData in sortedDay {
-                print("num : \(dayData.num)")
-                print("status : \(dayData.status)")
-            }
-            
-            
-            
             
         }
         

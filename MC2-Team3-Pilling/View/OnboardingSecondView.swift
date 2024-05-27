@@ -20,7 +20,7 @@ struct OnboardingSecondView: View {
     var body: some View {
         
         
-        NavigationStack{
+        VStack{
             if !isActive {
                 VStack{
                     Image("onboardingSecond")

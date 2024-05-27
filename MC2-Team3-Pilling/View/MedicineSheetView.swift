@@ -10,7 +10,7 @@ struct MedicineSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedPill: PillInfo?
     @Query var user:[UserInfo]
-
+    
     var filteredBirthControl: [PillInfo] {
         if searchText.isEmpty {
             return Config.dummyPillInfos
@@ -53,7 +53,7 @@ struct MedicineSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         
-
+        
         
     }
 }
