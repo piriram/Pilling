@@ -28,14 +28,19 @@ struct MainView: View {
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
-    //    @State var dosageType
     @State var imageNum = 0
     
     
     var body: some View {
         
         ZStack {
-            GreenGradient()
+            
+            if imageNum == 5{
+                BrownGradient()
+            }
+            else{
+                GreenGradient()
+            }
             VStack(spacing: 10) {
                 // navigation icons
                 HStack {

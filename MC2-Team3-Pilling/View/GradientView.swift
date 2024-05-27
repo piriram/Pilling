@@ -14,6 +14,12 @@ struct GreenGradient: View {
     }
 }
 
+struct BrownGradient: View {
+    var body: some View {
+        LinearGradient(stops: [.init(color: .customBrown.opacity(0.6), location: 0), .init(color: .white, location: 0.15)], startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea()
+    }
+}
 #Preview {
     GreenGradient()
 }
