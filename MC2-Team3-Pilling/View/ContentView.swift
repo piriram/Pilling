@@ -19,11 +19,11 @@ struct ContentView: View {
                 NavigationLink(destination: MainView()){
                     Text("MainView")
                 }
-                
-                NavigationLink(destination: OnboardingFirstView()){
-                    Text("OnboardingFirstView")
-                }
-                
+//                
+//                NavigationLink(destination: OnboardingFirstView()){
+//                    Text("OnboardingFirstView")
+//                }
+//                
                 NavigationLink(destination: SwiftDataTestView()){
                     Text("SwiftDataTestView")
                 }
@@ -34,9 +34,9 @@ struct ContentView: View {
                 //                NavigationLink(destination: ChooseStatusView()){
                 //                    Text("ChooseStatusView")
                 //                }
-                NavigationLink(destination: OnboardingFirstView()){
-                    Text("PiriView")
-                }
+//                NavigationLink(destination: OnboardingFirstView()){
+//                    Text("PiriView")
+//                }
             }
         }
         

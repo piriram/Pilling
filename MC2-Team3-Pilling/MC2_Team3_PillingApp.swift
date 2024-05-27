@@ -30,9 +30,9 @@ struct MC2_Team3_PillingApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack{
-                SplashScreenView()
-            }
+            
+            SplashScreenView()
+            
             
         }
         .modelContainer(sharedModelContainer)
