@@ -12,10 +12,9 @@ import SwiftData
 struct MainView: View {
     @State private var showingPopover = false
     @State private var showingChooseStatus = false
-    @State var startNum = 4
+    @State var startWeekNum = 4
     @State var statusMessage = ""
     @State var isModal = false
-    @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Environment(\.modelContext) private var modelContext
     @Query var user:[UserInfo]
     @State var time = Date()
@@ -23,19 +22,18 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
-    
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
-    @State var imageNum = 0
+    @State var statusNum = 0
     
     
     var body: some View {
         
         ZStack {
             
-            if imageNum == 5{
+            if statusNum == 5{
                 BrownGradient()
             }
             else{
@@ -68,7 +66,7 @@ struct MainView: View {
                 
                 // status header
                 HStack(alignment: .center) {
-                    switch imageNum{
+                    switch statusNum{
                         case 1:
                             Image("1case")
                                 .resizable()
@@ -143,7 +141,7 @@ struct MainView: View {
                 // calendar view
                 VStack(spacing: 10) {
                     HStack {
-                        ForEach(startNum...(startNum+6),id:\.self){ num in
+                        ForEach(startWeekNum...(startWeekNum+6),id:\.self){ num in
                             DayView(num: (num%7))
                         }
                         
@@ -217,7 +215,8 @@ struct MainView: View {
                     sortedDay[today-1].status = 1
                     sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                     sortedDay[today-1].isRecord = true
-                    refreshData()
+                    refreshData(today: today, sortedDay: sortedDay)
+                    
                     
                     
                     
@@ -247,7 +246,8 @@ struct MainView: View {
             
         }
         .onChange(of: isModal){
-            refreshData()
+            refreshData(today: today, sortedDay: sortedDay)
+            
         }
         
         .onAppear {
@@ -257,18 +257,19 @@ struct MainView: View {
                     let startDate = Config.StringToDate(dateString: curPill.startIntake, format: Config.dayformat)
                     today = Config.daysFromStart(startDay: startDate!)
                     if let startDate = startDate{
-                        startNum = Config.dayIndex(from: startDate)!
+                        startWeekNum = Config.dayIndex(from: startDate)!
                     }
                     
                     
                 }
                 
-                var scheduleTime = userFirst.scheduleTime
+                let scheduleTime = userFirst.scheduleTime
                 //                print(scheduleTime)
                 time = Config.StringToDate(dateString: scheduleTime , format: Config.Hourformat) ?? Date()
             }
             
-            refreshData()
+            refreshData(today: today, sortedDay: sortedDay)
+            
             
             
             for dayData in sortedDay {
