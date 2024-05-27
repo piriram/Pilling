@@ -114,6 +114,17 @@ class Config{
         
         return (components.day ?? 0) + 1 //시작날짜를 1일로 친다면 +1을 더해줌
     }
+    
+    static func dayIndex(from date: Date) -> Int? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.weekday], from: date)
+        
+        guard let weekday = components.weekday else { return nil }
+        
+        // weekday는 1(일요일)부터 7(토요일)까지 반환하므로 1을 뺍니다.
+        return weekday - 1
+    }
+    
     static let days = ["일", "월", "화", "수", "목", "금", "토"]
     static let dayformat = "yyyy-MM-dd"
     static let dayToHourformat = "yyyy-MM-dd HH:mm:ss"
