@@ -17,12 +17,12 @@ enum DosageType: Int, CaseIterable, Identifiable {
     
     var takingType: String {
         switch self {
-        case .notYet:
-            "미복용"
-        case .onePill:
-            "복용"
-        case .twoPills:
-            "2알 복용"
+            case .notYet:
+                "미복용"
+            case .onePill:
+                "복용"
+            case .twoPills:
+                "2알 복용"
         }
     }
 }
@@ -89,11 +89,11 @@ struct ChooseStatusView: View {
                         if let dayTime = dayData.time{
                             DatePicker("", selection: $takeMedicineTime, displayedComponents: .hourAndMinute)
                                 .onChange(of: takeMedicineTime) { oldValue, newValue in
-                                    let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Hourformat)
+                                    let newTakeMedicTimeToString = Config.DateToString(date: newValue, format: Config.Hourformat)
                                     dayData.time = newTakeMedicTimeToString
                                 }
                                 .onAppear{
-                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Hourformat) ?? Date()
+                                    takeMedicineTime = Config.StringToDate(dateString: dayTime, format: Config.Hourformat) ?? Date()
                                 }
                         }
                         
@@ -140,7 +140,7 @@ struct ChooseStatusView: View {
                 
                 self.showingChooseStatus = false
                 self.presentationMode.wrappedValue.dismiss()
-
+                
             }, label: {
                 Text("수정")
                     .font(.title3)

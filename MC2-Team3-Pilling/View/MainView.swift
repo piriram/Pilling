@@ -12,10 +12,9 @@ import SwiftData
 struct MainView: View {
     @State private var showingPopover = false
     @State private var showingChooseStatus = false
-    @State var startNum = 4
+    @State var startWeekNum = 4
     @State var statusMessage = ""
     @State var isModal = false
-    @State var userInfo:UserInfo = UserInfo(scheduleTime: "11:00", curPill: PeriodPill(pillInfo: Config.dummyPillInfos[0], startIntake: "2024-05-17 11:45:46"))
     @Environment(\.modelContext) private var modelContext
     @Query var user:[UserInfo]
     @State var time = Date()
@@ -23,52 +22,23 @@ struct MainView: View {
     @State var today = 1
     @State var isToday = false
     @State var isActive = false
-    
     @State private var showingMedicineSheet = false
     @State private var selectedPill: PillInfo?
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
-    //    @State var dosageType
-    @State var imageNum = 0
-    fileprivate func refreshData() {
-        if today == 1 && sortedDay[today-1].status == 0{ //첫째날 -> 약먹어야함
-            imageNum = 1
-        }
-        else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==1{ // 약먹어야함
-            imageNum = 1
-        } else if sortedDay[today-1].status == 1{ // 약먹음 -> 윙크
-            imageNum = 2
-        }
-        else if sortedDay[today-1].status == 3{ // 위약
-            imageNum = 3
-        }
-        else if today > 2 && sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 && sortedDay[today-2].status==0{ // 이틀째 안먹음
-            imageNum = 5
-        }
-        else if sortedDay[today-1].status == 0 && sortedDay[today-2].status==0 { // 어제 안먹음
-            imageNum = 4
-        }
-        else{
-            imageNum = 0
-        }
-        
-        if let msg = Config.StatusMessage(rawValue: imageNum){
-            statusMessage = msg.description
-        }
-    }
+    @State var statusNum = 0
     
     var body: some View {
-        
         ZStack {
-            GreenGradient()
+            
+            gradientView
+            
             VStack(spacing: 10) {
-                // navigation icons
                 HStack {
                     Spacer()
                     Button(action: {
                         showingPopover = true
                     }, label: {
-                        
                         Image(systemName: "info.circle.fill")
                             .Icon()
                     }
@@ -88,7 +58,7 @@ struct MainView: View {
                 
                 // status header
                 HStack(alignment: .center) {
-                    switch imageNum{
+                    switch statusNum{
                         case 1:
                             Image("1case")
                                 .resizable()
@@ -163,7 +133,7 @@ struct MainView: View {
                 // calendar view
                 VStack(spacing: 10) {
                     HStack {
-                        ForEach(startNum...(startNum+6),id:\.self){ num in
+                        ForEach(startWeekNum...(startWeekNum+6),id:\.self){ num in
                             DayView(num: (num%7))
                         }
                         
@@ -237,19 +207,12 @@ struct MainView: View {
                     sortedDay[today-1].status = 1
                     sortedDay[today-1].time = Config.DateToString(date: Date(), format: Config.dayToHourformat)
                     sortedDay[today-1].isRecord = true
-                   refreshData()
-                    
-                    
-                    
+                    refreshData(today: today, sortedDay: sortedDay)
                 }, label: {
                     Text("잔디 심기")
                         .largeBold()
                 })
-                .padding(.vertical, 25)
-                .frame(maxWidth: .infinity)
-                .background(.customGreen)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .foregroundColor(.black)
+                .buttonStyle(CustomButtonStyle(isDisabled: sortedDay[today-1].status != 0))
                 .disabled(sortedDay[today-1].status != 0)
                 
             }
@@ -267,37 +230,18 @@ struct MainView: View {
             
         }
         .onChange(of: isModal){
-            refreshData()
+            refreshData(today: today, sortedDay: sortedDay)
+            
         }
         
         .onAppear {
-            if let userFirst = user.first{
-                if let curPill = userFirst.curPill{
-                    week = curPill.pillInfo.wholeDay/7
-                    let startDate = Config.StringToDate(dateString: curPill.startIntake, format: dayformat)
-                    today = Config.daysFromStart(startDay: startDate!)
-                    
-                }
-                
-                var scheduleTime = userFirst.scheduleTime
-                //                print(scheduleTime)
-                time = Config.StringToDate(dateString: scheduleTime , format: Hourformat) ?? Date()
-            }
-            
-            refreshData()
-            
-            
-            for dayData in sortedDay {
-                print("num : \(dayData.num)")
-                print("status : \(dayData.status)")
-            }
-            
-            
-            
+            calculateData()
+            refreshData(today: today, sortedDay: sortedDay)
             
         }
         
     }
+    
     
 }
 

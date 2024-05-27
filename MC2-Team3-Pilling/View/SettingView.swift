@@ -14,29 +14,15 @@ struct SettingView: View {
     
     @State private var selectedAlarmTime = Date()
     @State private var isSoundOn = false
-//    @State private var selectedPill = 0
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
     @Binding var showingMedicineSheet: Bool
-
+    
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("약 패키지") {
-                    //                    Picker("Pill", selection: $selectedPill) {
-                    //                        ForEach(Config.dummyPillInfos) { pill in
-                    //                            HStack {
-                    //                                Text(pill.pillName)
-                    //                                    .bold()
-                    //                                Text("\(pill.intakeDay)" + "\\" + "\(pill.placeboDay)")
-                    //                                    .secondaryRegular()
-                    //                            }
-                    //                            .tag(pill)
-                    //                        }
-                    //                    }
-                    //                    .pickerStyle(.navigationLink)
-                    
                     NavigationLink(destination: MedicineSheetView(showingMedicineSheet: $showingMedicineSheet, selectedPill: $selectedPill)) {
                         HStack {
                             Text("약 선택")
@@ -55,7 +41,7 @@ struct SettingView: View {
                 Section("알림") {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
                         .onChange(of: selectedAlarmTime) { oldValue, newValue in
-                            let newValueToString = Config.DateToString(date: newValue, format: Hourformat)
+                            let newValueToString = Config.DateToString(date: newValue, format: Config.Hourformat)
                             user.first?.scheduleTime = newValueToString
                             print(newValueToString)
                         }
@@ -71,23 +57,15 @@ struct SettingView: View {
             .onAppear{
                 if let userInfo = user.first {
                     selectedPill = userInfo.curPill?.pillInfo
-                    selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Hourformat)!
-//                    selectedAlarmTime = Config.DateToString(date: selectedAlarmTime, format: Hourformat)
+                    selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Config.Hourformat)!
                     isSoundOn = userInfo.isAlarm
                 }
                 
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            //            .sheet(isPresented: $isShowingPills, content: {
-            //                Text("Pills")
-            //                    .presentationDetents([.height(300), .large])
-            //            })
+            
             
         }
     }
 }
-
-//#Preview {
-//    MainView()
-//}

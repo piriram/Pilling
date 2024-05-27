@@ -4,68 +4,59 @@
 //
 //  Created by ram on 5/21/24.
 //
-
 import SwiftUI
 import SwiftData
+
 struct OnboardingSecondView: View {
     @State private var alarmTime: Date = Date()
     @State private var alarmToggle = false
-    @Binding var pillInfo:PillInfo?
-    @Binding var intakeDay:Int
+    @Binding var isMain:Bool
+    @Binding var pillInfo: PillInfo?
+    @Binding var intakeDay: Int
     @State var isActive = false
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    @Query var user:[UserInfo]
-    @Query(sort:\DayData.num) var sortedDay:[DayData]
+    @Query var user: [UserInfo]
+    @Query(sort: \DayData.num) var sortedDay: [DayData]
     
+
     var body: some View {
-
-
-        NavigationStack{
+        VStack {
             if !isActive {
-                VStack{
+                VStack {
                     Image("onboardingSecond")
-                    //.resizable()
-                    //.frame(width: 240, height: 240)
-                    
 
-                    // Text
                     HStack {
                         VStack(alignment: .leading) {
-                            // Text
                             Text("알람 받을 시간을 설정해주세요!")
                                 .largeBold()
                                 .padding(.bottom, 2)
-                            
+
                             Text("설정은 추후에 변경 가능합니다.")
                                 .secondaryRegular()
                         }
                         Spacer()
                     }
                     .padding()
-                    
-                    
-                    Button(action: {
-                    }, label: {
-                        
-                        ZStack{
+
+                    Button(action: {}, label: {
+                        ZStack {
                             DatePicker("복용 시간", selection: $alarmTime, displayedComponents: .hourAndMinute)
                         }
                         .padding([.leading, .trailing], 15)
-                    }
-                    )
+                    })
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity)
                     .background(.customGray02)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .foregroundColor(.secondary)
                     .padding()
-                    
-                    
-                    VStack(alignment: .leading){
+
+                    VStack(alignment: .leading) {
                         Toggle("소리 알람여부추가", isOn: $alarmToggle)
                             .regular()
                             .padding(.bottom, 2)
-                        
+
                         HStack {
                             Image(systemName: "info.circle.fill")
                             Text("소리를 OFF하면 라이브 액티비티로만 알려줘요!")
@@ -74,9 +65,9 @@ struct OnboardingSecondView: View {
                         .foregroundStyle(.secondary)
                     }
                     .padding()
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         dataSave()
                     }) {
@@ -90,72 +81,68 @@ struct OnboardingSecondView: View {
                             .foregroundColor(.black)
                             .padding()
                     }
-                    
+
                 }
             } else {
                 MainView()
             }
         }
-        .onAppear{
+        .onAppear {
             print(intakeDay)
         }
     }
-    func dataSave(){
+
+    func dataSave() {
         if user.isEmpty {
-            if let selectePillInfo = pillInfo{
-                modelContext.insert(selectePillInfo)
-                
+            if let selectedPillInfo = pillInfo {
+                modelContext.insert(selectedPillInfo)
+
                 let startIntake = Config.findStartDay(curIntakeDay: intakeDay)
-                let startIntakeToString = Config.DateToString(date: startIntake!, format: dayformat)
-                let periodPill = PeriodPill(pillInfo: selectePillInfo, startIntake: startIntakeToString)
-                
-                let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: dayformat)
+                let startIntakeToString = Config.DateToString(date: startIntake!, format: Config.dayformat)
+                let periodPill = PeriodPill(pillInfo: selectedPillInfo, startIntake: startIntakeToString)
+
+                let startDate = Config.StringToDate(dateString: periodPill.startIntake, format: Config.dayformat)
                 let today = Config.daysFromStart(startDay: startDate!)
-                
-                
-                let wholeDay = selectePillInfo.wholeDay
-                
+
+                let wholeDay = selectedPillInfo.wholeDay
+
                 for idx in 0..<wholeDay {
                     let dayData = DayData(num: idx)
-                    //                    dayData.periodPill = periodPill
                     modelContext.insert(dayData)
                     periodPill.intakeCal.append(dayData)
                 }
-                print("온보딩today:\(today)")
-                //이미 지난 것은 복용 status=1로 변경
-                if today>1{
-                    for idx in 0..<today-1{
-                        sortedDay[idx].status=1
+                print("온보딩today: \(today)")
+                
+                if today > 1 {
+                    for idx in 0..<today - 1 {
+                        sortedDay[idx].status = 1
                     }
                 }
-                
-                //위약 status 초기화
-                for idx in pillInfo!.intakeDay..<wholeDay{
-                    sortedDay[idx].status=3
+
+                for idx in pillInfo!.intakeDay..<wholeDay {
+                    sortedDay[idx].status = 3
                 }
-                
+
                 modelContext.insert(periodPill)
-                
+
                 let scheduleTime = Config.DateToString(date: alarmTime, format: Config.Hourformat)
                 let userInfo = UserInfo(scheduleTime: scheduleTime, curPill: periodPill)
                 userInfo.isAlarm = alarmToggle
-                
+
                 modelContext.insert(userInfo)
-                
+
                 do {
                     try modelContext.save()
                     print("스데 저장 성공")
                     isActive = true
+                    isMain = true
+
                 } catch {
                     print("Failed to save context: \(error.localizedDescription)")
                 }
-                
             }
-        }
-        else{
-            
+        } else {
+            // 사용자 데이터가 이미 있는 경우의 처리 로직 (필요한 경우 추가)
         }
     }
-    
 }
-

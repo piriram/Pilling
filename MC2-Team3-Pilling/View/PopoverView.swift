@@ -11,14 +11,14 @@ struct PopoverView: View {
                 
                 Text("필링 가이드")
                     .largeBold()
-                .padding(.bottom, 3)
+                    .padding(.bottom, 3)
             }
             Text("피임약 복용 상태를 잔디로 알려줘요!")
                 .secondaryRegular()
-                
+            
             Divider()
                 .padding(.vertical, 8)
-                
+            
             HStack{
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 45, height: 45)
@@ -60,7 +60,7 @@ struct PopoverView: View {
                 
                 Text("미복용")
                     .regular()
-                    
+                
             }
             .padding(.bottom)
             

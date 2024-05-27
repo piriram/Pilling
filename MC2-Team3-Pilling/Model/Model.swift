@@ -35,7 +35,7 @@ final class UserInfo{
 
 @Model
 final class PeriodPill{
-//    @Attribute(.unique) let id:UUID
+    //    @Attribute(.unique) let id:UUID
     var pillInfo:PillInfo
     @Attribute(.unique) var startIntake:String
     var finishIntake:String?
@@ -85,7 +85,7 @@ final class DayData{
 
 @Model
 final class PillInfo{
-//    @Attribute(.unique) let id:UUID
+    //    @Attribute(.unique) let id:UUID
     @Attribute(.unique) var pillName:String
     var intakeDay:Int
     var placeboDay:Int
@@ -94,7 +94,7 @@ final class PillInfo{
     var type:String?
     
     init(pillName: String, intakeDay: Int, placeboDay: Int) {
-//        self.id = UUID()
+        //        self.id = UUID()
         self.pillName = pillName
         self.intakeDay = intakeDay
         self.placeboDay = placeboDay

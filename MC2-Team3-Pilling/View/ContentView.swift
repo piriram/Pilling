@@ -10,33 +10,33 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-
+    
     @Query private var user: [UserInfo] // 하나만 쓰고싶다면?
-   
+    
     var body: some View {
         NavigationStack{
             VStack(spacing:20){
                 NavigationLink(destination: MainView()){
                     Text("MainView")
                 }
-                
-                NavigationLink(destination: OnboardingFirstView()){
-                    Text("OnboardingFirstView")
-                }
-                
+//                
+//                NavigationLink(destination: OnboardingFirstView()){
+//                    Text("OnboardingFirstView")
+//                }
+//                
                 NavigationLink(destination: SwiftDataTestView()){
                     Text("SwiftDataTestView")
                 }
                 NavigationLink(destination: SplashScreenView()){
                     Text("SplashScreenView")
                 }
-
-//                NavigationLink(destination: ChooseStatusView()){
-//                    Text("ChooseStatusView")
+                
+                //                NavigationLink(destination: ChooseStatusView()){
+                //                    Text("ChooseStatusView")
+                //                }
+//                NavigationLink(destination: OnboardingFirstView()){
+//                    Text("PiriView")
 //                }
-                NavigationLink(destination: OnboardingFirstView()){
-                    Text("PiriView")
-                }
             }
         }
         
@@ -48,14 +48,7 @@ struct ContentView: View {
             modelContext.insert(newItem)
         }
     }
-    
-    //    private func deleteItems(offsets: IndexSet) {
-    //        withAnimation {
-    //            for index in offsets {
-    //                modelContext.delete(items[index])
-    //            }
-    //        }
-    //    }
+
 }
 
 #Preview {
