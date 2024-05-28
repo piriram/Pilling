@@ -9,7 +9,8 @@ struct MedicineSheetView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedPill: PillInfo?
-    @Query var user:[UserInfo]
+    @Query var userOne:[UserInfo]
+    
     
     var filteredBirthControl: [PillInfo] {
         if searchText.isEmpty {
@@ -29,7 +30,7 @@ struct MedicineSheetView: View {
                         print(pill.pillName)
                         
                         if selectedPill == pill {
-                            user.first?.curPill?.pillInfo=selectedPill!
+                            userOne.first?.curPill?.pillInfo=selectedPill!
                             self.presentationMode.wrappedValue.dismiss()
                         }
                         
