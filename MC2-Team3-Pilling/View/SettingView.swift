@@ -40,6 +40,8 @@ struct SettingView: View {
                             let newValueToString = Config.DateToString(date: newValue, format: Config.Hourformat)
                             userOne.first?.scheduleTime = newValueToString
                             print(newValueToString)
+                            print("- SettingView changed alarmTime: \(userOne.first?.scheduleTime)")
+                            // 알람 변경
                         }
                     
                     Toggle("알람", isOn: $isSoundOn)

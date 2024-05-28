@@ -9,7 +9,7 @@ import SwiftUI
 import ActivityKit
 
 struct LiveActivityView: View {
-    @State var alarmTime: Date
+    @Binding var alarmTimeString: String
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy_HH:mm:ss"
@@ -20,6 +20,9 @@ struct LiveActivityView: View {
         return formatter
     }()
     @State private var currentDate = Date.now
+    var alarmTime: Date {
+        LiveActivityView.dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_\(alarmTimeString):00")!
+    }
     let alarmDeadline: Double = 60 * 30 // LiveTimeWidget의 progressTotal과 동일하게 설정
     var restOfTime: TimeInterval {
         currentDate.timeIntervalSince(alarmTime) - alarmDeadline
@@ -124,5 +127,5 @@ struct LiveActivityView: View {
 }
 
 #Preview {
-    LiveActivityView(alarmTime: LiveActivityView.dateFormatter.date(from: "\(Date.now.formatted(date: .numeric, time: .omitted))_15:53:10")!)
+    LiveActivityView(alarmTimeString: .constant("21:00"))
 }
