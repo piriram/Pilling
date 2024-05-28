@@ -14,6 +14,8 @@ extension MainView{
         print("today-1:\(sortedDay[today-1].status)")
         if today == 1 && sortedDay[today - 1].status == 0 { // 첫째날 -> 약먹어야함
             statusNum = 1
+        } else if sortedDay[today - 1].status == 2{
+            statusNum = 4
         } else if sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 1 { // 약먹어야함
             statusNum = 1
         } else if sortedDay[today - 1].status == 1 && sortedDay[today - 2].status == 0 { // 약먹음 -> 윙크
@@ -27,8 +29,6 @@ extension MainView{
             statusNum = 5
         } else if sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 0 { // 어제 안먹음
             statusNum = 6
-        } else if sortedDay[today - 1].status == 2{
-            statusNum = 4
         }
         else {
             statusNum = 0
@@ -82,7 +82,7 @@ extension MainView{
     
     struct CustomButtonStyle: ButtonStyle {
         var isDisabled: Bool
-
+        
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .padding(.vertical, 25)
@@ -103,7 +103,7 @@ struct StatusHeaderView: View {
     @Binding var statusNum: Int
     @Binding var today: Int
     @Binding var user: [UserInfo]
-
+    
     var body: some View {
         HStack(alignment: .center) {
             statusImage(for: statusNum)
@@ -140,18 +140,18 @@ struct StatusHeaderView: View {
     
     private func statusImage(for status: Int) -> Image {
         switch status {
-        case 1:
-            return Image("1case")
-        case 2:
-            return Image("taking")
-        case 3:
-            return Image("rest")
-        case 4:
-            return Image("2case")
-        case 5:
-            return Image("notaking")
-        default:
-            return Image("1case")
+            case 1:
+                return Image("1case")
+            case 2:
+                return Image("taking")
+            case 3:
+                return Image("rest")
+            case 4:
+                return Image("2case")
+            case 5:
+                return Image("notaking")
+            default:
+                return Image("1case")
         }
     }
 }

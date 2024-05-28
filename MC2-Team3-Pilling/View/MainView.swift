@@ -71,6 +71,10 @@ struct MainView: View {
                             Image("rest")
                                 .resizable()
                                 .frame(width: 200, height: 200)
+                        case 4:
+                            Image("taking")
+                                .resizable()
+                                .frame(width: 200, height: 200)
                         case 6:
                             Image("2case")
                                 .resizable()

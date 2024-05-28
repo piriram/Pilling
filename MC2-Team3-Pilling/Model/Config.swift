@@ -53,7 +53,7 @@ class Config{
                     case .husic:
                         return "오늘은 잔디도 휴식중"
                     case .okTwoGrass:
-                        return "하루라도 빠지면 효과가 감소해요."
+                        return "하루라도 빠지면 효과가 감소해요"
                 }
             }
         }
