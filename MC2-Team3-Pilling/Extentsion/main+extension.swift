@@ -16,18 +16,18 @@ extension MainView{
             statusNum = 1
         } else if sortedDay[today - 1].status == 2{
             statusNum = 4
-        } else if sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 1 { // 약먹어야함
+        } else if sortedDay[today - 1].status == 0 && (today - 2)>=0 && sortedDay[today - 2].status == 1 { // 약먹어야함
             statusNum = 1
-        } else if sortedDay[today - 1].status == 1 && sortedDay[today - 2].status == 0 { // 약먹음 -> 윙크
+        } else if sortedDay[today - 1].status == 1 && (today - 2)>=0 && sortedDay[today - 2].status == 0 { // 약먹음 -> 윙크
             statusNum = 6
         }
         else if sortedDay[today - 1].status == 1 { // 약먹음 -> 윙크
             statusNum = 2
         } else if sortedDay[today - 1].status == 3 { // 위약
             statusNum = 3
-        } else if today > 2 && sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 0 && sortedDay[today - 3].status == 0 { // 이틀째 안먹음
+        } else if today > 2 && sortedDay[today - 1].status == 0 && (today - 2) >= 0 && (today - 3) >= 0 && sortedDay[today - 2].status == 0 && sortedDay[today - 3].status == 0 { // 이틀째 안먹음
             statusNum = 5
-        } else if sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 0 { // 어제 안먹음
+        } else if sortedDay[today - 1].status == 0 && (today - 2) >= 0 && sortedDay[today - 2].status == 0 { // 어제 안먹음
             statusNum = 6
         }
         else {
