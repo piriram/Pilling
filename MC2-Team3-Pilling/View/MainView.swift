@@ -228,7 +228,7 @@ struct MainView: View {
             // 알람 시간(type: Date)을 alarmTime에 넘겨주세요
             // 중요! date: 오늘 날짜(시스템상), time: 알람 시간으로 넘겨주세요
             LiveActivityView(alarmTimeString: $timeString)
-                .opacity(1.0)
+                .opacity(0.0)
         }
         .sheet(isPresented: $isModal){
             ChooseStatusView(showingChooseStatus: $isModal, dayData: $dayData)
