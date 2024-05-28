@@ -85,12 +85,9 @@ extension MainView{
         
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .padding(.vertical, 25)
-                .frame(maxWidth: .infinity)
                 .background(isDisabled ? .customGray : .customGreen)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .foregroundColor(.black)
                 .opacity(configuration.isPressed ? 0.8 : 1.0)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
     
