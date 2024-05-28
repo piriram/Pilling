@@ -54,12 +54,12 @@ struct LiveActivityView: View {
                     currentDate = input
                     // 전: 현재 시간이 설정한 알람 시간 전일 때
                     if currentStep == -1 {
-                        print("전: 현재 시간이 설정한 알람 시간 전일 때")
+//                        print("전: 현재 시간이 설정한 알람 시간 전일 때")
                     }
                     // 시작: 현재 시간이 설정한 알람 시간일 때
                     else if currentStep == 0 {
                         // 라이브 액티비티 실행
-                        print("시작: 현재 시간이 설정한 알람 시간일 때")
+//                        print("시작: 현재 시간이 설정한 알람 시간일 때")
                         let attributes = LiveTimeAttributes()
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: currentStep)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
@@ -67,7 +67,7 @@ struct LiveActivityView: View {
                     }
                     // step 1: 현재 시간이 지정한 알람 시간 이후 30분 이내일 때
                     else if currentStep == 1 {
-                        print("step 1: 현재 시간이 지정한 알람 시간 이후 10초 이내일 때")
+//                        print("step 1: 현재 시간이 지정한 알람 시간 이후 10초 이내일 때")
                         progressAmount += 1
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: 1)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
@@ -77,7 +77,7 @@ struct LiveActivityView: View {
                     }
                     // step 2: 현재 시간이 지정한 알람 시간 이후 30분부터 2시간 이내일 때
                     else if currentStep == 2 {
-                        print("step 2: 현재 시간이 지정한 알람 시간 이후 10초부터 20초 이내일 때")
+//                        print("step 2: 현재 시간이 지정한 알람 시간 이후 10초부터 20초 이내일 때")
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: 2)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
                         Task {
@@ -86,7 +86,7 @@ struct LiveActivityView: View {
                     }
                     // step 3: 현재 시간이 지정한 알람 시간 이후 2시간부터 4시간 이내일 때
                     else if currentStep == 3 {
-                        print("step 3: 현재 시간이 지정한 알람 시간 이후 20초부터 30초 이내일 때")
+//                        print("step 3: 현재 시간이 지정한 알람 시간 이후 20초부터 30초 이내일 때")
                         let state = LiveTimeAttributes.ContentState(restOfTime: timeIntervalToString(time: restOfTime), progressAmount: progressAmount, step: 3)
                         let content = ActivityContent<LiveTimeAttributes.ContentState>(state: state, staleDate: nil)
                         Task {
@@ -107,7 +107,7 @@ struct LiveActivityView: View {
                     }
                     // 후: 라이브 액티비티가 종료된 후
                     else {
-                        print("후: 라이브 액티비티가 종료된 후")
+//                        print("후: 라이브 액티비티가 종료된 후")
                     }
                 }
         }
