@@ -212,9 +212,15 @@ struct MainView: View {
                 }, label: {
                     Text("잔디 심기")
                         .largeBold()
+                        .padding(.vertical, 25)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.black)
+                        
+                        
                 })
                 .buttonStyle(CustomButtonStyle(isDisabled: sortedDay[today-1].status != 0))
                 .disabled(sortedDay[today-1].status != 0)
+                
                 
             }
             .padding()

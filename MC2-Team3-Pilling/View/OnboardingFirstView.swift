@@ -112,12 +112,13 @@ struct OnboardingFirstView: View {
                     }, label: {
                         Text("다음으로")
                             .largeBold()
+                            
+                            .foregroundColor(.black)
+                            .padding(.vertical, 25)
+                            .frame(maxWidth: .infinity)
                     })
-                    .padding(.vertical, 25)
-                    .frame(maxWidth: .infinity)
                     .background(selectedPill == nil ? Color.customGray : Color.customGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .foregroundColor(.black)
                     .padding()
                     .disabled(selectedPill == nil)
                 }
