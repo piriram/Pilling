@@ -145,12 +145,13 @@ struct ChooseStatusView: View {
                 Text("수정")
                     .font(.title3)
                     .bold()
+                    .padding(.vertical, 25)
+                    .frame(maxWidth: .infinity)
+                    .background(.customGreen)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .foregroundColor(.black)
             })
-            .padding(.vertical, 25)
-            .frame(maxWidth: .infinity)
-            .background(.customGreen)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .foregroundColor(.black)
+            
             
         }
         .padding(25)

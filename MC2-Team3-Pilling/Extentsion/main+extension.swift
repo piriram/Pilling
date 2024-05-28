@@ -14,9 +14,9 @@ extension MainView{
         print("today-1:\(sortedDay[today-1].status)")
         if today == 1 && sortedDay[today - 1].status == 0 { // 첫째날 -> 약먹어야함
             statusNum = 1
-        } else if sortedDay[today - 1].status == 0 && sortedDay[today - 2].status == 1 { // 약먹어야함
+        } else if sortedDay[today - 1].status == 0{ // 약먹어야함
             statusNum = 1
-        } else if sortedDay[today - 1].status == 1 && sortedDay[today - 2].status == 0 { // 약먹음 -> 윙크
+        } else if sortedDay[today - 1].status == 1{ // 약먹음 -> 윙크
             statusNum = 6
         }
         else if sortedDay[today - 1].status == 1 { // 약먹음 -> 윙크
@@ -85,12 +85,9 @@ extension MainView{
 
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .padding(.vertical, 25)
-                .frame(maxWidth: .infinity)
                 .background(isDisabled ? .customGray : .customGreen)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .foregroundColor(.black)
                 .opacity(configuration.isPressed ? 0.8 : 1.0)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
     
