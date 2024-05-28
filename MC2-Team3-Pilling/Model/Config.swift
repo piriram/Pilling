@@ -29,27 +29,35 @@ class Config{
     }
     
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
-        case plantGrass = 1
-        case limitTwoHours = 6
-        case plantTwoGrass = 4
+            case plantGrass = 1
         case grassGrowingWell = 2
+        case plantTwoGrass = 6
+        case husic = 3
+        case okTwoGrass = 4
         case notRecording = 5
-        
-        var description: String {
-            switch self {
-                case .plantGrass:
-                    return "잔디를 심어주세요"
-                case .limitTwoHours:
-                    return "잔디는 2시간을 초과하지 않게 심어주세요!"
-                case .plantTwoGrass:
-                    return "2개의 잔디를 심어주세요"
-                case .grassGrowingWell:
-                    return "잔디가 잘 자라고 있어요!"
-                case .notRecording:
-                    return "기록을 안하고 계신가요?"
+            case limitTwoHours = 7
+            
+            
+            var description: String {
+                switch self {
+                    case .plantGrass:
+                        return "잔디를 심어주세요"
+                    case .limitTwoHours:
+                        return "잔디는 2시간을 초과하지 않게 심어주세요!"
+                    case .plantTwoGrass:
+                        return "2개의 잔디를 심어주세요"
+                    case .grassGrowingWell:
+                        return "잔디가 잘 자라고 있어요!"
+                    case .notRecording:
+                        return "기록을 안하고 계신가요?"
+                    case .husic:
+                        return "오늘은 잔디도 휴식중"
+                    case .okTwoGrass:
+                        return "하루라도 빠지면 효과가 감소해요."
+                }
             }
         }
-    }
+        
     
     
     

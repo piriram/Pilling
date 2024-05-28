@@ -49,7 +49,7 @@ struct MainView: View {
                             .padding()
                             .presentationCompactAdaptation(.popover)
                     }
-                    NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet), label: {
+                    NavigationLink(destination: SettingView(selectedPill: $selectedPill, showingMedicineSheet: $showingMedicineSheet, user: user.first!), label: {
                         Image(systemName: "gearshape")
                             .Icon()
                     }
@@ -71,7 +71,7 @@ struct MainView: View {
                             Image("rest")
                                 .resizable()
                                 .frame(width: 200, height: 200)
-                        case 4:
+                        case 6:
                             Image("2case")
                                 .resizable()
                                 .frame(width: 200, height: 200)
@@ -192,6 +192,7 @@ struct MainView: View {
                                                 isModal = true
                                                 print(isModal)
                                             }
+                                        
                                         
                                     default:
                                         EmptyView()

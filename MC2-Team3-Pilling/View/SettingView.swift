@@ -10,13 +10,13 @@ import SwiftData
 
 struct SettingView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query var user:[UserInfo]
-    
+    @Query var userOne:[UserInfo]
     @State private var selectedAlarmTime = Date()
     @State private var isSoundOn = false
     @Binding var selectedPill: PillInfo?
     @State private var isShowingPills = false
     @Binding var showingMedicineSheet: Bool
+    @Bindable var user: UserInfo
     
     
     var body: some View {
@@ -27,13 +27,9 @@ struct SettingView: View {
                         HStack {
                             Text("약 선택")
                             Spacer()
-                            if let pill = selectedPill {
-                                Text(pill.pillName)
-                                    .foregroundColor(.gray)
-                            } else {
-                                Text("None")
-                                    .foregroundColor(.gray)
-                            }
+                            Text((user.curPill?.pillInfo.pillName)!)
+                                .foregroundColor(.gray)
+                            
                         }
                     }
                 }
@@ -42,20 +38,20 @@ struct SettingView: View {
                     DatePicker("시간", selection: $selectedAlarmTime, displayedComponents: .hourAndMinute)
                         .onChange(of: selectedAlarmTime) { oldValue, newValue in
                             let newValueToString = Config.DateToString(date: newValue, format: Config.Hourformat)
-                            user.first?.scheduleTime = newValueToString
+                            userOne.first?.scheduleTime = newValueToString
                             print(newValueToString)
                         }
                     
                     Toggle("알람", isOn: $isSoundOn)
                         .onChange(of: isSoundOn) { oldValue, newValueAlarm in
-                            user.first?.isAlarm = newValueAlarm
+                            userOne.first?.isAlarm = newValueAlarm
                         }
                     // Optional, unWrapped
                     
                 }
             }
             .onAppear{
-                if let userInfo = user.first {
+                if let userInfo = userOne.first {
                     selectedPill = userInfo.curPill?.pillInfo
                     selectedAlarmTime = Config.StringToDate(dateString: userInfo.scheduleTime, format: Config.Hourformat)!
                     isSoundOn = userInfo.isAlarm
