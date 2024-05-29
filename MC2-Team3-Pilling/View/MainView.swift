@@ -27,6 +27,7 @@ struct MainView: View {
     @Query(sort:\DayData.num) var sortedDay:[DayData]
     @State var dayData = DayData(num: 1)
     @State var statusNum = 0
+    @State var timeString: String = "21:00"
     
     var body: some View {
         ZStack {
@@ -59,34 +60,30 @@ struct MainView: View {
                 // status header
                 HStack(alignment: .center) {
                     switch statusNum{
-                        case 1:
-                            Image("1case")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        case 2:
-                            Image("taking")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        case 3:
-                            Image("rest")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        case 4:
-                            Image("taking")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        case 6:
-                            Image("2case")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        case 5:
-                            Image("notaking")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                        default:
-                            Image("1case")
-                                .resizable()
-                                .frame(width: 200, height: 200)
+                    case 1:
+                        Image("1case")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                    case 2:
+                        Image("taking")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                    case 3:
+                        Image("rest")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                    case 6:
+                        Image("2case")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                    case 5:
+                        Image("notaking")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                    default:
+                        Image("1case")
+                            .resizable()
+                            .frame(width: 200, height: 200)
                     }
                     
                     
@@ -155,51 +152,51 @@ struct MainView: View {
                                 
                                 
                                 switch status {
-                                    case 3: // 위약
-                                        PlaceboCell(isModal: $isModal, dayData: sortedDay[idx], backgroundColor: Color.white, isToday: isToday)
-                                            .onTapGesture {
-                                                dayData = sortedDay[idx]
-                                                isModal = true
-                                                print(isModal)
-                                            }
-                                        
-                                    case 0:
-                                        if idx < today-1{
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
-                                                .onTapGesture {
-                                                    dayData = sortedDay[idx]
-                                                    isModal = true
-                                                    print(isModal)
-                                                }
+                                case 3: // 위약
+                                    PlaceboCell(isModal: $isModal, dayData: sortedDay[idx], backgroundColor: Color.white, isToday: isToday)
+                                        .onTapGesture {
+                                            dayData = sortedDay[idx]
+                                            isModal = true
+                                            print(isModal)
                                         }
-                                        else{
-                                            ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
-                                                .onTapGesture {
-                                                    dayData = sortedDay[idx]
-                                                    isModal = true
-                                                    print(isModal)
-                                                }
+                                    
+                                case 0:
+                                    if idx < today-1{
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
+                                            .onTapGesture {
+                                                dayData = sortedDay[idx]
+                                                isModal = true
+                                                print(isModal)
+                                            }
+                                    }
+                                    else{
+                                        ActivateCell(isModal: $isModal, backgroundColor: .customGray,isToday:isToday)
+                                            .onTapGesture {
+                                                dayData = sortedDay[idx]
+                                                isModal = true
+                                                print(isModal)
+                                            }
+                                    }
+                                    
+                                case 1:
+                                    ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
+                                        .onTapGesture {
+                                            dayData = sortedDay[idx]
+                                            isModal = true
+                                            print(isModal)
                                         }
-                                        
-                                    case 1:
-                                        ActivateCell(isModal: $isModal, backgroundColor: .customGreen,isToday:isToday)
-                                            .onTapGesture {
-                                                dayData = sortedDay[idx]
-                                                isModal = true
-                                                print(isModal)
-                                            }
-                                        
-                                    case 2:
-                                        TwoCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
-                                            .onTapGesture {
-                                                dayData = sortedDay[idx]
-                                                isModal = true
-                                                print(isModal)
-                                            }
-                                        
-                                        
-                                    default:
-                                        EmptyView()
+                                    
+                                case 2:
+                                    TwoCell(isModal: $isModal, backgroundColor: .customBrown,isToday:isToday)
+                                        .onTapGesture {
+                                            dayData = sortedDay[idx]
+                                            isModal = true
+                                            print(isModal)
+                                        }
+                                    
+                                    
+                                default:
+                                    EmptyView()
                                 }
                             }
                         }
@@ -219,8 +216,8 @@ struct MainView: View {
                         .padding(.vertical, 25)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.black)
-                        
-                        
+                    
+                    
                 })
                 .buttonStyle(CustomButtonStyle(isDisabled: sortedDay[today-1].status != 0))
                 .disabled(sortedDay[today-1].status != 0)
@@ -230,10 +227,8 @@ struct MainView: View {
             .padding()
             // 알람 시간(type: Date)을 alarmTime에 넘겨주세요
             // 중요! date: 오늘 날짜(시스템상), time: 알람 시간으로 넘겨주세요
-            if let timeString = user.first?.scheduleTime {
-                LiveActivityView(alarmTime: Config.AlarmStringToDate(dateString: timeString)!)
-                    .opacity(0.0)
-            }
+            LiveActivityView(alarmTimeString: $timeString)
+                .opacity(0.0)
         }
         .sheet(isPresented: $isModal){
             ChooseStatusView(showingChooseStatus: $isModal, dayData: $dayData)
@@ -245,10 +240,11 @@ struct MainView: View {
             
         }
         
-        .onAppear {
+        .onAppear {            
             calculateData()
             refreshData(today: today, sortedDay: sortedDay)
-            
+            timeString = user.first!.scheduleTime
+            print("- MainView onAppear timeString: \(timeString)")
         }
         
     }
