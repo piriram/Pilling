@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct MC2_Team3_PillingApp: App {
     @Query var user:[UserInfo]
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             UserInfo.self,
