@@ -7,51 +7,18 @@
 
 import SwiftUI
 import SwiftData
-
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    
-    @Query private var user: [UserInfo] // 하나만 쓰고싶다면?
-    
     var body: some View {
-        NavigationStack{
-            VStack(spacing:20){
-                NavigationLink(destination: MainView()){
-                    Text("MainView")
-                }
-//                
-//                NavigationLink(destination: OnboardingFirstView()){
-//                    Text("OnboardingFirstView")
-//                }
-//                
-                NavigationLink(destination: SwiftDataTestView()){
-                    Text("SwiftDataTestView")
-                }
-                NavigationLink(destination: SplashScreenView()){
-                    Text("SplashScreenView")
-                }
-                
-                //                NavigationLink(destination: ChooseStatusView()){
-                //                    Text("ChooseStatusView")
-                //                }
-//                NavigationLink(destination: OnboardingFirstView()){
-//                    Text("PiriView")
-//                }
+        VStack {
+            Text("1분마다 알림 설정")
+                .padding()
+            
+            Button(action: {
+                NotificationManager.scheduleOneMinuteIntervalNotification()
+            }) {
+                Text("알림 시작")
             }
-        }
-        
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+            .padding()
         }
     }
-
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

@@ -66,7 +66,9 @@ struct OnboardingSecondView: View {
                     }
                     .padding()
 
-                    Spacer()
+                    NavigationLink(destination: ContentView()){
+                        Text("test")
+                    }
 
                     Button(action: {
                         dataSave()
@@ -134,6 +136,8 @@ struct OnboardingSecondView: View {
                 do {
                     try modelContext.save()
                     print("스데 저장 성공")
+                    let (hour, minute) = getHourAndMinute(from: alarmTime)
+                    Config.scheduleLocalNotification(hour: hour, minute: minute)
                     isActive = true
                     isMain = true
 
@@ -145,4 +149,11 @@ struct OnboardingSecondView: View {
             // 사용자 데이터가 이미 있는 경우의 처리 로직 (필요한 경우 추가)
         }
     }
+    func getHourAndMinute(from date: Date) -> (Int, Int) {
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+            let hour = components.hour ?? 0
+            let minute = components.minute ?? 0
+            return (hour, minute)
+        }
 }

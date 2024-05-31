@@ -29,35 +29,35 @@ class Config{
     }
     
     enum StatusMessage: Int, CustomStringConvertible { //문구 변경 예정
-            case plantGrass = 1
+        case plantGrass = 1
         case grassGrowingWell = 2
         case plantTwoGrass = 6
         case husic = 3
         case okTwoGrass = 4
         case notRecording = 5
-            case limitTwoHours = 7
-            
-            
-            var description: String {
-                switch self {
-                    case .plantGrass:
-                        return "잔디를 심어주세요"
-                    case .limitTwoHours:
-                        return "잔디는 2시간을 초과하지 않게 심어주세요!"
-                    case .plantTwoGrass:
-                        return "2개의 잔디를 심어주세요"
-                    case .grassGrowingWell:
-                        return "잔디가 잘 자라고 있어요!"
-                    case .notRecording:
-                        return "기록을 안하고 계신가요?"
-                    case .husic:
-                        return "오늘은 잔디도 휴식중"
-                    case .okTwoGrass:
-                        return "하루라도 빠지면 효과가 감소해요"
-                }
+        case limitTwoHours = 7
+        
+        
+        var description: String {
+            switch self {
+                case .plantGrass:
+                    return "잔디를 심어주세요"
+                case .limitTwoHours:
+                    return "잔디는 2시간을 초과하지 않게 심어주세요!"
+                case .plantTwoGrass:
+                    return "2개의 잔디를 심어주세요"
+                case .grassGrowingWell:
+                    return "잔디가 잘 자라고 있어요!"
+                case .notRecording:
+                    return "기록을 안하고 계신가요?"
+                case .husic:
+                    return "오늘은 잔디도 휴식중"
+                case .okTwoGrass:
+                    return "하루라도 빠지면 효과가 감소해요"
             }
         }
-        
+    }
+    
     
     
     
@@ -131,6 +131,36 @@ class Config{
         
         // weekday는 1(일요일)부터 7(토요일)까지 반환하므로 1을 뺍니다.
         return weekday - 1
+    }
+    static func scheduleLocalNotification(hour:Int,minute:Int) {
+        let notiName = "기록시간"
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notiName])
+        let content = UNMutableNotificationContent()
+        content.title = "잔디를 심을 시간이에요"
+        content.body = "잔디를 심어주세요🌱"
+        content.sound = UNNotificationSound.default
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: notiName, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error adding notification: \(error.localizedDescription)")
+            }
+        }
+        // 28일 후 알림을 취소하는 타이머 설정
+        let cancelDate = Calendar.current.date(byAdding: .day, value: 28, to: Date())
+        if let cancelDate = cancelDate {
+            let cancelTimer = Timer(fire: cancelDate, interval: 0, repeats: false) { _ in
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notiName])
+            }
+            RunLoop.main.add(cancelTimer, forMode: .common)
+        }
     }
     
     static let days = ["일", "월", "화", "수", "목", "금", "토"]

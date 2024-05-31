@@ -19,6 +19,8 @@
 		210E58632BFE56EC005B7AE4 /* main+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58622BFE56EC005B7AE4 /* main+extension.swift */; };
 		210E58652BFE5A24005B7AE4 /* Onboarding+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */; };
 		210E58832BFF76D5005B7AE4 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E58822BFF76D5005B7AE4 /* CellView.swift */; };
+		214057192C08D22100113203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214057182C08D22100113203 /* AppDelegate.swift */; };
+		2140571B2C08E89F00113203 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140571A2C08E89F00113203 /* NotificationManager.swift */; };
 		21A039932C00B5C00071C4C2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A039922C00B5C00071C4C2 /* GradientView.swift */; };
 		21B273082BFB390C002BCC67 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B273072BFB390C002BCC67 /* Model.swift */; };
 		21B2730C2BFB7301002BCC67 /* SwiftDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */; };
@@ -76,6 +78,8 @@
 		210E58622BFE56EC005B7AE4 /* main+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "main+extension.swift"; sourceTree = "<group>"; };
 		210E58642BFE5A24005B7AE4 /* Onboarding+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+extension.swift"; sourceTree = "<group>"; };
 		210E58822BFF76D5005B7AE4 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		214057182C08D22100113203 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2140571A2C08E89F00113203 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		21A039922C00B5C00071C4C2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		21B273072BFB390C002BCC67 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		21B2730B2BFB7301002BCC67 /* SwiftDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTestView.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				939C87E32BF307B600572EDC /* Item.swift */,
 				1B6530432BFB7C1600452ACB /* LiveTimeAttributes.swift */,
 				21B273072BFB390C002BCC67 /* Model.swift */,
+				2140571A2C08E89F00113203 /* NotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				939C87E52BF307B800572EDC /* Assets.xcassets */,
 				939C87E72BF307B800572EDC /* MC2_Team3_Pilling.entitlements */,
 				939C87E82BF307B800572EDC /* Preview Content */,
+				214057182C08D22100113203 /* AppDelegate.swift */,
 			);
 			path = "MC2-Team3-Pilling";
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214057192C08D22100113203 /* AppDelegate.swift in Sources */,
 				1B38E53A2BFDE11500CFD48B /* LiveActivityView.swift in Sources */,
 				939C87E22BF307B600572EDC /* ContentView.swift in Sources */,
 				93EF92D62BFC4187004DEEF1 /* ChooseStatusView.swift in Sources */,
@@ -352,6 +359,7 @@
 				939C88322BF6B4AC00572EDC /* MedicineSheetView.swift in Sources */,
 				21A039932C00B5C00071C4C2 /* GradientView.swift in Sources */,
 				939C87E02BF307B600572EDC /* MC2_Team3_PillingApp.swift in Sources */,
+				2140571B2C08E89F00113203 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team3-Pilling/Preview Content\"";
-				DEVELOPMENT_TEAM = 223UXY9RY6;
+				DEVELOPMENT_TEAM = F5WP2FDW4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -591,7 +599,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team3-Pilling/Preview Content\"";
-				DEVELOPMENT_TEAM = 223UXY9RY6;
+				DEVELOPMENT_TEAM = F5WP2FDW4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
