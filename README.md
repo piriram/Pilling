@@ -41,4 +41,4 @@
 
 |<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/6c336acb-4c59-4f76-8926-7b1b9d9b5758">|<img width="200" alt="Piri" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/d390c9ff-e232-457e-8311-fa22d56097f7">|<img width="200" alt="Riley" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/9c5998c1-0408-48d6-b56e-e97a2568f59d">|<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/fe727ef1-47d9-4789-a792-84808fe48e6a">|
 |:---:|:---:|:---:|:---:|
-| 그루(이그루) | 파이리(김소람) | 라일리(이선하) | 소이(이소현) |
+| [Groo(이그루)](https://github.com/treesofgroo) | [Piri(김소람)](https://github.com/piriram) | [Riley(이선하)](https://github.com/sunhaleeRiley) | [Soy(이소현)](https://github.com/teabag759) |
