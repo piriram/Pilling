@@ -37,7 +37,7 @@
 
 9. **자신의 코드가 직관적으로 바로 파악 할 수 있다고 생각하지 말자**
 
-이미지 크기를 200으로 변경한 표는 다음과 같습니다:
+
 
 |<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/6c336acb-4c59-4f76-8926-7b1b9d9b5758">|<img width="200" alt="Piri" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/d390c9ff-e232-457e-8311-fa22d56097f7">|<img width="200" alt="Riley" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/9c5998c1-0408-48d6-b56e-e97a2568f59d">|<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/fe727ef1-47d9-4789-a792-84808fe48e6a">|
 |:---:|:---:|:---:|:---:|
