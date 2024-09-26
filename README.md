@@ -1,3 +1,16 @@
+<div align="center">
+  <img width="400" alt="image" src="https://github.com/user-attachments/assets/43436be2-edc8-4b0b-8f3b-248f5ad27e24"><br>
+   <b>필링(Pilling)</b>은 <b>여성호르몬제</b>를 <b>제시간</b>에 <b>복용</b>하게 하고, <b>간단하게 기록하는 것</b>을 <b>돕는</b> 앱입니다.<br>
+   My happy Pilling Time! Everyday is a growing.<br>
+   <img width="495" alt="image" src="https://github.com/user-attachments/assets/42d8c988-aa55-4b69-88ee-f57707a63692">
+
+
+</div>
+
+
+
+
+
 ### 커밋 메시지 작성법(참고)
 
 1. **커밋 유형 지정**
