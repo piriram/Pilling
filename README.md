@@ -52,6 +52,7 @@
 
 
 
-|<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/6c336acb-4c59-4f76-8926-7b1b9d9b5758">|<img width="200" alt="Piri" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/d390c9ff-e232-457e-8311-fa22d56097f7">|<img width="200" alt="Riley" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/9c5998c1-0408-48d6-b56e-e97a2568f59d">|<img width="200" alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/fe727ef1-47d9-4789-a792-84808fe48e6a">|
-|:---:|:---:|:---:|:---:|
-| [Groo(이그루)](https://github.com/treesofgroo) | [Piri(김소람)](https://github.com/piriram) | [Riley(이선하)](https://github.com/sunhaleeRiley) | [Soy(이소현)](https://github.com/teabag759) |
+|<img alt="Groo" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/6c336acb-4c59-4f76-8926-7b1b9d9b5758">|<img alt="Piri" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/d390c9ff-e232-457e-8311-fa22d56097f7">|<img alt="Riley" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/9c5998c1-0408-48d6-b56e-e97a2568f59d">|<img alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/fe727ef1-47d9-4789-a792-84808fe48e6a">|
+|:---|:---|:---|:---|
+| [Groo(이그루)](https://github.com/grootwo) | [Piri(김소람)](https://github.com/piriram) | [Riley(이선하)](https://github.com/sunhaleeRiley) | [Soy(이소현)](https://github.com/teabag759) |
+| <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>복용 여부에 따른 알림 상태 설정 및 live activity 담당 </li></ul>| <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>메인 뷰의 복용 달력, 복용 상태 알림 및 SwiftData 입출력 구현 </li></ul> | <ul><li>기획</li><li>전체 뷰 UX/UI 디자인</li><li>3D 캐릭터 애셋 제작</li></ul> | <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>설정 뷰, 온보딩 뷰, 시트 뷰 구현</li></ul> |
