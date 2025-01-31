@@ -65,10 +65,11 @@ struct OnboardingSecondView: View {
                         .foregroundStyle(.secondary)
                     }
                     .padding()
-
-                    NavigationLink(destination: ContentView()){
-                        Text("test")
-                    }
+                    Spacer()
+//
+//                    NavigationLink(destination: ContentView()){
+//                        Text("test")
+//                    }
 
                     Button(action: {
                         dataSave()
