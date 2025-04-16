@@ -1,41 +1,99 @@
-#  필링(Pilling)
+# 🩷 Filling: 피임약 복용 도우미 앱
 
-<div align="center">
-  <img width="400" alt="image" src="https://github.com/user-attachments/assets/43436be2-edc8-4b0b-8f3b-248f5ad27e24"><br>
-   <b>필링(Pilling)</b>은 <b>여성호르몬제</b>를 <b>제시간</b>에 <b>복용</b>하게 하고, <b>간단하게 기록하는 것</b>을 <b>돕는</b> 앱입니다.<br>
-   My happy Pilling Time! Everyday is a growing.<br>
-   <img width="495" alt="image" src="https://github.com/user-attachments/assets/42d8c988-aa55-4b69-88ee-f57707a63692">
-</div>
+> 가까운 사람의 불편함에서 시작한, 작고 따뜻한 기술
 
+---
 
-# 💊 Challenge
+## 🧠 Big Idea: Person Around Me
 
-### Challenge Statement:
-피임약을 복용하는 하은님(라일리의 친구)의 규칙적인 약 복용에 편안함을 주자
+- **Essential Questions**
+  - Who comes to mind? → 피임약을 복용하는 친구
+  - What is that person’s concern I know? → 복용 누락, 번거로운 기록, 정보 부족
 
-### App Statement:
-필링은 여성호르몬제 복용자가 여성호르몬제(피임약)를 매일 같은 시간에 복용하게 하고, 이를 간단하게 기록할 수 있도록 돕는 앱입니다
+- **Challenge**
+  > 피임약을 복용하는 친구의 불편함을 덜도록 도와주자
 
-### Target:
-> 장하은, 여성, 28세
-- 심한 생리불순과 구토를 유발하는 생리증후군으로 인해 장기간 여성호르몬제(피임약)를 복용함
-- 기존 여성건강어플의 부가적 기능인 피임약 복용 기록 서비스를 이용하고 있었으나 기록하기까지의 과정이 길고, 기능을 쉽게 이용하기 어렵다는 것에 불편함을 느낌
-- 매일 같은 시간 복용하기 위해 여성건강어플 이외에 아이폰 기본 알람 어플을 사용중. 기존의 어플에서 제공하는 배너 알림 이외의 다른 알람 서비스를 원함
+- **Refined Challenge**
+  > 피임약을 복용하는 친구의 규칙적인 복용에 편안함을 주자
 
-### Impact:
-- 여성호르몬제(피임약)를 복용하는 사람들에게 기록 단계를 줄여줌으로써 간단하고 편리한 기록이 가능하게 함
-- 여성호르몬제와 같이 복용 기록, 복용 시간이 중요한 약을 복용하는 사람들에게 도움을 줄 수 있음
+---
 
-### Apple Technology & Resorce:
-- SiriKit : AppIntents
-- LiveActivity
-- WidgetKit
-- SwiftData
+## 🔍 Investigate
 
+### 📌 General Investigation
+- **Guiding Questions**
+  - 왜 피임약 복용이 어렵다고 느낄까?
+  - 정보는 쉽게 찾을 수 있을까?
 
-# 🛠️ Developers
+- **Guiding Activities**
+  - 사용자 인터뷰
+  - 데스크 리서치 (커뮤니티, 의약 정보, 유튜브 등)
 
-|<img alt="Groo" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/6c336acb-4c59-4f76-8926-7b1b9d9b5758">|<img alt="Piri" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/d390c9ff-e232-457e-8311-fa22d56097f7">|<img alt="Riley" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/9c5998c1-0408-48d6-b56e-e97a2568f59d">|<img alt="Soy" src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M3-Pilltastic/assets/62399318/fe727ef1-47d9-4789-a792-84808fe48e6a">|
-|:---|:---|:---|:---|
-| [Groo(이그루)](https://github.com/grootwo) | [Piri(김소람)](https://github.com/piriram) | [Riley(이선하)](https://github.com/sunhaleeRiley) | [Soy(이소현)](https://github.com/teabag759) |
-| <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>복용 여부에 따른 알림 상태 설정 및 live activity 담당 </li></ul>| <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>메인 뷰의 복용 달력, 복용 상태 알림 및 SwiftData 입출력 구현 </li></ul> | <ul><li>기획</li><li>전체 뷰 UX/UI 디자인</li><li>3D 캐릭터 애셋 제작</li></ul> | <ul><li>기획</li><li>메인 뷰 UI 제작 참여</li><li>설정 뷰, 온보딩 뷰, 시트 뷰 구현</li></ul> |
+- **Synthesis**
+  - 정보 접근성 낮음 (호르몬 관련이라 전문성이 높음)
+  - 매일 복용 자체가 귀찮고 꾸준히 하기도 어려움
+  - 타인의 시선/부작용에 대한 걱정
+  - 복용 목적에 따라 복용법이 다름
+
+---
+
+### 🧭 Domain Investigation
+- **Problem / Opportunity Statement**
+  - 복용 기록을 간단하게 만들기 (Simplify)
+  - 생리주기와 복용약에 맞춘 개인화
+  - 신뢰할 수 있는 정보 전달
+
+- **Solution Concept**
+  > 복용 기록 단계를 줄인 심플한 피임약 복용 도우미 앱
+
+---
+
+## ✨ Feature List
+
+| 기능       | 설명 |
+|------------|------|
+| **알람**     | 사용자가 지정한 시간에 알림 제공 및 복용 기록 자동 처리 |
+| **위젯**     | 홈 화면에서 복용 여부 확인 가능, 빠른 접근 제공 |
+| **기록**     | 터치 한 번으로 복용 기록, 시간 및 부작용 메모 추가 가능 |
+| **정보 제공** | 복용 누락 시 대처법, 복용 팁 제공 |
+| **스마트 알림** | 복용 시간 경과 시 리마인드 알림 전송 (예: “놓치셨나요?”) |
+
+---
+
+## 📱 앱 구조 및 기능 흐름 (UI/UX Flow)
+
+### 🏠 홈 화면
+- 달력 UI에서 오늘 복용 여부 확인
+- 한 번의 터치로 복용 완료 기록
+- SwiftData를 통한 데이터 저장
+
+### ⏰ 알림 설정
+- 최초 실행 시 알림 시간 설정 유도
+- 알림 도착 시 복용 유도 → 자동 기록
+- 시간 지나면 리마인드 알림 제공
+
+### 💊 기록 상세화면
+- 날짜별 복용/시간/부작용 수정 가능
+
+### 📚 정보 제공 탭
+- FAQ, 복용 가이드, 상황별 대응 방법
+
+### 📲 위젯
+- 복용 여부 한눈에 보기
+- 빠른 앱 진입 및 기록 가능
+
+---
+
+## 🔄 사용자 플로우 요약
+
+```mermaid
+flowchart TD
+    A[앱 실행] --> B[알림 시간 설정]
+    B --> C[홈 화면 진입]
+    C --> D{알람 도착}
+    D -- 복용함 --> E[기록 저장]
+    D -- 놓침 --> F[리마인드 알림]
+    E --> G[달력에서 복용 여부 확인]
+    G --> H[복용 기록 상세 보기]
+    C --> I[정보 탭에서 복용 가이드 확인]
+    C --> J[위젯으로 복용 여부 확인]
